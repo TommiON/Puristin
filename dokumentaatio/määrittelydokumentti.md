@@ -12,7 +12,7 @@ Ongelmaa lähdetään ratkaisemaan Huffman-algoritmilla, joka on klassinen ja hy
 
 Tätä on ehditty miettiä vasta hyvin vähän, mutta mahdollisesti ongelman ratkaisu jakaantuu suunnilleen seuraaviin osa-algoritmeihin ja niitä tukeviin tietorakenteisiin:
 
-* Syötteen lukeminen, eri merkkien esiintymiskertojen laskeminen ja 
+* Syötteen lukeminen, eri merkkien esiintymiskertojen laskeminen syötteessä ja merkkien järjestäminen esiintymiskertojen mukaan.
 * Binääripuun rakentaminen (prioriteettijono).
 *
 
