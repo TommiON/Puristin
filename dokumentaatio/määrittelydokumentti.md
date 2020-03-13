@@ -18,10 +18,16 @@ Tätä on ehditty miettiä vasta hyvin vähän, mutta mahdollisesti ongelman rat
 
 * Syöte luetaan ja eri merkkien esiintymiskerrat lasketaan. Koska tekstiaakkosto tunnetaan ennalta ja on suljettu, tietorakenteeksi riittänee tässä vaiheessa 256-paikkainen kokonaislukutaulukko, jossa jokainen taulukkopaikka ilmaisee kyseisen merkin esiintymiskerrat. Syöte käydään läpi järjestyksessä ja laskureiden arvoja lisätään tämän mukaan.
 * Kustakin taulukon alkiosta muodostetaan CodeUnit-tietorakenne, joka sisältää 1) kyseisen merkin, 2) merkin esiintymiskerrat  kokonaislukuna, ja 3) osoittimen tulevaan äitisolmuun puussa. Osoitinta tarvitaan tulevassa puunrakennusvaiheessa, tässä vaiheessa osoittimien arvo on "null".
-* Edellä muodostetut CodeUnitit tallennetaan prioriteettijonoon eli minimikekoon, jossa vähiten esiintymiskertoja sisältävät CodeUnitit ovat korkeimmalla prioriteetilla. Sitten ryhdytään rakentamaan Huffman-binääripuuta alhaalta ylös ottamalla jonosta kaksi ensimmäistä (datassa vähiten esiintyvää) CodeUnitia ja liittämällä ne uuden äitisolmun lapsiksi. Äitisolmun esiintymiskerroiksi tulee lapsisolmun esiintymiskertojen summa. Muodostettu äitisolmu palautetaan prioriteettijonoon ja tätä jatketaan, kunnes jonossa on enää yksi solmu: puu on valmis ja jäljellä oleva solmu on sen juuri.
-*
+* Edellä muodostetut CodeUnitit tallennetaan prioriteettijonoon eli minimikekoon, jossa vähiten esiintymiskertoja sisältävät CodeUnitit ovat korkeimmalla prioriteetilla. Sitten ryhdytään rakentamaan Huffman-binääripuuta alhaalta ylös ottamalla jonosta kaksi ensimmäistä (datassa vähiten esiintyvää) CodeUnitia ja liittämällä ne uuden äitisolmun lapsiksi. Äitisolmun esiintymiskerroiksi tulee lapsisolmun esiintymiskertojen summa. Muodostettu äitisolmu palautetaan prioriteettijonoon ja tätä jatketaan, kunnes jonossa on enää yksi solmu. Puu on tällöin valmis ja jäljellä oleva solmu on sen juuri.
+* Muodostetaan koodiaakkosto, jossa jokaiselle merkille on tallennettu bittipolku, jota kulkemalla pääsee Huffman-puussa kyseiseen merkkiin (0 = vasen lapsisolmu, joka on aina puun lehti eli merkki, 1 = oikea lapsisolmu, jatketaan puussa alaspäin). Koodiaakkosto tallennetaan pakatun tiedoston alkuun, tarkempi toteutus vielä selvitettävä.
+* Koodataan data käymällä syöte läpi merkki merkiltä ja korvaamalla se vastaavalla bittiesityksellä.
+* Pakattua tiedostoa purettaessa edellinen kohta suoritetaan päinvastaiseen suuntaan.
 
+### Aikavaativuus
 
+Huffman-puun muodostaminen O(n log n), jossa n = aakkosten eli uniikkien merkkien määrä?
+
+Itse koodaus/dekoodaus O(m), jossa m = datan eli merkkien määrä?
 
 ### Ohjelmointikieli
 
