@@ -14,3 +14,4 @@
 ### Seuraavat askeleet (jos aihe on kelpo)
 * Toiminnallisuus tekstitiedoston sisäänlukemiseen
 * Toiminnallisuus merkkien esiintymiskertojen laskemiseen, näiden tallentaminen CodeUnit-tietorakenteiksi eli tulevan Huffman-puun lehdiksi
+* Prioriteettijonon toteutus
