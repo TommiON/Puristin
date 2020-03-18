@@ -1,4 +1,4 @@
 # Viikkoraportti 2
 
-## Projektin tukitoimintoja
+### Projektin tukitoimintoja
 * Lisätty staattinen analyysi (Checkstyle)
