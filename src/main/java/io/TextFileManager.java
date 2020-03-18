@@ -5,7 +5,6 @@ import java.io.*;
 /**
  * provides functionality for text file I/O
  */
-
 public class TextFileManager {
 
     /**

@@ -2,3 +2,6 @@
 .DS_Store
 target
 *.txt
+/*.txt
+*.bin
+/*.bin
