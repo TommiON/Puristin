@@ -2,3 +2,4 @@
 
 ### Projektin tukitoimintoja
 * Lisätty staattinen analyysi (Checkstyle)
+* Lisätty testikattavuuden raportointi (Jacoco)
