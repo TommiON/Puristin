@@ -1,5 +1,7 @@
 package io;
 
+import java.util.BitSet;
+
 /**
  * Handles the traffic to/from binary file, needed because data is managed in sub-byte resolution
  */
@@ -25,7 +27,21 @@ public class ByteBuffer {
 
     }
 
+    /**
+     * Pushes a sequence of bits to buffer, spanning it over multiple bytes if needed
+     * @param bits
+     */
+    public void pushBits(BitSet bits) {
 
+    }
 
-
+    /**
+     * Returns a sequence of bits from buffer
+     * @param numberOfBits
+     * @return
+     */
+    public BitSet popBits(int numberOfBits) {
+        // väliaikainen
+        return new BitSet();
+    }
 }
