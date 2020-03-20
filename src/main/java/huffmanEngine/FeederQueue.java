@@ -25,6 +25,22 @@ public class FeederQueue {
         return queue.poll();
     }
 
+    public static void pushIntoQueue(CodingUnit codingUnit) { queue.add(codingUnit); }
+
+    /**
+     * Tells whether at least two elements left in the queue, used in tree-building iteration
+     * @return
+     */
+    public static boolean hasAtLeastTwoElementsLeft() { return queue.size() >= 2; }
+
+    /**
+     * Tells whether elements left in the queue, used in tree-building iteration
+     * @return true if at least one element left, false otherwise
+     */
+    public static boolean hasStuffLeft() {
+        return !queue.isEmpty();
+    }
+
     /**
      * Returns the total number of CodingUnits in the queue, used for testing
      * @return number of elements as int
@@ -33,11 +49,16 @@ public class FeederQueue {
         return queue.size();
     }
 
-    /**
-     * Tells whether elements left in the queue
-     * @return true if at least one element left, false otherwise
-     */
-    public static boolean hasStuffLeft() {
-        return !queue.isEmpty();
+    public static void printOutAndClear() {
+        System.out.println("-- Feeder queue --");
+        int i = 1;
+        while (FeederQueue.hasStuffLeft()) {
+            CodingUnit c = queue.poll();
+            System.out.println("" + i + " :" + c.toString());
+            i++;
+        }
+        System.out.println("Jono nyt tyhjä");
     }
+
+
 }

@@ -21,6 +21,18 @@ public class CodingUnit implements Comparable {
     }
 
     /**
+     * Constructor, creates a new aggregate CodingUnit from two CodingUnits, used in tree-building
+     * @param leftChild left child for the new node
+     * @param rightChild right child for the new node
+     */
+    public CodingUnit(CodingUnit leftChild, CodingUnit rightChild) {
+        this.character = ' ';
+        this.frequency = leftChild.getFrequency() + rightChild.getFrequency();
+        this.leftChild = leftChild;
+        this.rightChild = rightChild;
+    }
+
+    /**
      * Returns the number of occurrences for this character
      * @return frequency as int
      */
@@ -92,6 +104,6 @@ public class CodingUnit implements Comparable {
      */
     @Override
     public String toString() {
-        return ("Character: " + character + " Frequency: " + frequency + " Left child: " + leftChild + " Right child: " + rightChild);
+        return ("Character: " + character + " Frequency: " + frequency + " Left child: " + leftChild + " Right child: " + rightChild + "\n");
     }
 }
