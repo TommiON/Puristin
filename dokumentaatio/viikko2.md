@@ -1,5 +1,7 @@
 # Viikkoraportti 2
 
+Viikon aika projekti edennyt seuraavasti.
+
 ### Aiheen tarkentaminen
 * Laajennettu projektin aihetta.
 
