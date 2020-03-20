@@ -15,7 +15,7 @@ _Kysymys: Projektin lopullisessa muodossa tarkoitus on käyttää itse tehtyjä 
 ### Huffman-algoritmiin liittyvä toiminnallisuus
 * Frequencies-luokka ja -testi. Selvittää syötteestä uniikit merkit ja laskee niille esiintymiskerrat.
 * CodingUnit-luokka ja -testi. Toteuttaa koodauksen perusyksikön, joista koodauspuu rakennetaan.
-* Aloitettu CodingTree-luokka ja -testi, vielä kesken. Koodaukseen käytettävä binääripuu.
+* Aloitettu CodingTree-luokka ja -testi, vielä kesken ja myös sisältää jonkun bugin, jota ei vielä paikannettu. Koodaukseen käytettävä binääripuu.
 * FeederQueue-luokka ja -testi. Prioriteettijono, jota käytetään CodingTreen rakentamiseen.
 
 ### Projektin tukitoimintoja
