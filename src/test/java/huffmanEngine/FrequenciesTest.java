@@ -1,8 +1,6 @@
 package huffmanEngine;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import org.junit.Test;
-import org.w3c.dom.ls.LSOutput;
 
 import java.util.HashMap;
 
@@ -17,11 +15,11 @@ public class FrequenciesTest {
             Frequencies.checkInACharacter(c);
         }
 
-        for (HashMap.Entry entry : Frequencies.getContents().entrySet()) {
-            System.out.println(entry.toString());
+        for (CodingUnit c : Frequencies.getCodingUnitsAsList()) {
+            System.out.println(c.toString());
         }
 
         assertEquals(4, Frequencies.getNumberOfUniqueCharacters());
     }
-    
+
 }
