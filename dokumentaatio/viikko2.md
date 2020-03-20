@@ -1,6 +1,6 @@
 # Viikkoraportti 2
 
-Viikon aika projekti edennyt seuraavasti.
+Viikon aika projekti edennyt seuraavasti. Yksi kysymyskin herännyt, kursiivilla alla.
 
 ### Aiheen tarkentaminen
 * Laajennettu projektin aihetta.
@@ -9,6 +9,8 @@ Viikon aika projekti edennyt seuraavasti.
 * TextFileManager-luokka ja -testi. Tekstitiedostojen lukemiseen ja kirjoittamiseen.
 * BinaryFileManager-luokka ja -testi. Binääritiedostojen lukemiseen ja kirjoittamiseen.
 * Aloitettu ByteBuffer-luokka, täysin kesken. Datan lukemiseen ja kirjoittamiseen yhden bitin tarkkuudella, tavuiksi muutettuna.
+
+_Kysymys: Projektin lopullisessa muodossa tarkoitus on käyttää itse tehtyjä tietorakenteita. Koskeeko tämä vain itse algoritmista osaa, ts. saako esim. I/O:ssa käyttää Javan tarjoamia rakenteita (OutputStream, StringBuffer jne)?_
 
 ### Huffman-algoritmiin liittyvä toiminnallisuus
 * Frequencies-luokka ja -testi. Selvittää syötteestä uniikit merkit ja laskee niille esiintymiskerrat.
