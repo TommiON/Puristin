@@ -19,7 +19,7 @@ public class CodingTreeTest {
 
         System.out.println(CodingTree.getRoot());
         assertEquals(18, CodingTree.getRoot().getFrequency());
-        
+
         Frequencies.reset();
     }
 
