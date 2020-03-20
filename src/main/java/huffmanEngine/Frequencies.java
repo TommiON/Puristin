@@ -40,4 +40,12 @@ public class Frequencies {
     public static int getNumberOfUniqueCharacters() {
         return contents.size();
     }
+
+    /**
+     * Reset the contents before starting a new coding run
+     */
+    public static void reset() {
+        contents = new HashMap<>();
+    }
+
 }

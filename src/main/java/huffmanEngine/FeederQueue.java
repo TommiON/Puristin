@@ -25,6 +25,10 @@ public class FeederQueue {
         return queue.poll();
     }
 
+    /**
+     * Adds a new CodingUnit to queue
+     * @param codingUnit CodingUnit to be added
+     */
     public static void pushIntoQueue(CodingUnit codingUnit) { queue.add(codingUnit); }
 
     /**
@@ -49,6 +53,9 @@ public class FeederQueue {
         return queue.size();
     }
 
+    /**
+     * Helper method for testing/debugging
+     */
     public static void printOutAndClear() {
         System.out.println("-- Feeder queue --");
         int i = 1;
