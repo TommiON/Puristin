@@ -1,6 +1,6 @@
 # Viikkoraportti 2
 
-Viikon aika projekti edennyt seuraavasti. Yksi kysymyskin herännyt, kursiivilla alla.
+Projekti on edennyt seuraavasti. Yksi kysymyskin herännyt, kursiivilla alla.
 
 ### Aiheen tarkentaminen
 * Laajennettu projektin aihetta.
