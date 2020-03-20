@@ -4,15 +4,15 @@
 
 Ohjelma pakkaa tekstimuotoista dataa tiiviimmäksi ja palauttaa pakatun datan alkuperäiseen muotoonsa.
 
-### Algoritmi yleistasolla
+### Algoritmit yleistasolla
 
-Ongelmaa lähdetään ratkaisemaan Huffman-algoritmilla, joka on klassinen ja hyvin tunnettu algoritmi tekstimuotoisen, tai yleisemminkin kai rajallista ja määriteltyä aakkostoa käyttävän datan pakkaamiseen. Huffman-algoritmi on hyvin toteutettuna ilmeisesti optimaalinen ratkaisu, jos tarkastellaan merkki kerrallaan operoivia pakkausalgoritmeja. Muunlaisia, vielä tehokkaampia pakkausalgoritmeja ilmeisesti on olemassa, mutta nämä toimivat monimutkaisemmalla logiikalla kuin merkki kerrallaan pakkaaminen ja ovat kenties tällaisen projektityön kannalta liian haastavia.
+Ongelmaa lähdetään ratkaisemaan Huffman-algoritmilla ja Lempel–Ziv–Welch-algoritmilla.
 
 ### Syötteet ja tulosteet
 
 Pakatessa sovellus hyväksyy syötteenä 8-bittisesti ASCII-koodattua tekstiä tiedostosta ja tulostaa pakatun version toiseen  tiedostoon. Purkaessa prosessi on sama, mutta päinvastaiseen suuntaan.
 
-### Osa-algoritmit ja tietorakenteet
+### Osa-algoritmit ja tietorakenteet (Huffman)
 
 Tätä on ehditty miettiä vasta hyvin vähän, mutta mahdollisesti ongelman ratkaisu jakaantuu suunnilleen seuraaviin osa-algoritmeihin ja niitä tukeviin tietorakenteisiin:
 
@@ -23,7 +23,11 @@ Tätä on ehditty miettiä vasta hyvin vähän, mutta mahdollisesti ongelman rat
 * Koodataan data käymällä syöte läpi merkki merkiltä ja korvaamalla se vastaavalla bittiesityksellä.
 * Pakattua tiedostoa purettaessa edellinen kohta suoritetaan päinvastaiseen suuntaan.
 
-### Aikavaativuus
+### Osa-algoritmit ja tietorakenteet (Lempel–Ziv–Welch)
+
+Tämä osio vielä selvitettävä tarkemmin, toistaiseksi vasta hyvin yleisluontoinen käsitys menetelmästä.
+
+### Aikavaativuudet
 
 Huffman-puun muodostaminen O(n log n), jossa n = aakkosten eli uniikkien merkkien määrä?
 
@@ -39,3 +43,4 @@ Java
 * Allain, Alex: Huffman Encoding Compression Algorithm. https://www.cprogramming.com/tutorial/computersciencetheory/huffman.html
 * Wikipedia: Huffman Encoding. https://en.wikipedia.org/wiki/Huffman_coding
 * Laaksonen, Antti (2019): Tietorakenteet ja algoritmit.
+* https://www.geeksforgeeks.org/lzw-lempel-ziv-welch-compression-technique/
