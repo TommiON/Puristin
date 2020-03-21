@@ -1,13 +1,17 @@
 package huffmanEngine;
 
+import java.util.BitSet;
+
 /**
  * Implements the basic element for Huffman coding: character with frequency and two tree links
  */
 public class CodingUnit implements Comparable {
+    private boolean containsCharacter;
     private char character;
     private int frequency;
     private CodingUnit leftChild;
     private CodingUnit rightChild;
+    private BitSet bitPath;
 
     /**
      * Constructor, starting frequency 1 (as the first character has been encountered when this is called), tree links start as null
@@ -15,9 +19,11 @@ public class CodingUnit implements Comparable {
      */
     public CodingUnit(char character) {
         this.character = character;
+        this.containsCharacter = true;
         this.frequency = 1;
         this.leftChild = null;
         this.rightChild = null;
+        this.bitPath = new BitSet();
     }
 
     /**
@@ -27,9 +33,11 @@ public class CodingUnit implements Comparable {
      */
     public CodingUnit(CodingUnit leftChild, CodingUnit rightChild) {
         this.character = ' ';
+        this.containsCharacter = false;
         this.frequency = leftChild.getFrequency() + rightChild.getFrequency();
         this.leftChild = leftChild;
         this.rightChild = rightChild;
+        this.bitPath = new BitSet();
     }
 
     /**
@@ -88,6 +96,11 @@ public class CodingUnit implements Comparable {
     }
 
     /**
+     * Tells whether this CodingUnit contains a character or is an internal node with no character
+     */
+    public boolean containsCharacter() { return this.containsCharacter; }
+
+    /**
      * Comparator method, needed for priority queue ordering (Comparable interface) for CodingUnits
      * @param o another CodingUnit to compare to
      * @return int, negative if o has higher frequency than this, positive if the opposite, 0 if equal
@@ -96,6 +109,14 @@ public class CodingUnit implements Comparable {
     public int compareTo(Object o) {
         CodingUnit compareTarget = (CodingUnit) o;
         return this.frequency - ((CodingUnit) o).frequency;
+    }
+
+    public void addLeftTurnToBitPath() {
+
+    }
+
+    public void addRigthTurnToBitPath() {
+
     }
 
     /**

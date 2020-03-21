@@ -1,5 +1,7 @@
 package io;
 
+import helpers.BitSequence;
+
 import java.util.BitSet;
 
 /**
@@ -31,7 +33,7 @@ public class ByteBuffer {
      * Pushes a sequence of bits to buffer, spanning it over multiple bytes if needed
      * @param bits
      */
-    public void pushBits(BitSet bits) {
+    public void pushBits(BitSequence bits) {
 
     }
 

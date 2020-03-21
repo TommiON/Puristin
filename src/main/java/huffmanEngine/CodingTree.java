@@ -1,12 +1,17 @@
 package huffmanEngine;
 
 /**
- * Implements the binary tree constructor
+ * Binary tree constructor
  */
 public class CodingTree {
-    private static CodingUnit rootNode;
 
-    public static void buildFrom(FeederQueue feeder) {
+    /**
+     * Constructs a binary tree from a given FeederQueue
+     * @param feeder FeederQueue containing the CodingUnits in min-first priority queue
+     * @return CodingUnit that is the root of the newly-build tree
+     */
+    public static CodingUnit buildAndReturnRoot(FeederQueue feeder) {
+        // TODO: handle empty queue parameter
         if (feeder.hasStuffLeft()) {
             while (feeder.hasAtLeastTwoElementsLeft()) {
                 CodingUnit left = feeder.getFirstInLine();
@@ -14,11 +19,7 @@ public class CodingTree {
                 CodingUnit newNode = new CodingUnit(left, right);
                 feeder.pushIntoQueue(newNode);
             }
-            rootNode = feeder.getFirstInLine();
         }
-    }
-
-    public static CodingUnit getRoot() {
-        return rootNode;
+        return feeder.getFirstInLine();
     }
 }
