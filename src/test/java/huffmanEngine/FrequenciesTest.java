@@ -11,31 +11,29 @@ public class FrequenciesTest {
     @Test
     public void recordsFrequenciesCorrectly() {
         char[] testCharacters = {'a', 'a', '1', 'b', 'a', 'b', 'c', 'a', 'c', 'b', 'a'};
+        Frequencies freq = new Frequencies();
         for (char c : testCharacters) {
-            Frequencies.checkInACharacter(c);
+            freq.checkInACharacter(c);
         }
 
-        for (CodingUnit c : Frequencies.getCodingUnitsAsList()) {
+        for (CodingUnit c : freq.getCodingUnitsAsList()) {
             System.out.println(c.toString());
         }
 
-        assertEquals(4, Frequencies.getNumberOfUniqueCharacters());
+        assertEquals(4, freq.getNumberOfUniqueCharacters());
 
         System.out.println("---");
 
-        Frequencies.reset();
         char[] testCharacters2 = {'a', 'a', 'a', 'b', 'a'};
+        Frequencies freq2 = new Frequencies();
         for (char c : testCharacters2) {
-            Frequencies.checkInACharacter(c);
+            freq2.checkInACharacter(c);
         }
 
-        for (CodingUnit c : Frequencies.getCodingUnitsAsList()) {
+        for (CodingUnit c : freq2.getCodingUnitsAsList()) {
             System.out.println(c.toString());
         }
 
-        assertEquals(2, Frequencies.getNumberOfUniqueCharacters());
-
-        Frequencies.reset();
+        assertEquals(2, freq2.getNumberOfUniqueCharacters());
     }
-
 }

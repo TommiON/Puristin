@@ -1,20 +1,20 @@
 package huffmanEngine;
 
 /**
- * Implements a binary tree consisting of CodingUnit nodes
+ * Implements the binary tree constructor
  */
 public class CodingTree {
     private static CodingUnit rootNode;
 
-    public static void build() {
-        if (FeederQueue.hasStuffLeft()) {
-            while (FeederQueue.hasAtLeastTwoElementsLeft()) {
-                CodingUnit left = FeederQueue.getFirstInLine();
-                CodingUnit right = FeederQueue.getFirstInLine();
+    public static void buildFrom(FeederQueue feeder) {
+        if (feeder.hasStuffLeft()) {
+            while (feeder.hasAtLeastTwoElementsLeft()) {
+                CodingUnit left = feeder.getFirstInLine();
+                CodingUnit right = feeder.getFirstInLine();
                 CodingUnit newNode = new CodingUnit(left, right);
-                FeederQueue.pushIntoQueue(newNode);
+                feeder.pushIntoQueue(newNode);
             }
-            rootNode = FeederQueue.getFirstInLine();
+            rootNode = feeder.getFirstInLine();
         }
     }
 
