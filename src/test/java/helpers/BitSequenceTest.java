@@ -7,27 +7,51 @@ import static org.junit.Assert.*;
 public class BitSequenceTest {
 
     @Test
+    public void pushesCorrectly() {
+        BitSequence bitSequence = new BitSequence();
+
+        bitSequence.pushLast(false);
+        System.out.println(bitSequence.getAsString());
+        assertEquals("0", bitSequence.getAsString().substring(0,1));
+
+        bitSequence.pushLast(true);
+        System.out.println(bitSequence.getAsString());
+        assertEquals("0", bitSequence.getAsString().substring(0,1));
+
+        bitSequence.pushLast(true);
+        System.out.println(bitSequence.getAsString());
+        assertEquals("0", bitSequence.getAsString().substring(0,1));
+    }
+
+    @Test
     public void pushesAndShiftsCorrectly() {
         BitSequence bitSequence = new BitSequence();
 
-        bitSequence.pushAndShiftRight(false);
+        bitSequence.pushFirstAndShift(false);
         System.out.println(bitSequence.getAsString());
         assertEquals("0", bitSequence.getAsString().substring(0,1));
 
-        bitSequence.pushAndShiftRight(false);
+        bitSequence.pushFirstAndShift(false);
         System.out.println(bitSequence.getAsString());
         assertEquals("0", bitSequence.getAsString().substring(0,1));
 
-        bitSequence.pushAndShiftRight(true);
+        bitSequence.pushFirstAndShift(true);
         System.out.println(bitSequence.getAsString());
         assertEquals("1", bitSequence.getAsString().substring(0,1));
 
-        bitSequence.pushAndShiftRight(false);
+        bitSequence.pushFirstAndShift(false);
         System.out.println(bitSequence.getAsString());
         assertEquals("0", bitSequence.getAsString().substring(0,1));
 
-        bitSequence.pushAndShiftRight(true);
+        bitSequence.pushFirstAndShift(true);
         System.out.println(bitSequence.getAsString());
         assertEquals("1", bitSequence.getAsString().substring(0,1));
     }
+
+    @Test
+    public void handlesEmptySequenceCorrectly() {
+        BitSequence bitSequence = new BitSequence();
+        System.out.println(bitSequence.getAsString());
+    }
+
 }

@@ -1,6 +1,6 @@
 package huffmanEngine;
 
-import java.util.BitSet;
+import helpers.BitSequence;
 
 /**
  * Implements the basic element for Huffman coding: character with frequency and two tree links
@@ -11,7 +11,7 @@ public class CodingUnit implements Comparable {
     private int frequency;
     private CodingUnit leftChild;
     private CodingUnit rightChild;
-    private BitSet bitPath;
+    private BitSequence bitPath;
 
     /**
      * Constructor, starting frequency 1 (as the first character has been encountered when this is called), tree links start as null
@@ -23,7 +23,7 @@ public class CodingUnit implements Comparable {
         this.frequency = 1;
         this.leftChild = null;
         this.rightChild = null;
-        this.bitPath = new BitSet();
+        this.bitPath = new BitSequence();
     }
 
     /**
@@ -37,7 +37,7 @@ public class CodingUnit implements Comparable {
         this.frequency = leftChild.getFrequency() + rightChild.getFrequency();
         this.leftChild = leftChild;
         this.rightChild = rightChild;
-        this.bitPath = new BitSet();
+        this.bitPath = new BitSequence();
     }
 
     /**
@@ -100,6 +100,16 @@ public class CodingUnit implements Comparable {
      */
     public boolean containsCharacter() { return this.containsCharacter; }
 
+    public void setBitPath(BitSequence bitSequence) {
+        bitPath = new BitSequence(bitSequence);
+    }
+
+    public BitSequence getBitPath() { return bitPath; }
+
+    public void turnLeftInBitPath() { bitPath.pushLast(false); }
+
+    public void turnRightInBitPath() { bitPath.pushLast(true);}
+
     /**
      * Comparator method, needed for priority queue ordering (Comparable interface) for CodingUnits
      * @param o another CodingUnit to compare to
@@ -109,14 +119,6 @@ public class CodingUnit implements Comparable {
     public int compareTo(Object o) {
         CodingUnit compareTarget = (CodingUnit) o;
         return this.frequency - ((CodingUnit) o).frequency;
-    }
-
-    public void addLeftTurnToBitPath() {
-
-    }
-
-    public void addRigthTurnToBitPath() {
-
     }
 
     /**

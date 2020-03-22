@@ -5,11 +5,28 @@ public class BitSequence {
     private int slotsInUse;
 
     public BitSequence() {
-        bits = new boolean[100];
         slotsInUse = 0;
+        bits = new boolean[100];
     }
 
-    public void pushAndShiftRight(boolean bit) {
+    public BitSequence(BitSequence anotherBitSequence) {
+        slotsInUse = anotherBitSequence.size();
+        bits = new boolean[100];
+        for (int i = 0; i < slotsInUse; i++) {
+            bits[i] = anotherBitSequence.getBitAtIndex(i);
+        }
+    }
+
+    public void pushLast(boolean bit) {
+        if (bit == true) {
+            bits[slotsInUse] = true;
+        } else {
+            bits[slotsInUse] = false;
+        }
+        slotsInUse++;
+    }
+
+    public void pushFirstAndShift(boolean bit) {
         slotsInUse++;
         for (int i = slotsInUse; i > 0; i--) {
             bits[i] = bits[i-1];
@@ -32,4 +49,9 @@ public class BitSequence {
         }
         return stringRepresentation;
     }
+
+    public int size() { return slotsInUse; }
+
+    public boolean getBitAtIndex(int index) { return bits[index]; }
+
 }
