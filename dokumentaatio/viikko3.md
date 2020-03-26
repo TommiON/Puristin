@@ -11,10 +11,10 @@ Projekti on edennyt seuraavasti:
 
 ### Omia tietorakenteita
 * BitSequence-luokka vaihtelevanpituisten bittisarjojen tallantamiseen ja käsittelyyn.
+* StringHasher, oma toteutus HashMap<String,String> -tietorakenteesta, vielä hyvin kesken.
 
 ### I/O
 * ByteBuffer-luokkaa eteenpäin, ei vieläkään valmis.
-* StringHasher, oma toteutus HashMap<String,String> -tietorakenteesta, vielä hyvin kesken.
 
 ### Muuta
 * Selvitelty hieman Lempel–Ziv–Welch -algoritmin perusteita, toteutus vielä aloittamatta.
