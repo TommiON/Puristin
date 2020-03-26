@@ -1,5 +1,8 @@
-package helpers;
+package genericDataStructures;
 
+/**
+ * Represents a sequence of bits, implemented as an array of booleans
+ */
 public class BitSequence {
     private boolean[] bits;
     private int slotsInUse;

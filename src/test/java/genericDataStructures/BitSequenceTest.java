@@ -1,4 +1,4 @@
-package helpers;
+package genericDataStructures;
 
 import org.junit.Test;
 

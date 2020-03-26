@@ -1,6 +1,6 @@
 package huffmanEngine;
 
-import helpers.BitSequence;
+import genericDataStructures.BitSequence;
 
 /**
  * Implements the basic element for Huffman coding: character with frequency and two tree links
@@ -72,14 +72,6 @@ public class CodingUnit implements Comparable {
     }
 
     /**
-     * Sets a left child in tree for this CodingUnit
-     * @param child reference to a CodingUnit
-     */
-    public void setLeftChild(CodingUnit child) {
-        this.leftChild = child;
-    }
-
-    /**
      * Returns this CodingUnit's right child in tree
      * @return a CodingUnit or null
      */
@@ -88,26 +80,32 @@ public class CodingUnit implements Comparable {
     }
 
     /**
-     * Sets a right child in tree for this CodingUnit
-     * @param child reference to a CodingUnit
-     */
-    public void setRightChild(CodingUnit child) {
-        this.rightChild = child;
-    }
-
-    /**
      * Tells whether this CodingUnit contains a character or is an internal node with no character
      */
     public boolean containsCharacter() { return this.containsCharacter; }
 
+    /**
+     * Sets the BitPath to be a copy of another BitSequence, used when constructing CodingAlphabet
+     * @param bitSequence a BitSequence to be copied as an initial value
+     */
     public void setBitPath(BitSequence bitSequence) {
         bitPath = new BitSequence(bitSequence);
     }
 
+    /**
+     * Returns the current bitpath
+     * @return Current bitpath as BitSequence
+     */
     public BitSequence getBitPath() { return bitPath; }
 
+    /**
+     * Add a "left turn", i.e. new "0" to bitpath, used when constructing CodingAlphabet
+     */
     public void turnLeftInBitPath() { bitPath.pushLast(false); }
 
+    /**
+     * Add a "right turn", i.e. new "1" to bitpath, used when constructing CodingAlphabet
+     */
     public void turnRightInBitPath() { bitPath.pushLast(true);}
 
     /**

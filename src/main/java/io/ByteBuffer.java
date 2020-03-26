@@ -1,6 +1,6 @@
 package io;
 
-import helpers.BitSequence;
+import genericDataStructures.BitSequence;
 
 import java.util.BitSet;
 
@@ -42,8 +42,8 @@ public class ByteBuffer {
      * @param numberOfBits
      * @return
      */
-    public BitSet popBits(int numberOfBits) {
+    public BitSequence popBits(int numberOfBits) {
         // väliaikainen
-        return new BitSet();
+        return new BitSequence();
     }
 }
