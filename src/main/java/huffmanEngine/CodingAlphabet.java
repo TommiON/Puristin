@@ -5,6 +5,7 @@ import genericDataStructures.BitSequence;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Constructs coding alphabet with the help of CodingTree
@@ -13,6 +14,10 @@ public class CodingAlphabet {
     private HashMap<Character, String> charactersToBits = new HashMap<>();
     private HashMap<String, Character> bitsToCharacters = new HashMap<>();
 
+    /**
+     * Constructs the alphabet with width-first graph search, saving text->binary and binary->text mappings whenever a character node is encountered
+     * @param rootNode CodingUnit node where building is to start from
+     */
     public void buildWith(CodingUnit rootNode) {
         ArrayDeque<CodingUnit> queue = new ArrayDeque<>();
         queue.add(rootNode);
@@ -38,18 +43,38 @@ public class CodingAlphabet {
         }
     }
 
-    public String getBitsForCharacter(char c) {
-        return charactersToBits.get(c);
+    /**
+     * Returns a String representation of the BitSequence representing a character
+     * @param character the character to be looked up
+     * @return String version of the BitSequence, or null if character not found
+     */
+    public String getBitsForCharacter(char character) {
+        return charactersToBits.get(character);
     }
 
-    public char getCharacterForBits(BitSequence b) {
-        return bitsToCharacters.get(b.getAsString());
+    /**
+     * Returns a character corresponding to a BitSequence
+     * @param bitSequence the BitSequence to be looked-up
+     * @return a char found from the alphabet, or null if not found
+     */
+    public Character getCharacterForBits(BitSequence bitSequence) {
+        Character character = bitsToCharacters.get(bitSequence.getAsString());
+        if (character == null) {
+            return null;
+        }
+        return character;
     }
 
+    /**
+     * @return number of entries
+     */
     public int size() {
         return charactersToBits.size();
     }
 
+    /**
+     * @return String representation of the alphabet
+     */
     @Override
     public String toString() {
         String stringRepresentation = new String();

@@ -4,6 +4,7 @@ import genericDataStructures.BitSequence;
 import org.junit.Test;
 
 import java.util.BitSet;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 
@@ -33,8 +34,8 @@ public class CodingAlphabetTest {
         bitSequence.pushLast(false);
         bitSequence.pushLast(true);
         bitSequence.pushLast(false);
-        char characterForBitRepresentation1010 = alphabet.getCharacterForBits(bitSequence);
-        assertEquals('h', characterForBitRepresentation1010);
+        Character characterForBitRepresentation1010 = alphabet.getCharacterForBits(bitSequence);
+        assertEquals(new Character('h'), characterForBitRepresentation1010);
         System.out.println(characterForBitRepresentation1010);
 
         assertEquals(5, alphabet.size());

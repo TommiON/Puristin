@@ -27,23 +27,23 @@ public class BitSequenceTest {
     public void pushesAndShiftsCorrectly() {
         BitSequence bitSequence = new BitSequence();
 
-        bitSequence.pushFirstAndShift(false);
+        bitSequence.pushFirstAndShiftRight(false);
         System.out.println(bitSequence.getAsString());
         assertEquals("0", bitSequence.getAsString().substring(0,1));
 
-        bitSequence.pushFirstAndShift(false);
+        bitSequence.pushFirstAndShiftRight(false);
         System.out.println(bitSequence.getAsString());
         assertEquals("0", bitSequence.getAsString().substring(0,1));
 
-        bitSequence.pushFirstAndShift(true);
+        bitSequence.pushFirstAndShiftRight(true);
         System.out.println(bitSequence.getAsString());
         assertEquals("1", bitSequence.getAsString().substring(0,1));
 
-        bitSequence.pushFirstAndShift(false);
+        bitSequence.pushFirstAndShiftRight(false);
         System.out.println(bitSequence.getAsString());
         assertEquals("0", bitSequence.getAsString().substring(0,1));
 
-        bitSequence.pushFirstAndShift(true);
+        bitSequence.pushFirstAndShiftRight(true);
         System.out.println(bitSequence.getAsString());
         assertEquals("1", bitSequence.getAsString().substring(0,1));
     }
