@@ -6,12 +6,11 @@ Projekti on edennyt seuraavasti:
 
 ### Huffman-algoritmiin liittyvä toiminnallisuus
 * CodingTree-luokka eli koodaukseen käytettävä binääripuu valmiiksi.
-* CodingAlphabet-luokka, rakentaa teksti->binääri- ja binääri->teksti -aakkoston CodingTreeta hyödyntäen.
-* CoderDecoder-luokka, muuntaa tekstiä biteiksi ja päinvastoin CodingAlphabetia hyödyntäen.
+* CodingAlphabet-luokka, muodostaa teksti->binääri- ja binääri->teksti -muunnokset CodingTreeta hyödyntäen.
+* Decoder-luokka, muuntaa bittejä tekstiksi CodingAlphabetia hyödyntäen. Vielä keskeneräinen, nyt tulostaa ruudulle, myöhemmin I/O-puskuriin. Tämän kaveriksi tulee vielä Coder-luokka, joka tekee muunnoksen toiseen suuntaan, ja sitten Huffman-pakkauksen osaset alkavat olla kasassa.
 
 ### Omia tietorakenteita
 * BitSequence-luokka vaihtelevanpituisten bittisarjojen tallantamiseen ja käsittelyyn.
-* StringHasher, oma toteutus HashMap<String,String> -tietorakenteesta, vielä hyvin kesken.
 
 ### I/O
 * ByteBuffer-luokkaa eteenpäin, ei vieläkään valmis.
