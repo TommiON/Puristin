@@ -27,7 +27,12 @@ public class DecoderTest {
         bitSequence1.pushLast(true);
         bitSequence1.pushLast(true);
         bitSequence1.pushLast(false);
-        Decoder.decode(alphabet, bitSequence1);
+
+        Decoder decoder = new Decoder();
+        decoder.decode(alphabet, bitSequence1);
+        String outputAsString = decoder.getOutput();
+        System.out.println(outputAsString);
+        assertEquals("bab", outputAsString);
     }
 
     @Test
@@ -50,8 +55,13 @@ public class DecoderTest {
         bitSequence1.pushLast(true);
         bitSequence1.pushLast(true);
         bitSequence1.pushLast(false);
-        bitSequence1.pushLast(true);
-        Decoder.decode(alphabet, bitSequence1);
+        bitSequence1.pushLast(true); // orphan bit
+
+        Decoder decoder = new Decoder();
+        decoder.decode(alphabet, bitSequence1);
+        String outputAsString = decoder.getOutput();
+        System.out.println(outputAsString);
+        assertEquals("bab", outputAsString);
     }
 
 }

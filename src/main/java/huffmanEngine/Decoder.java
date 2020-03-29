@@ -2,22 +2,36 @@ package huffmanEngine;
 
 import genericDataStructures.BitSequence;
 
-import java.util.Optional;
-
+/**
+ * Converts Huffman binary input into plain text
+ */
 public class Decoder {
-    public static BitSequence internalBuffer = new BitSequence();
+    private String output = new String();
+    private BitSequence internalBuffer = new BitSequence();
 
-    public static void decode(CodingAlphabet alphabet, BitSequence input) {
+    /**
+     *
+     * @param alphabet CodingAlphabet to be used
+     * @param input Binary data as BitSequence
+     */
+    public void decode(CodingAlphabet alphabet, BitSequence input) {
         while (!input.isEmpty()) {
             boolean nextBit = input.popFirstAndShiftLeft();
-            System.out.println("DEBUG Luettu bitti: " + nextBit);
             internalBuffer.pushFirstAndShiftRight(nextBit);
             if (alphabet.getCharacterForBits(internalBuffer) != null) {
                 Character character = alphabet.getCharacterForBits(internalBuffer);
-                System.out.println("VALMIS Binääristä tekstiksi: " + character);
+                output += character;
                 internalBuffer = new BitSequence();
             }
         }
+    }
+
+    /**
+     *
+     * @return The current plain text data resulting from decoding
+     */
+    public String getOutput() {
+        return output;
     }
 
 }

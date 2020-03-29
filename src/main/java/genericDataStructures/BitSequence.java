@@ -8,11 +8,11 @@ public class BitSequence {
     private int slotsInUse;
 
     /**
-     * Constructor, initializes with space for 100 bits (to be considered)
+     * Constructor, initializes with space for 10000 bits (to be considered)
      */
     public BitSequence() {
         slotsInUse = 0;
-        bits = new boolean[100];
+        bits = new boolean[10000];
     }
 
     /**
@@ -21,7 +21,7 @@ public class BitSequence {
      */
     public BitSequence(BitSequence anotherBitSequence) {
         slotsInUse = anotherBitSequence.size();
-        bits = new boolean[100];
+        bits = new boolean[10000];
         for (int i = 0; i < slotsInUse; i++) {
             bits[i] = anotherBitSequence.getBitAtIndex(i);
         }
@@ -38,6 +38,16 @@ public class BitSequence {
             bits[slotsInUse] = false;
         }
         slotsInUse++;
+    }
+
+    /**
+     * Pushes multiple bits at once at the end of the sequence
+     * @param sourceBitSequence BitSequence containing the bits to be pushed
+     */
+    public void pushLastMultipleBits(BitSequence sourceBitSequence) {
+        for (int i = 0; i < sourceBitSequence.size(); i++) {
+            this.pushLast(sourceBitSequence.getBitAtIndex(i));
+        }
     }
 
     /**
@@ -91,8 +101,17 @@ public class BitSequence {
      */
     public int size() { return slotsInUse; }
 
+    /**
+     *
+     * @return true if BitSequence contains no bits, false otherwise
+     */
     public boolean isEmpty() { return slotsInUse == 0; }
 
+    /**
+     * Return a bit at a specified location
+     * @param index index of the bit to be retrieved as int
+     * @return returned bit as boolean
+     */
     public boolean getBitAtIndex(int index) { return bits[index]; }
 
 }
