@@ -1,4 +1,7 @@
+### Huffman
 
+Sovelluksen Huffman-algoritmia käyttävä osuus toimii näin:
+* 
 
 Io
 * TextFileManager
