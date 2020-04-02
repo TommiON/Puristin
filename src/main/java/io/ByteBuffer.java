@@ -2,23 +2,21 @@ package io;
 
 import genericDataStructures.BitSequence;
 
-import java.util.BitSet;
-
 /**
  * Handles the traffic to/from binary file, needed because data is managed in sub-byte resolution
  */
 public class ByteBuffer {
-    private static byte[] bytes;
-    private static int numberOfEntries;
-    private static int freeBitsInLastByte;
+    private byte[] bytes;
+    private int byteLevelReadWriteHeadPosition;
+    private int bitLevelReadWriteHeadPosition;
 
     /**
      * initialises an empty byte buffer when starting to encode
      */
     public ByteBuffer() {
-        this.bytes = new byte[100000];
-        this.numberOfEntries = 0;
-        this.freeBitsInLastByte = 8;
+        bytes = new byte[100000];
+        byteLevelReadWriteHeadPosition = 0;
+        bitLevelReadWriteHeadPosition = 0;
     }
 
     /**
