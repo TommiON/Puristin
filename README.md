@@ -6,7 +6,9 @@ Sovellus pakkaa (tekstimuotoista) dataa tiiviimpään tallennustilaan, purkaa pa
 
 ### Dokumentaatio
 
-[Määrittelydokumentti](/dokumentaatio/määrittelydokumentti.md)
+[Määrittely](/dokumentaatio/määrittelydokumentti.md)
+
+[Toteutus](/dokumentaatio/toteutusdokumentti.md)
 
 ### Viikkoraportit
 
