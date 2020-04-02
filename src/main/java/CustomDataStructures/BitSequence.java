@@ -1,4 +1,4 @@
-package genericDataStructures;
+package CustomDataStructures;
 
 /**
  * Represents a sequence of bits, implemented as an array of booleans

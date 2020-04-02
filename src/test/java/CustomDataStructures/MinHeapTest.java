@@ -1,4 +1,4 @@
-package genericDataStructures;
+package CustomDataStructures;
 
 import huffmanEngine.CodingUnit;
 import huffmanEngine.Frequencies;
@@ -73,6 +73,28 @@ public class MinHeapTest {
         }
 
         assertEquals(true, heap.isEmpty());
+    }
+
+    @Test
+    public void workCorrectlyWithMultipleInsertions() {
+        MinHeap heap = new MinHeap();
+
+        CodingUnit a = new CodingUnit('a');
+        heap.insert(a);
+        CodingUnit b = new CodingUnit('b');
+        heap.insert(b);
+
+        CodingUnit combo = new CodingUnit(a, b);
+        heap.insert(combo);
+
+        CodingUnit output;
+        while (!heap.isEmpty()) {
+            output = heap.pop();
+            System.out.println(output);
+        }
+
+        assertEquals(true, heap.isEmpty());
+
     }
 
 }

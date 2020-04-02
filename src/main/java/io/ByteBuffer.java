@@ -1,6 +1,6 @@
 package io;
 
-import genericDataStructures.BitSequence;
+import CustomDataStructures.BitSequence;
 
 /**
  * Handles the traffic to/from binary file, needed because data is managed in sub-byte resolution

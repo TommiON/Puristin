@@ -1,4 +1,4 @@
-package genericDataStructures;
+package CustomDataStructures;
 
 import org.junit.Test;
 

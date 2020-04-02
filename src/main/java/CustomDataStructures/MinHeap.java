@@ -1,15 +1,18 @@
-package genericDataStructures;
+package CustomDataStructures;
 
 import huffmanEngine.CodingUnit;
 
 /**
- * Implements a smallest-value-first heap structure, used as a priority queue
+ * Implements a smallest-value-first heap structure for CodingUnits, used as a priority queue
  */
-
 public class MinHeap {
     private CodingUnit[] contents = new CodingUnit[256];
     private int numberOfElements = 0;
 
+    /**
+     * Adds a new element
+     * @param newNode CodingUnit to be added
+     */
     public void insert(CodingUnit newNode) {
         numberOfElements++;
         contents[numberOfElements] = newNode;
@@ -24,6 +27,10 @@ public class MinHeap {
         contents[index] = newNode;
     }
 
+    /**
+     * Returns and removes the first element in queue
+     * @return Element with the smallest value
+     */
     public CodingUnit pop() {
         CodingUnit returnValue = contents[1];
         contents[1] = contents[numberOfElements];
@@ -32,6 +39,10 @@ public class MinHeap {
         return returnValue;
     }
 
+    /**
+     *
+     * @return true if queue contains no elements, false otherwise
+     */
     public boolean isEmpty() {
         return numberOfElements == 0;
     }

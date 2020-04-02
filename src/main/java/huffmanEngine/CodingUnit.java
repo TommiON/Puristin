@@ -1,6 +1,6 @@
 package huffmanEngine;
 
-import genericDataStructures.BitSequence;
+import CustomDataStructures.BitSequence;
 
 /**
  * Implements the basic element for Huffman coding: character with frequency and two tree links

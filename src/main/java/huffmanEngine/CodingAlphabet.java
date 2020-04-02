@@ -1,11 +1,10 @@
 package huffmanEngine;
 
-import genericDataStructures.BitSequence;
+import CustomDataStructures.BitSequence;
 
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * Constructs coding alphabet with the help of CodingTree

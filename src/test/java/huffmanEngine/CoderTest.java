@@ -1,6 +1,6 @@
 package huffmanEngine;
 
-import genericDataStructures.BitSequence;
+import CustomDataStructures.BitSequence;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

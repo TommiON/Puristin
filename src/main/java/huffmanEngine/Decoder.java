@@ -1,6 +1,6 @@
 package huffmanEngine;
 
-import genericDataStructures.BitSequence;
+import CustomDataStructures.BitSequence;
 
 /**
  * Converts Huffman binary input into plain text
