@@ -1,4 +1,4 @@
-package huffmanEngine;
+package HuffmanEngine;
 
 /**
  * Binary tree constructor

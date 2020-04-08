@@ -1,6 +1,6 @@
 package CustomDataStructures;
 
-import huffmanEngine.CodingUnit;
+import HuffmanEngine.CodingUnit;
 
 /**
  * Implements a FIFO queue for CodingUnits.

@@ -1,6 +1,6 @@
 package CustomDataStructures;
 
-import huffmanEngine.CodingUnit;
+import HuffmanEngine.CodingUnit;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

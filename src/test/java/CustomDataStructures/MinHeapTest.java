@@ -1,7 +1,7 @@
 package CustomDataStructures;
 
-import huffmanEngine.CodingUnit;
-import huffmanEngine.Frequencies;
+import HuffmanEngine.CodingUnit;
+import HuffmanEngine.Frequencies;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,4 +1,4 @@
-package huffmanEngine;
+package HuffmanEngine;
 
 import CustomDataStructures.BitSequence;
 import org.junit.Test;

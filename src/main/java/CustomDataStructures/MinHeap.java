@@ -1,6 +1,6 @@
 package CustomDataStructures;
 
-import huffmanEngine.CodingUnit;
+import HuffmanEngine.CodingUnit;
 
 /**
  * Implements a smallest-value-first heap structure for CodingUnits, used as a priority queue

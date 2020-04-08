@@ -1,4 +1,4 @@
-package huffmanEngine;
+package HuffmanEngine;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
