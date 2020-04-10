@@ -13,10 +13,12 @@ public class Main {
     public static void main(String[] args) {
         while (true) {
             System.out.println("PURISTIN");
+            System.out.println("(Huom. Tällä hetkellä Huffman-aakkostoa ei tallenneta pakatun datan mukana, joten purkutoiminto osaa purkaa vain viimeksi pakatun tekstin.)");
+            System.out.println();
             System.out.println("1 Pakkaa Huffman-algoritmilla");
             System.out.println("2 Pura Huffman-pakattu data");
             System.out.println("3 Pakkaa LZW-algoritmilla (ei vielä käytettävissä)");
-            System.out.println("4 Pura LZW-pakattu data (ei vielä käytettävissä");
+            System.out.println("4 Pura LZW-pakattu data (ei vielä käytettävissä)");
             System.out.println("5 Exit");
             System.out.print("? ");
 
