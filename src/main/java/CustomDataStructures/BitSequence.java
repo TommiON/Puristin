@@ -28,6 +28,24 @@ public class BitSequence {
     }
 
     /**
+     * Constructor, initializes from a String of 0's and 1's
+     * @param stringRepresentation
+     */
+    public BitSequence(String stringRepresentation) {
+        slotsInUse = 0;
+        bits = new boolean[10000];
+        for (int i = 0; i < stringRepresentation.length(); i++) {
+            if (stringRepresentation.charAt(i) == '0') {
+                pushLast(false);
+            } else if (stringRepresentation.charAt(i) == '1') {
+                pushLast(true);
+            } else {
+                // TODO: handle non-valid input
+            }
+        }
+    }
+
+    /**
      * Pushes a new bit at the end of the sequence
      * @param bit bit to be added
      */

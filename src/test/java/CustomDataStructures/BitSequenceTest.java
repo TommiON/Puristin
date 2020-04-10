@@ -52,7 +52,13 @@ public class BitSequenceTest {
     public void handlesEmptySequenceCorrectly() {
         BitSequence bitSequence = new BitSequence();
         System.out.println(bitSequence.getAsString());
+    }
 
+    @Test
+    public void initializesCorrectlyFromString() {
+        String input = "001100";
+        BitSequence bitSequence = new BitSequence(input);
+        System.out.println(bitSequence.getAsString());
     }
 
 }

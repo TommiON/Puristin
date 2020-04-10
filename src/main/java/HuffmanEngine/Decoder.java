@@ -17,7 +17,8 @@ public class Decoder {
     public void decode(CodingAlphabet alphabet, BitSequence input) {
         while (!input.isEmpty()) {
             boolean nextBit = input.popFirstAndShiftLeft();
-            internalBuffer.pushFirstAndShiftRight(nextBit);
+            internalBuffer.pushLast(nextBit);
+            // internalBuffer.pushFirstAndShiftRight(nextBit);
             if (alphabet.getCharacterForBits(internalBuffer) != null) {
                 Character character = alphabet.getCharacterForBits(internalBuffer);
                 output += character;
