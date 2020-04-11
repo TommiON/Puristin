@@ -7,13 +7,14 @@ import CustomDataStructures.BitSequence;
  */
 public class Coder {
     private BitSequence output = new BitSequence();
+    private int compressionRatio;
 
     /**
-     *
+     * main method, does the encoding
      * @param alphabet CodingAlphabet to be used
      * @param input Data to be coded, as String
      */
-    public void code(CodingAlphabet alphabet, String input) {
+    public void encode(CodingAlphabet alphabet, String input) {
         int readHeadLocation = 0;
 
         for (int i = 0; i < input.length(); i++ ) {
@@ -34,6 +35,8 @@ public class Coder {
                 readHeadLocation++;
             }
         }
+
+        compressionRatio = output.size() / (input.length() * 8) * 100;
     }
 
     /**
@@ -43,4 +46,10 @@ public class Coder {
     public BitSequence getOutput() {
         return output;
     }
+
+    /**
+     *
+     * @return ratio of compressed data relative to original, rounded to the nearest Int
+     */
+    public int getCompressionRatio() { return compressionRatio; }
 }

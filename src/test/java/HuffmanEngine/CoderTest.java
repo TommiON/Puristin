@@ -28,7 +28,7 @@ public class CoderTest {
         System.out.println("Koodataan merkkijono babc");
         String testString = "babc";
         Coder coder = new Coder();
-        coder.code(alphabet, testString);
+        coder.encode(alphabet, testString);
         BitSequence output = coder.getOutput();
         String outputAsString = output.getAsString();
         System.out.println("Binäärimuoto: " + outputAsString);

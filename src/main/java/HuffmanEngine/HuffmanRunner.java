@@ -9,8 +9,12 @@ public class HuffmanRunner {
     // TODO: mieti aakkoston staattisuus, käsittely, nyt näin nopeata testausta varten
     private static CodingAlphabet alphabet;
 
+    /**
+     * Handles the steps to encode text into compressed binary
+     * @param input String to be encoded
+     * @return encoded result as BitSequence
+     */
     public static BitSequence encode(String input) {
-
         // 1. create new Frequencies instance, read through the input and feed it in
         Frequencies frequencies = new Frequencies();
         char[] inputAsCharacterArray = input.toCharArray();
@@ -28,14 +32,19 @@ public class HuffmanRunner {
         alphabet = new CodingAlphabet();
         alphabet.buildWith(rootNode);
 
-        // 5. code
+        // 5. encode
         Coder coder = new Coder();
-        coder.code(alphabet, input);
+        coder.encode(alphabet, input);
 
         // 6. return coded output
         return coder.getOutput();
     }
 
+    /**
+     * Handles the steps to decode binary into original
+     * @param input compressed data as BitSequence
+     * @return original data as String
+     */
     public static String decode(BitSequence input) {
         // 1. decode with input and known alphabet
         Decoder decoder = new Decoder();
