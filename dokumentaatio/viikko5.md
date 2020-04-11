@@ -2,19 +2,19 @@
 
 Aikaa käytetty n. 25 tuntia. Projektin tilanne:
 
-## Huffman-pakkaus
+### Huffman-pakkaus
 
 Valmis ja näyttäisi toimivan. (Pakkaussuhteen näyttäminen käyttäjälle vielä tekemättä.)
 
-## LWZ
+### LWZ
 
-## I/O
+### I/O
 
 Rakennettu Main-luokkaan yksinkertainen tekstikäyttöliittymä, jolla voi voi antaa pakattavaa ja purettavaa dataa kirjoittamalla tai copy&pastella. Tämän tarkoituksena on oikeastaan varautua siihen mahdollisuuteen, että aika loppuu kesken ja tiedosto-I/O:ta ei ehdi saada valmiiksi - on sitten olemassa ainakin joku keino käyttää sovelluksen varsinaista ydintoiminnallisuutta.
 
 Tiedosto-I/O tässä vaiheessa vielä pahasti kesken. Tiedostoon kirjoittaminen ja lukeminen itsessään toimii, mutta sovellukselta tuleva data pitää jotenkin mankeloida ja puskuroida, tämä tekemättä.
 
-## Omat tietorakenteet
+### Omat tietorakenteet
 
 Omia tietorakenteita edistelty, mutta niitä ei ole vielä otettu käyttöön pakkausalgoritmeissa, vaan toistaiseksi mennään vielä Javan valmiilla (paitsi BitSequence, joka ollut käytössä alusta lähtien).
 
