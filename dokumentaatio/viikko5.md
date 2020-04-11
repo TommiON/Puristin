@@ -2,7 +2,7 @@
 
 Aikaa käytetty n. 25 tuntia. Projektin tilanne:
 
-### Huffman-pakkaus
+### Huffman
 
 Valmis ja näyttäisi toimivan. (Pakkaussuhteen näyttäminen käyttäjälle vielä tekemättä.)
 
