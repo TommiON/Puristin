@@ -8,7 +8,7 @@ Valmis ja näyttäisi toimivan. (Pakkaussuhteen näyttäminen käyttäjälle vie
 
 ### LZW-pakkaus ja -purku
 
-Myös valmis ja näyttäisi toimivan. (Myös pakkaussuhteen näyttäminen käyttäjälle vielä tekemättä.)
+Myös valmis ja näyttäisi toimivan. (Niin ikään pakkaussuhteen näyttäminen käyttäjälle vielä tekemättä.)
 
 ### I/O
 
