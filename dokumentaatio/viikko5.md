@@ -8,6 +8,8 @@ Valmis ja näyttäisi toimivan. (Pakkaussuhteen näyttäminen käyttäjälle vie
 
 ### LWZ
 
+Myös valmis ja näyttäisi toimivan. (Myös pakkaussuhteen näyttäminen käyttäjälle vielä tekemättä.)
+
 ### I/O
 
 Rakennettu Main-luokkaan yksinkertainen tekstikäyttöliittymä, jolla voi voi antaa pakattavaa ja purettavaa dataa kirjoittamalla tai copy&pastella. Tämän tarkoituksena on oikeastaan varautua siihen mahdollisuuteen, että aika loppuu kesken ja tiedosto-I/O:ta ei ehdi saada valmiiksi - on sitten olemassa ainakin joku keino käyttää sovelluksen varsinaista ydintoiminnallisuutta.
