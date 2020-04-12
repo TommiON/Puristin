@@ -24,11 +24,26 @@ public class EncodingTable {
         counter++;
     }
 
-    // Must be replaced with real ASCII codes
+    public int getCodeForString(String string) { return contents.get(string); }
+
+    public boolean hasSpaceLeft() { return counter < capacity; }
+
+    @Override
+    public String toString() {
+        String returnString = "";
+        for (HashMap.Entry<String, Integer> entry : contents.entrySet()) {
+            returnString = returnString + entry.getKey() + ", " + entry.getValue() +"\n";
+        }
+        return returnString;
+    }
+
+    // Initialises 8-bit ASCII single characters as a starting point
     private void initFixtures() {
-        addString("a");
-        addString("b");
-        addString("c");
-        addString("d");
+        for (int i = 0; i < 256; i++) {
+            char[] singleCharacter = new char[1];
+            singleCharacter[0] = (char)i;
+            String string = new String(singleCharacter);
+            addString(string);
+        }
     }
 }

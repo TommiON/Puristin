@@ -33,11 +33,11 @@ public class HuffmanRunner {
         alphabet.buildWith(rootNode);
 
         // 5. encode
-        Coder coder = new Coder();
-        coder.encode(alphabet, input);
+        HuffmanCoder huffmanCoder = new HuffmanCoder();
+        huffmanCoder.encode(alphabet, input);
 
         // 6. return coded output
-        return coder.getOutput();
+        return huffmanCoder.getOutput();
     }
 
     /**
@@ -47,11 +47,11 @@ public class HuffmanRunner {
      */
     public static String decode(BitSequence input) {
         // 1. decode with input and known alphabet
-        Decoder decoder = new Decoder();
-        decoder.decode(alphabet, input);
+        HuffmanDecoder huffmanDecoder = new HuffmanDecoder();
+        huffmanDecoder.decode(alphabet, input);
 
         // 2. return decoded output
-        return decoder.getOutput();
+        return huffmanDecoder.getOutput();
     }
 
 }

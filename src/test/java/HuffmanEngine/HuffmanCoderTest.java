@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class CoderTest {
+public class HuffmanCoderTest {
 
     @Test
     public void codesMultipleCharactersCorrectly() {
@@ -27,9 +27,9 @@ public class CoderTest {
 
         System.out.println("Koodataan merkkijono babc");
         String testString = "babc";
-        Coder coder = new Coder();
-        coder.encode(alphabet, testString);
-        BitSequence output = coder.getOutput();
+        HuffmanCoder huffmanCoder = new HuffmanCoder();
+        huffmanCoder.encode(alphabet, testString);
+        BitSequence output = huffmanCoder.getOutput();
         String outputAsString = output.getAsString();
         System.out.println("Binäärimuoto: " + outputAsString);
         assertEquals("0110100", outputAsString);

@@ -2,6 +2,9 @@ package main;
 
 import CustomDataStructures.BitSequence;
 import HuffmanEngine.HuffmanRunner;
+import LempelZivWelchEngine.LZWCoder;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -17,8 +20,8 @@ public class Main {
             System.out.println();
             System.out.println("1 Pakkaa Huffman-algoritmilla");
             System.out.println("2 Pura Huffman-pakattu data");
-            System.out.println("3 Pakkaa LZW-algoritmilla (ei vielä käytettävissä)");
-            System.out.println("4 Pura LZW-pakattu data (ei vielä käytettävissä)");
+            System.out.println("3 Pakkaa LZW-algoritmilla");
+            System.out.println("4 Pura LZW-pakattu data (ei vielä käytettävissä");
             System.out.println("5 Exit");
             System.out.print("? ");
 
@@ -40,6 +43,17 @@ public class Main {
                     String resultText = HuffmanRunner.decode(codedStuffAsBinary);
                     System.out.println("Purettu teksti:");
                     System.out.println(resultText);
+                    System.out.println();
+                    break;
+                case "3":
+                    System.out.println("Pakattava teksti:");
+                    String textToBeCoded2 = scanner.nextLine();
+                    LZWCoder lzwCoder = new LZWCoder();
+                    ArrayList<Integer> resultIntegers = lzwCoder.encode(textToBeCoded2);
+                    System.out.print("Pakattuna: ");
+                    for (int code : resultIntegers) {
+                        System.out.print(code + " ");
+                    }
                     System.out.println();
                     break;
                 case "5":

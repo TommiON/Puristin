@@ -5,7 +5,7 @@ import CustomDataStructures.BitSequence;
 /**
  * Converts plain text input into Huffman binary
  */
-public class Coder {
+public class HuffmanCoder {
     private BitSequence output = new BitSequence();
     private int compressionRatio;
 

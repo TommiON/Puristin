@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class DecoderTest {
+public class HuffmanDecoderTest {
 
     @Test
     public void decodescorrectlyWithNoOrphanBits() {
@@ -28,9 +28,9 @@ public class DecoderTest {
         bitSequence1.pushLast(true);
         bitSequence1.pushLast(false);
 
-        Decoder decoder = new Decoder();
-        decoder.decode(alphabet, bitSequence1);
-        String outputAsString = decoder.getOutput();
+        HuffmanDecoder huffmanDecoder = new HuffmanDecoder();
+        huffmanDecoder.decode(alphabet, bitSequence1);
+        String outputAsString = huffmanDecoder.getOutput();
         System.out.println(outputAsString);
         assertEquals("bab", outputAsString);
     }
@@ -57,9 +57,9 @@ public class DecoderTest {
         bitSequence1.pushLast(false);
         bitSequence1.pushLast(true); // orphan bit
 
-        Decoder decoder = new Decoder();
-        decoder.decode(alphabet, bitSequence1);
-        String outputAsString = decoder.getOutput();
+        HuffmanDecoder huffmanDecoder = new HuffmanDecoder();
+        huffmanDecoder.decode(alphabet, bitSequence1);
+        String outputAsString = huffmanDecoder.getOutput();
         System.out.println(outputAsString);
         assertEquals("bab", outputAsString);
     }

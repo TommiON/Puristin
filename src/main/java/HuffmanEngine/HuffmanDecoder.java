@@ -5,7 +5,7 @@ import CustomDataStructures.BitSequence;
 /**
  * Converts Huffman binary input into plain text
  */
-public class Decoder {
+public class HuffmanDecoder {
     private String output = new String();
     private BitSequence internalBuffer = new BitSequence();
 
