@@ -2,11 +2,11 @@
 
 Aikaa käytetty n. 25 tuntia. Projektin tilanne:
 
-### Huffman
+### Huffman-pakkaus ja -purku
 
 Valmis ja näyttäisi toimivan. (Pakkaussuhteen näyttäminen käyttäjälle vielä tekemättä.)
 
-### LWZ
+### LZW-pakkaus ja -purku
 
 Myös valmis ja näyttäisi toimivan. (Myös pakkaussuhteen näyttäminen käyttäjälle vielä tekemättä.)
 
