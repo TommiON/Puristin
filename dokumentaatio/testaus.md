@@ -4,7 +4,7 @@
 
 Lähes kaikille luokille on luotu JUnit-yksikkötestit, lopuillekin luodaan. Testeissä on tällä hetkellä jonkin verran sellaista vinoumaa, että ne ovat "happy path" -painotteisia eli esim. virheellisiä syötteitä ja erilaisia corner-caseja ei aina testata kattavasti. Tämä tilanne on tarkoitus parantaa projektin valmistumiseen mennessä.
 
-Yksikkötestauksen tilanne 17.4: testejä 30 kpl, kaikki menevät läpi. Jacocon laskema testikattavuus alla olevassa kuvassa. I/O- ja main-paketteja ei toistaiseksi ole yritettykään juuri testata, joten "todellinen" testikattavuus jonkin verran suurempi.
+Yksikkötestauksen tilanne 17. huhtikuuta: testejä 30 kpl, kaikki menevät läpi. Jacocon laskema testikattavuus alla olevassa kuvassa. I/O- ja main-paketteja ei toistaiseksi ole yritettykään juuri testata, joten "todellinen" testikattavuus jonkin verran suurempi.
 
 ![](test_coverage_17_4.png)
 
