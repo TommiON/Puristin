@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CodingUnit.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Puristin</a> &gt; <a href="index.source.html" class="el_package">HuffmanEngine</a> &gt; <span class="el_source">CodingUnit.java</span></div><h1>CodingUnit.java</h1><pre class="source lang-java linenums">package HuffmanEngine;
+
+import CustomDataStructures.BitSequence;
+
+/**
+ * Implements the basic element for Huffman coding: character with frequency and two tree links
+ */
+public class CodingUnit implements Comparable {
+    private boolean containsCharacter;
+    private char character;
+    private int frequency;
+    private CodingUnit leftChild;
+    private CodingUnit rightChild;
+    private BitSequence bitPath;
+
+    /**
+     * Constructor, starting frequency 1 (as the first character has been encountered when this is called), tree links start as null
+     * @param character character to be coded
+     */
+<span class="fc" id="L20">    public CodingUnit(char character) {</span>
+<span class="fc" id="L21">        this.character = character;</span>
+<span class="fc" id="L22">        this.containsCharacter = true;</span>
+<span class="fc" id="L23">        this.frequency = 1;</span>
+<span class="fc" id="L24">        this.leftChild = null;</span>
+<span class="fc" id="L25">        this.rightChild = null;</span>
+<span class="fc" id="L26">        this.bitPath = new BitSequence();</span>
+<span class="fc" id="L27">    }</span>
+
+    /**
+     * Constructor, creates a new aggregate CodingUnit from two CodingUnits, used in tree-building
+     * @param leftChild left child for the new node
+     * @param rightChild right child for the new node
+     */
+<span class="fc" id="L34">    public CodingUnit(CodingUnit leftChild, CodingUnit rightChild) {</span>
+<span class="fc" id="L35">        this.character = ' ';</span>
+<span class="fc" id="L36">        this.containsCharacter = false;</span>
+<span class="fc" id="L37">        this.frequency = leftChild.getFrequency() + rightChild.getFrequency();</span>
+<span class="fc" id="L38">        this.leftChild = leftChild;</span>
+<span class="fc" id="L39">        this.rightChild = rightChild;</span>
+<span class="fc" id="L40">        this.bitPath = new BitSequence();</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * Returns the number of occurrences for this character
+     * @return frequency as int
+     */
+    public int getFrequency() {
+<span class="fc" id="L48">        return this.frequency;</span>
+    }
+
+    /**
+     * Increments frequency by one when a new instance of this character is encountered
+     */
+    public void addNewOccurrence() {
+<span class="fc" id="L55">        this.frequency++;</span>
+<span class="fc" id="L56">    }</span>
+
+    /**
+     * Return the character represented by this CodingUnit
+     * @return as char
+     */
+    public char getCharacter() {
+<span class="fc" id="L63">        return this.character;</span>
+    }
+
+    /**
+     * Returns this CodingUnit's left child in tree
+     * @return a CodingUnit or null
+     */
+    public CodingUnit getLeftChild() {
+<span class="fc" id="L71">        return this.leftChild;</span>
+    }
+
+    /**
+     * Returns this CodingUnit's right child in tree
+     * @return a CodingUnit or null
+     */
+    public CodingUnit getRightChild() {
+<span class="fc" id="L79">        return this.rightChild;</span>
+    }
+
+    /**
+     * Tells whether this CodingUnit contains a character or is an internal node with no character
+     */
+<span class="fc" id="L85">    public boolean containsCharacter() { return this.containsCharacter; }</span>
+
+    /**
+     * Sets the BitPath to be a copy of another BitSequence, used when constructing CodingAlphabet
+     * @param bitSequence a BitSequence to be copied as an initial value
+     */
+    public void setBitPath(BitSequence bitSequence) {
+<span class="fc" id="L92">        bitPath = new BitSequence(bitSequence);</span>
+<span class="fc" id="L93">    }</span>
+
+    /**
+     * Returns the current bitpath
+     * @return Current bitpath as BitSequence
+     */
+<span class="fc" id="L99">    public BitSequence getBitPath() { return bitPath; }</span>
+
+    /**
+     * Add a &quot;left turn&quot;, i.e. new &quot;0&quot; to bitpath, used when constructing CodingAlphabet
+     */
+<span class="fc" id="L104">    public void turnLeftInBitPath() { bitPath.pushLast(false); }</span>
+
+    /**
+     * Add a &quot;right turn&quot;, i.e. new &quot;1&quot; to bitpath, used when constructing CodingAlphabet
+     */
+<span class="fc" id="L109">    public void turnRightInBitPath() { bitPath.pushLast(true);}</span>
+
+    /**
+     * Comparator method, needed for priority queue ordering (Comparable interface) for CodingUnits
+     * @param o another CodingUnit to compare to
+     * @return int, negative if o has higher frequency than this, positive if the opposite, 0 if equal
+     */
+    @Override
+    public int compareTo(Object o) {
+<span class="fc" id="L118">        CodingUnit compareTarget = (CodingUnit) o;</span>
+<span class="fc" id="L119">        return this.frequency - ((CodingUnit) o).frequency;</span>
+    }
+
+    /**
+     * String representation for testing/debugging
+     * @return CodingUnit properties in a String
+     */
+    @Override
+    public String toString() {
+<span class="fc" id="L128">        return (&quot;Character: &quot; + character + &quot; Frequency: &quot; + frequency + &quot; Left child: &quot; + leftChild + &quot; Right child: &quot; + rightChild + &quot;\n&quot;);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

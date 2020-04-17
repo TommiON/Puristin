@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HuffmanRunner.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Puristin</a> &gt; <a href="index.source.html" class="el_package">HuffmanEngine</a> &gt; <span class="el_source">HuffmanRunner.java</span></div><h1>HuffmanRunner.java</h1><pre class="source lang-java linenums">package HuffmanEngine;
+
+import CustomDataStructures.BitSequence;
+
+/**
+ * &quot;Main&quot; class for Huffman part of the application, coordinates and manages the process
+ */
+<span class="nc" id="L8">public class HuffmanRunner {</span>
+    // TODO: mieti aakkoston staattisuus, käsittely, nyt näin nopeata testausta varten
+    private static CodingAlphabet alphabet;
+
+    /**
+     * Handles the steps to encode text into compressed binary
+     * @param input String to be encoded
+     * @return encoded result as BitSequence
+     */
+    public static BitSequence encode(String input) {
+        // 1. create new Frequencies instance, read through the input and feed it in
+<span class="nc" id="L19">        Frequencies frequencies = new Frequencies();</span>
+<span class="nc" id="L20">        char[] inputAsCharacterArray = input.toCharArray();</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        for (char c : inputAsCharacterArray) {</span>
+<span class="nc" id="L22">            frequencies.checkInACharacter(c);</span>
+        }
+
+        // 2. create a FeederQueue from Frequencies
+<span class="nc" id="L26">        FeederQueue feederQueue = new FeederQueue(frequencies.getCodingUnitsAsList());</span>
+
+        // 3. build coding tree
+<span class="nc" id="L29">        CodingUnit rootNode = CodingTree.buildAndReturnRoot(feederQueue);</span>
+
+        // 4. generate coding alphabet
+<span class="nc" id="L32">        alphabet = new CodingAlphabet();</span>
+<span class="nc" id="L33">        alphabet.buildWith(rootNode);</span>
+
+        // 5. encode
+<span class="nc" id="L36">        HuffmanCoder huffmanCoder = new HuffmanCoder();</span>
+<span class="nc" id="L37">        huffmanCoder.encode(alphabet, input);</span>
+
+        // 6. return coded output
+<span class="nc" id="L40">        return huffmanCoder.getOutput();</span>
+    }
+
+    /**
+     * Handles the steps to decode binary into original
+     * @param input compressed data as BitSequence
+     * @return original data as String
+     */
+    public static String decode(BitSequence input) {
+        // 1. decode with input and known alphabet
+<span class="nc" id="L50">        HuffmanDecoder huffmanDecoder = new HuffmanDecoder();</span>
+<span class="nc" id="L51">        huffmanDecoder.decode(alphabet, input);</span>
+
+        // 2. return decoded output
+<span class="nc" id="L54">        return huffmanDecoder.getOutput();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

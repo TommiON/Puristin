@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Puristin</a> &gt; <a href="index.source.html" class="el_package">main</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package main;
+
+import CustomDataStructures.BitSequence;
+import HuffmanEngine.HuffmanRunner;
+import LempelZivWelchEngine.LZWCoder;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+<span class="nc" id="L10">public class Main {</span>
+
+    private static char[] plainText;
+    private static byte[] codedText;
+<span class="nc" id="L14">    static Scanner scanner = new Scanner(System.in);</span>
+
+    public static void main(String[] args) {
+        while (true) {
+<span class="nc" id="L18">            System.out.println(&quot;PURISTIN&quot;);</span>
+<span class="nc" id="L19">            System.out.println(&quot;(Huom. Tällä hetkellä Huffman-aakkostoa ei tallenneta pakatun datan mukana, joten purkutoiminto osaa purkaa vain viimeksi pakatun tekstin.)&quot;);</span>
+<span class="nc" id="L20">            System.out.println();</span>
+<span class="nc" id="L21">            System.out.println(&quot;1 Pakkaa Huffman-algoritmilla&quot;);</span>
+<span class="nc" id="L22">            System.out.println(&quot;2 Pura Huffman-pakattu data&quot;);</span>
+<span class="nc" id="L23">            System.out.println(&quot;3 Pakkaa LZW-algoritmilla&quot;);</span>
+<span class="nc" id="L24">            System.out.println(&quot;4 Pura LZW-pakattu data (ei vielä käytettävissä&quot;);</span>
+<span class="nc" id="L25">            System.out.println(&quot;5 Exit&quot;);</span>
+<span class="nc" id="L26">            System.out.print(&quot;? &quot;);</span>
+
+<span class="nc" id="L28">            String userChoice = scanner.nextLine();</span>
+
+<span class="nc bnc" id="L30" title="All 5 branches missed.">            switch (userChoice) {</span>
+                case &quot;1&quot;:
+<span class="nc" id="L32">                    System.out.println(&quot;Pakattava teksti:&quot;);</span>
+<span class="nc" id="L33">                    String textToBeCoded = scanner.nextLine();</span>
+<span class="nc" id="L34">                    BitSequence resultBinary = HuffmanRunner.encode(textToBeCoded);</span>
+<span class="nc" id="L35">                    System.out.println(&quot;Pakattu binääri:&quot;);</span>
+<span class="nc" id="L36">                    System.out.println(resultBinary.getAsString());</span>
+<span class="nc" id="L37">                    System.out.println();</span>
+<span class="nc" id="L38">                    break;</span>
+                case &quot;2&quot;:
+<span class="nc" id="L40">                    System.out.println(&quot;Purettava binääri:&quot;);</span>
+<span class="nc" id="L41">                    String codedStuffAsString = scanner.nextLine();</span>
+<span class="nc" id="L42">                    BitSequence codedStuffAsBinary = new BitSequence(codedStuffAsString);</span>
+<span class="nc" id="L43">                    String resultText = HuffmanRunner.decode(codedStuffAsBinary);</span>
+<span class="nc" id="L44">                    System.out.println(&quot;Purettu teksti:&quot;);</span>
+<span class="nc" id="L45">                    System.out.println(resultText);</span>
+<span class="nc" id="L46">                    System.out.println();</span>
+<span class="nc" id="L47">                    break;</span>
+                case &quot;3&quot;:
+<span class="nc" id="L49">                    System.out.println(&quot;Pakattava teksti:&quot;);</span>
+<span class="nc" id="L50">                    String textToBeCoded2 = scanner.nextLine();</span>
+<span class="nc" id="L51">                    LZWCoder lzwCoder = new LZWCoder();</span>
+<span class="nc" id="L52">                    ArrayList&lt;Integer&gt; resultIntegers = lzwCoder.encode(textToBeCoded2);</span>
+<span class="nc" id="L53">                    System.out.print(&quot;Pakattuna: &quot;);</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">                    for (int code : resultIntegers) {</span>
+<span class="nc" id="L55">                        System.out.print(code + &quot; &quot;);</span>
+<span class="nc" id="L56">                    }</span>
+<span class="nc" id="L57">                    System.out.println();</span>
+<span class="nc" id="L58">                    break;</span>
+                case &quot;5&quot;:
+<span class="nc" id="L60">                    System.out.println(&quot;Hei hei!&quot;);</span>
+<span class="nc" id="L61">                    System.exit(0);</span>
+            }
+<span class="nc" id="L63">        }</span>
+
+        /*
+        if (args.length != 2) {
+            System.out.println(&quot;Virheelliset parametrit. Oikea muoto: puristin [pakkaa|pura] &lt;tiedostonimi&gt;&quot;);
+            System.exit(0);
+        }
+
+        if (args[0].equals(&quot;pakkaa&quot;)) {
+            System.out.println(&quot;Pakataan...&quot;);
+            try {
+                StringBuffer buffer = TextFileManager.readCharactersFromFile(args[1]);
+                plainText = new char[buffer.length()];
+                buffer.getChars(0, buffer.length() - 1, plainText, 0);
+                for (char character : plainText) {
+                    System.out.print(character);
+                }
+            } catch (IOException exception) {
+                System.out.println(&quot;Virhe tiedoston lukemisessa!&quot;);
+            }
+        }
+
+        if (args[0].equals(&quot;pura&quot;)) {
+            System.out.println(&quot;Puretaan...&quot;);
+        }
+
+         */
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

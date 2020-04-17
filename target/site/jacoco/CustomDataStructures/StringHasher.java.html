@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StringHasher.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Puristin</a> &gt; <a href="index.source.html" class="el_package">CustomDataStructures</a> &gt; <span class="el_source">StringHasher.java</span></div><h1>StringHasher.java</h1><pre class="source lang-java linenums">package CustomDataStructures;
+
+/**
+ * Custom HashTable implementation with Strings as keys and whatever (generic type) as values
+ * @param &lt;T&gt;
+ */
+public class StringHasher&lt;T&gt; {
+
+    private static int numberOfBuckets;
+
+<span class="fc" id="L11">    public StringHasher() {</span>
+<span class="fc" id="L12">        numberOfBuckets = 4096;</span>
+<span class="fc" id="L13">    }</span>
+
+    public T get(String key) {
+        // väliaikainen
+<span class="nc" id="L17">        return null;</span>
+    }
+
+    public void put(String key, T value) {
+
+<span class="nc" id="L22">    }</span>
+
+    public int size() {
+        // väliaikainen
+<span class="nc" id="L26">        return 0;</span>
+    }
+
+    // lisäksi tarvitaan EntrySet()-iteraattori
+
+    /**
+     * Generates a hash value for a String, using 7-based polynomial hashing
+     * @param string
+     * @return
+     */
+    public int generateHashValue(String string) {
+<span class="fc" id="L37">        int hashValue = 0;</span>
+<span class="fc" id="L38">        int stringPosition = string.length();</span>
+
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        for (int i = 0; i &lt; string.length(); i++) {</span>
+<span class="fc" id="L41">            int multiplier = (int)Math.pow(7.0, (stringPosition - 1));</span>
+<span class="fc" id="L42">            int asciiValue = (int)string.charAt(i);</span>
+<span class="fc" id="L43">            hashValue = hashValue + (multiplier * asciiValue);</span>
+<span class="fc" id="L44">            stringPosition--;</span>
+        }
+
+<span class="fc" id="L47">        return hashValue % numberOfBuckets;</span>
+
+        // pitää muodostaa N:n jakojäännös, joka olisi sitten lopullinen hash-arvo?
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
