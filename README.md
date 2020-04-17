@@ -10,6 +10,8 @@ Sovellus pakkaa (tekstimuotoista) dataa tiiviimpään tallennustilaan, purkaa pa
 
 [Toteutus](/dokumentaatio/toteutusdokumentti.md)
 
+[Testaus](/dokumentaatio/testaus.md)
+
 ### Viikkoraportit
 
 [Viikko 1](/dokumentaatio/viikko1.md)
