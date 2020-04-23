@@ -23,3 +23,5 @@ Sovellus pakkaa (tekstimuotoista) dataa tiiviimpään tallennustilaan, purkaa pa
 [Viikko 4](/dokumentaatio/viikko4.md)
 
 [Viikko 5](/dokumentaatio/viikko5.md)
+
+[Viikko 6](/dokumentaatio/viikko6.md)
