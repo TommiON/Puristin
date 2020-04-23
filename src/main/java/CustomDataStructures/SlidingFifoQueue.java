@@ -33,7 +33,6 @@ public class SlidingFifoQueue {
     }
 
     /**
-     *
      * @return true if queue has no elements in it, false otherwise
      */
     public boolean isEmpty() {

@@ -1,15 +1,20 @@
 package CustomDataStructures;
 
 /**
- * Custom HashTable implementation with generic keys and values
- * @param <K>
- * @param <V>
+ * Custom HashMap-like data structure with generic keys and values
+ * @param <K> key type
+ * @param <V> value type
  */
 public class Hasher<K, V> {
     private static int numberOfBuckets = 4096;
     private KeyValuePair[] buckets = new KeyValuePair[numberOfBuckets];
     private int size = 0;
 
+    /**
+     * Adds a new key/value pair to Hasher
+     * @param key
+     * @param value
+     */
     public void put(K key, V value) {
         KeyValuePair<K, V> entry = new KeyValuePair(key, value, null);
         int bucketIndex = entry.generateHashValue() % numberOfBuckets;
@@ -35,6 +40,11 @@ public class Hasher<K, V> {
         }
     }
 
+    /**
+     * Retrieves a value for a key
+     * @param key
+     * @return value for the key, or null if no value found
+     */
     public V get(K key) {
         KeyValuePair<K, V> bucket = buckets[HashCalculator.generateHashValueFromKey(key) % numberOfBuckets];
 
@@ -54,7 +64,7 @@ public class Hasher<K, V> {
     public int size() { return size; }
 
     /**
-     * @return all entries stored as a ResizingList
+     * @return all key/value pairs stored as a ResizingList
      */
     public ResizingList<KeyValuePair<K, V>> getEntrySet() {
         ResizingList list = new ResizingList();
@@ -70,5 +80,4 @@ public class Hasher<K, V> {
         }
         return list;
     }
-
 }

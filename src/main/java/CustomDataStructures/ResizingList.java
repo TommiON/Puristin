@@ -2,6 +2,7 @@ package CustomDataStructures;
 
 /**
  * Implements an ArrayList-like data structure
+ * @param <T> element type
  */
 public class ResizingList<T> {
     private int capacity = 10;
@@ -9,8 +10,8 @@ public class ResizingList<T> {
     private int lastSlotInUse = -1;
 
     /**
-     * Adds new element at the end of the list
-     * @param element thing to be added
+     * Adds a new element at the end of the list
+     * @param element
      * @return always returns true; this non-obvious thing is to make the class compatible with Java's ArrayList
      */
     public boolean add(T element) {
@@ -20,6 +21,11 @@ public class ResizingList<T> {
         return true;
     }
 
+    /**
+     * Adds a new element at index
+     * @param index
+     * @param element
+     */
     public void add(int index, T element) {
         if (index > lastSlotInUse) { return; }
         if (lastSlotInUse >= (capacity - 1)) { grow(); }
@@ -28,6 +34,11 @@ public class ResizingList<T> {
         contents[index] = element;
     }
 
+    /**
+     * Gets a value at index
+     * @param index
+     * @return value, or null if request is out of bounds
+     */
     public T get(int index) {
         if (index > lastSlotInUse) {
             return null;
@@ -35,6 +46,11 @@ public class ResizingList<T> {
         return contents[index];
     }
 
+    /**
+     * Removes a value at index
+     * @param index
+     * @return removed value, or null if value not found
+     */
     public T remove(int index) {
         if (index > lastSlotInUse) { return null; }
         T removedObject = contents[index];
@@ -43,8 +59,14 @@ public class ResizingList<T> {
         return removedObject;
     }
 
+    /**
+     * @return number of values in the list
+     */
     public int size() { return lastSlotInUse + 1; }
 
+    /**
+     * @return list contents as String representation
+     */
     @Override
     public String toString() {
         String stringRepresentation = "[";
