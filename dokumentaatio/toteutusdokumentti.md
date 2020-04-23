@@ -1,5 +1,15 @@
 # Toteutus
 
+### Omat tietorakenteet
+
+Sovellukselle on toteutettu seuraavat tietorakenteet:
+
+* **Hasher** ja **KeyValuePair**. Avain/arvo-parin toteuttava tietorakenne ja hajautustaulu niiden tallentamiseen. Molemmat geneerisiä eli hyväksyvät avaimiksi ja arvoiksi mitä vain. (Geneerisyydessä tosin sellainen rajoite, että hajautusarvoja laskeva **HashCalculator**-apuluokka palauttaa järkeviä arvoja vain String- ja Character-tyyppisille avaimille, koska vain noita sovellus käyttää.) Toimii ajassa O(1), paitsi kaikki avain/arvo-parit palauttava iteraattori ajassa O(n).
+* **ResizingList**. ArrayListin kaltainen tietorakenne, tyyppien suhteen geneerinen.
+* **BitSequence**. Vaihtelevanpituisten bittisarjojen tallantamiseen ja käsittelyyn.
+* **MinHeap**. "Pienin ensin"-prioriteettijono. Toimii vain CodingUniteilla, muutetaan geneeriseksi jos ehditään.
+* **SlidingFifoQueue**. First in, first out -jono. Toimii vain CodingUniteilla, muutetaan geneeriseksi jos ehditään.
+
 ### Huffman
 
 Dataa pakattaessa sovelluksen Huffman-algoritmia käyttävä osuus toimii yleistasolla näin:
@@ -26,13 +36,3 @@ Purettaessa sama prosessi kulkee toiseen suuntaan:
 * LZWDecoder-luokka käy pakatun datan läpi järjestyksessä, päättelee alkuperäisen, pakatessa muodostetun sanakirjan ja generoi sen DecodingTable-luokkaan, ja palauttaa sen avulla pakatun datan alkuperäiseen muotoon.
 
 _Aikavaativuudet kummallekin vielä määrittelemättä..._
-
-### Omat tietorakenteet
-
-Sovellukselle on toteutettu seuraavat tietorakenteet:
-
-* **Hasher** ja **KeyValuePair**. Avain/arvo-parin toteuttava tietorakenne ja hajautustaulu niiden tallentamiseen. Molemmat geneerisiä eli hyväksyvät avaimiksi ja arvoiksi mitä vain. (Geneerisyydessä tosin sellainen rajoite, että hajautusarvoja laskeva **HashCalculator**-apuluokka palauttaa järkeviä arvoja vain String- ja Character-tyyppisille avaimille, koska vain noita sovellus käyttää.) Toimii ajassa O(1), paitsi kaikki avain/arvo-parit palauttava iteraattori ajassa O(n).
-* **ResizingList**. ArrayListin kaltainen tietorakenne, tyyppien suhteen geneerinen.
-* **BitSequence**. Vaihtelevanpituisten bittisarjojen tallantamiseen ja käsittelyyn.
-* **MinHeap**. "Pienin ensin"-prioriteettijono. Toimii vain CodingUniteilla, muutetaan geneeriseksi jos ehditään.
-* **SlidingFifoQueue**. First in, first out -jono. Toimii vain CodingUniteilla, muutetaan geneeriseksi jos ehditään.
