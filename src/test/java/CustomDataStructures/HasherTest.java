@@ -65,4 +65,16 @@ public class HasherTest {
         hasher.put('a', new String("789"));
         assertEquals("789", hasher.get('a'));
     }
+
+    @Test
+    public void testGettingEntrySet() {
+        hasher.put("a", new String("jotain"));
+        hasher.put("b", new String("jotain muuta"));
+        hasher.put("xxx", new String("vielä jotain muuta"));
+        hasher.put("c", new String("testataan!"));
+        hasher.put("pidempi avain", new String("test!"));
+        ResizingList list = hasher.getEntrySet();
+        assertEquals(5, list.size());
+        System.out.println(list.toString());
+    }
 }

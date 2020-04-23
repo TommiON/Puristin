@@ -48,8 +48,27 @@ public class Hasher<K, V> {
         return null;
     }
 
+    /**
+     * @return numbers of entries in the data structure
+     */
     public int size() { return size; }
 
-    // lisäksi tarvitaan EntrySet()-iteraattori
+    /**
+     * @return all entries stored as a ResizingList
+     */
+    public ResizingList<KeyValuePair<K, V>> getEntrySet() {
+        ResizingList list = new ResizingList();
+        for (int i = 0; i < numberOfBuckets; i++) {
+            if (buckets[i] != null) {
+                list.add(buckets[i]);
+                KeyValuePair next = buckets[i].getNext();
+                while (next != null) {
+                    list.add(next);
+                    next = next.getNext();
+                }
+            }
+        }
+        return list;
+    }
 
 }
