@@ -31,7 +31,7 @@ _Aikavaativuudet kummallekin vielä määrittelemättä..._
 
 Sovellukselle on toteutettu seuraavat tietorakenteet:
 
-* Hasher ja KeyValuePair. Avain/arvo-parin toteuttava tietorakenne ja hajautustaulu niiden tallentamiseen. Molemmat geneerisiä eli hyväksyvät avaimiksi ja arvoiksi mitä vain. (Sellainen rajoite, että hajautusarvoja laskeva HashCalculator-apuluokka palauttaa järkeviä arvoja vain String- ja Character-tyyppisille avaimille, koska vain noita sovellus käyttää.)
+* Hasher ja KeyValuePair. Avain/arvo-parin toteuttava tietorakenne ja hajautustaulu niiden tallentamiseen. Molemmat geneerisiä eli hyväksyvät avaimiksi ja arvoiksi mitä vain. (Geneerisyydessä tosin sellainen rajoite, että hajautusarvoja laskeva HashCalculator-apuluokka palauttaa järkeviä arvoja vain String- ja Character-tyyppisille avaimille, koska vain noita sovellus käyttää.) Toimii ajassa O(1), paitsi kaikki avain/arvo-parit palauttava iteraattori ajassa O(n).
 * ResizingList. ArrayListin kaltainen tietorakenne, tyyppien suhteen geneerinen.
 * BitSequence. Vaihtelevanpituisten bittisarjojen tallantamiseen ja käsittelyyn.
 * MinHeap. "Pienin ensin"-prioriteettijono. Toimii vain CodingUniteilla, muutetaan geneeriseksi jos ehditään.
