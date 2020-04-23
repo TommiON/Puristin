@@ -27,3 +27,12 @@ Purettaessa sama prosessi kulkee toiseen suuntaan:
 
 _Aikavaativuudet kummallekin vielä määrittelemättä..._
 
+### Omat tietorakenteet
+
+Sovellukselle on toteutettu seuraavat tietorakenteet:
+
+* Hasher ja KeyValuePair. Avain/arvo-parin toteuttava tietorakenne ja hajautustaulu niiden tallentamiseen. Molemmat geneerisiä eli hyväksyvät avaimiksi ja arvoiksi mitä vain. (Sellainen rajoite, että hajautusarvoja laskeva HashCalculator-apuluokka palauttaa järkeviä arvoja vain String- ja Character-tyyppisille avaimille, koska vain noita sovellus käyttää.)
+* ResizingList. ArrayListin kaltainen tietorakenne, tyyppien suhteen geneerinen.
+* BitSequence. Vaihtelevanpituisten bittisarjojen tallantamiseen ja käsittelyyn.
+* MinHeap. "Pienin ensin"-prioriteettijono. Toimii vain CodingUniteilla, muutetaan geneeriseksi jos ehditään.
+* SlidingFifoQueue. First in, first out -jono. Toimii vain CodingUniteilla, muutetaan geneeriseksi jos ehditään.
