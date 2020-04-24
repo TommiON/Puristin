@@ -9,7 +9,7 @@ Yksikkötestauksen tilanne 24. huhtikuuta: testejä 52 kpl, kaikki menevät läp
 
 ### Suorituskykytestaus
 
-Huffman- ja LZW-pakkauksiin rakennettu toiminnallisuus, joka mittaa kuluneen ajan mikrosekunteina sekä saavutetun pakkaussuhteen. Näiden avulla on tehty pientä suorituskykymittausta, mutta järjestelmällisempää tarkastelua haittaa se, että tiedosto-I/O on vielä kesken ja sovellus toimii järkevästi vain tekstikäyttöliittymällä. Tiedosto-I/O tarkoitus saada kasaan ensi viikon aikana, jolloin sovellusta pääsee kokeilemaan erilaisella isommalla koedatalla.
+Huffman- ja LZW-pakkauksiin on rakennettu toiminnallisuus, joka mittaa kuluneen ajan mikrosekunteina sekä saavutetun pakkaussuhteen. Näiden avulla on tehty pientä suorituskykymittausta, mutta järjestelmällisempää tarkastelua haittaa se, että tiedosto-I/O on vielä kesken ja sovellus toimii järkevästi vain tekstikäyttöliittymällä. Tiedosto-I/O tarkoitus saada kasaan ensi viikon aikana, jolloin sovellusta pääsee kokeilemaan erilaisella isommalla koedatalla.
 
 Joitain alustavia mittauksia:
 
