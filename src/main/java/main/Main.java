@@ -3,6 +3,7 @@ package main;
 import CustomDataStructures.BitSequence;
 import HuffmanEngine.HuffmanRunner;
 import LempelZivWelchEngine.LZWCoder;
+import LempelZivWelchEngine.LZWDecoder;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -62,7 +63,18 @@ public class Main {
                     System.out.println("Pakkaussuhde: " + lzwCoder.getCompressRatio() + " % alkuperäisestä");
                     break;
                 case "4":
-                    System.out.println("Under construction...");
+                    System.out.println("Purettava data (kokonaislukuina välilyönnein eroteltuna):");
+                    String codedStuffInInts = scanner.nextLine();
+                    String[] components = codedStuffInInts.split(" ");
+                    ArrayList codedInts = new ArrayList();
+                    for (String s : components) {
+                        codedInts.add(Integer.parseInt(s));
+                    }
+                    LZWDecoder lzwDecoder = new LZWDecoder();
+                    String out = lzwDecoder.decode(codedInts);
+                    System.out.println("Purettu teksti: ");
+                    System.out.println(out);
+                    System.out.println("Aikaa kului: " + lzwDecoder.getTime());
                     break;
                 case "5":
                     System.out.println("Hei hei!");
