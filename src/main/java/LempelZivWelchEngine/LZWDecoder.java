@@ -14,8 +14,10 @@ there is no more input, at which point the final input value is decoded without 
 
 public class LZWDecoder {
     private DecodingTable decodingTable = new DecodingTable();
+    private long timer = 0;
 
     public String decode(ArrayList<Integer> input) {
+        long startTime = System.currentTimeMillis();
         String output = "";
 
         int oldCode = input.get(0);
@@ -38,6 +40,11 @@ public class LZWDecoder {
             oldCode = newCode;
         }
 
+        long stopTime = System.currentTimeMillis();
+        timer = (stopTime - startTime);
+
         return output;
     }
+
+    public long getTime() { return timer; }
 }

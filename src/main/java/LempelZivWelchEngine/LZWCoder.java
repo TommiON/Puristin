@@ -6,8 +6,12 @@ import java.util.ArrayList;
 
 public class LZWCoder {
     private EncodingTable encodingTable;
+    private long timer = 0;
+    private double compressRatio = 0;
 
     public ArrayList<Integer> encode(String input) {
+        long startTime = System.currentTimeMillis();
+
         encodingTable = new EncodingTable();
         ArrayList<Integer> output = new ArrayList<>();
         String currentString = "";
@@ -25,8 +29,17 @@ public class LZWCoder {
         }
         output.add(encodingTable.getCodeForString(currentString));
 
+        long stopTime = System.currentTimeMillis();
+        timer = (stopTime - startTime);
+        compressRatio = (double)output.size() / (double)input.length() * 100;
+
         return output;
     }
 
     public EncodingTable getCurrentEncodingTable() { return encodingTable; }
+
+    public long getTime() { return timer; }
+
+    public double getCompressRatio() { return compressRatio; }
+
 }

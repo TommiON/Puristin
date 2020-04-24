@@ -8,6 +8,8 @@ import CustomDataStructures.BitSequence;
 public class HuffmanRunner {
     // TODO: mieti aakkoston staattisuus, käsittely, nyt näin nopeata testausta varten
     private static CodingAlphabet alphabet;
+    private static long timer;
+    private static double compressRatio;
 
     /**
      * Handles the steps to encode text into compressed binary
@@ -15,6 +17,11 @@ public class HuffmanRunner {
      * @return encoded result as BitSequence
      */
     public static BitSequence encode(String input) {
+        // 0. Start timer
+        timer = 0;
+        compressRatio = 0;
+        long startTime = System.currentTimeMillis();
+
         // 1. create new Frequencies instance, read through the input and feed it in
         Frequencies frequencies = new Frequencies();
         char[] inputAsCharacterArray = input.toCharArray();
@@ -36,8 +43,14 @@ public class HuffmanRunner {
         HuffmanCoder huffmanCoder = new HuffmanCoder();
         huffmanCoder.encode(alphabet, input);
 
-        // 6. return coded output
-        return huffmanCoder.getOutput();
+        // 6. stop timer and calculate time, compress ratio
+        long stopTime = System.currentTimeMillis();
+        timer = (stopTime - startTime);
+        BitSequence output = huffmanCoder.getOutput();
+        compressRatio = ((double)output.size() / 8) / (double)input.length() * 100;
+
+        // 7. return coded output
+        return output;
     }
 
     /**
@@ -46,12 +59,31 @@ public class HuffmanRunner {
      * @return original data as String
      */
     public static String decode(BitSequence input) {
+        // 0. Start timer
+        timer = 0;
+        long startTime = System.currentTimeMillis();
+
         // 1. decode with input and known alphabet
         HuffmanDecoder huffmanDecoder = new HuffmanDecoder();
         huffmanDecoder.decode(alphabet, input);
 
-        // 2. return decoded output
+        // 2. stop timer and calculate time
+        long stopTime = System.currentTimeMillis();
+        timer = (stopTime - startTime);
+
+        // 3. return decoded output
         return huffmanDecoder.getOutput();
     }
 
+    /**
+     *
+     * @return elapsed time
+     */
+    public static long getTime() {
+        return timer;
+    }
+
+    public static double getCompressRatio() {
+        return compressRatio;
+    }
 }

@@ -114,13 +114,11 @@ public class BitSequence {
     }
 
     /**
-     *
      * @return number of bits in the sequence
      */
     public int size() { return slotsInUse; }
 
     /**
-     *
      * @return true if BitSequence contains no bits, false otherwise
      */
     public boolean isEmpty() { return slotsInUse == 0; }

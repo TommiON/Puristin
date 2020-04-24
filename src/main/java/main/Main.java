@@ -21,7 +21,7 @@ public class Main {
             System.out.println("1 Pakkaa Huffman-algoritmilla");
             System.out.println("2 Pura Huffman-pakattu data");
             System.out.println("3 Pakkaa LZW-algoritmilla");
-            System.out.println("4 Pura LZW-pakattu data (ei vielä käytettävissä");
+            System.out.println("4 Pura LZW-pakattu data");
             System.out.println("5 Exit");
             System.out.print("? ");
 
@@ -35,6 +35,8 @@ public class Main {
                     System.out.println("Pakattu binääri:");
                     System.out.println(resultBinary.getAsString());
                     System.out.println();
+                    System.out.println("Aikaa kului " + HuffmanRunner.getTime() + " millisekuntia." );
+                    System.out.println("Pakkaussuhde: " + HuffmanRunner.getCompressRatio() + " % alkuperäisestä");
                     break;
                 case "2":
                     System.out.println("Purettava binääri:");
@@ -44,6 +46,7 @@ public class Main {
                     System.out.println("Purettu teksti:");
                     System.out.println(resultText);
                     System.out.println();
+                    System.out.println("Aikaa kului " + HuffmanRunner.getTime() + " millisekuntia.");
                     break;
                 case "3":
                     System.out.println("Pakattava teksti:");
@@ -55,6 +58,11 @@ public class Main {
                         System.out.print(code + " ");
                     }
                     System.out.println();
+                    System.out.println("Aikaa kului " + lzwCoder.getTime() + " millisekuntia.");
+                    System.out.println("Pakkaussuhde: " + lzwCoder.getCompressRatio() + " % alkuperäisestä");
+                    break;
+                case "4":
+                    System.out.println("Under construction...");
                     break;
                 case "5":
                     System.out.println("Hei hei!");
