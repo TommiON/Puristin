@@ -61,4 +61,24 @@ public class BitSequenceTest {
         System.out.println(bitSequence.getAsString());
     }
 
+    @Test
+    public void growsCorrectly() {
+        BitSequence bitSequence1 = new BitSequence();
+        assertEquals(0, bitSequence1.size());
+        for (int i = 0; i < 150000; i++) {
+            bitSequence1.pushLast(true);
+        }
+        assertEquals(150000, bitSequence1.size());
+
+        BitSequence bitSequence2 = new BitSequence(bitSequence1);
+        assertEquals(150000, bitSequence2.size());
+
+        String stringRepresentation = "";
+        for (int i = 0; i < 150001; i++) {
+            stringRepresentation = stringRepresentation + "1";
+        }
+        BitSequence bitSequence3 = new BitSequence(stringRepresentation);
+        assertEquals(150001, bitSequence3.size());
+    }
+
 }

@@ -59,6 +59,17 @@ public class Hasher<K, V> {
     }
 
     /**
+     * @param key
+     * @return true if Hasher contains the key, false otherwise
+     */
+    public boolean containsKey(K key) {
+        if (get(key) == null) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * @return numbers of entries in the data structure
      */
     public int size() { return size; }

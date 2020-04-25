@@ -2,17 +2,20 @@ package CustomDataStructures;
 
 /**
  * Represents a sequence of bits, implemented as an array of booleans
+ * Initial capacity for 100000 bits, grows automatically if needed
  */
 public class BitSequence {
-    private boolean[] bits;
-    private int slotsInUse;
+    private boolean[] buckets;
+    private int size;
+    private int bucketsInUse;
 
     /**
-     * Constructor, initializes with space for 10000 bits (to be considered)
+     * Basic constructor
      */
     public BitSequence() {
-        slotsInUse = 0;
-        bits = new boolean[10000];
+        size = 100000;
+        bucketsInUse = 0;
+        buckets = new boolean[size];
     }
 
     /**
@@ -20,10 +23,14 @@ public class BitSequence {
      * @param anotherBitSequence
      */
     public BitSequence(BitSequence anotherBitSequence) {
-        slotsInUse = anotherBitSequence.size();
-        bits = new boolean[10000];
-        for (int i = 0; i < slotsInUse; i++) {
-            bits[i] = anotherBitSequence.getBitAtIndex(i);
+        size = 100000;
+        while (anotherBitSequence.size() >= size) {
+            grow();
+        }
+        bucketsInUse = anotherBitSequence.size();
+        buckets = new boolean[size];
+        for (int i = 0; i < bucketsInUse; i++) {
+            buckets[i] = anotherBitSequence.getBitAtIndex(i);
         }
     }
 
@@ -32,8 +39,12 @@ public class BitSequence {
      * @param stringRepresentation
      */
     public BitSequence(String stringRepresentation) {
-        slotsInUse = 0;
-        bits = new boolean[10000];
+        size = 100000;
+        while (stringRepresentation.length() >= size) {
+            grow();
+        }
+        bucketsInUse = 0;
+        buckets = new boolean[size];
         for (int i = 0; i < stringRepresentation.length(); i++) {
             if (stringRepresentation.charAt(i) == '0') {
                 pushLast(false);
@@ -50,12 +61,15 @@ public class BitSequence {
      * @param bit bit to be added
      */
     public void pushLast(boolean bit) {
-        if (bit == true) {
-            bits[slotsInUse] = true;
-        } else {
-            bits[slotsInUse] = false;
+        if (bucketsInUse >= size) {
+            grow();
         }
-        slotsInUse++;
+        if (bit == true) {
+            buckets[bucketsInUse] = true;
+        } else {
+            buckets[bucketsInUse] = false;
+        }
+        bucketsInUse++;
     }
 
     /**
@@ -63,6 +77,9 @@ public class BitSequence {
      * @param sourceBitSequence BitSequence containing the bits to be pushed
      */
     public void pushLastMultipleBits(BitSequence sourceBitSequence) {
+        while ((bucketsInUse + sourceBitSequence.size) >= size) {
+            grow();
+        }
         for (int i = 0; i < sourceBitSequence.size(); i++) {
             this.pushLast(sourceBitSequence.getBitAtIndex(i));
         }
@@ -73,14 +90,17 @@ public class BitSequence {
      * @param bit bit to be added
      */
     public void pushFirstAndShiftRight(boolean bit) {
-        slotsInUse++;
-        for (int i = slotsInUse; i > 0; i--) {
-            bits[i] = bits[i-1];
+        if (bucketsInUse >= size) {
+            grow();
+        }
+        bucketsInUse++;
+        for (int i = bucketsInUse; i > 0; i--) {
+            buckets[i] = buckets[i-1];
         }
         if (bit == true) {
-            bits[0] = true;
+            buckets[0] = true;
         } else {
-            bits[0] = false;
+            buckets[0] = false;
         }
     }
 
@@ -89,11 +109,11 @@ public class BitSequence {
      * @return a boolean representing the first bit
      */
     public boolean popFirstAndShiftLeft() {
-        boolean firstInLine = bits[0];
-        for (int i = 0; i < slotsInUse-1; i++) {
-            bits[i] = bits[i+1];
+        boolean firstInLine = buckets[0];
+        for (int i = 0; i < bucketsInUse -1; i++) {
+            buckets[i] = buckets[i+1];
         }
-        slotsInUse--;
+        bucketsInUse--;
         return firstInLine;
     }
 
@@ -103,8 +123,8 @@ public class BitSequence {
      */
     public String getAsString() {
         String stringRepresentation = new String();
-        for (int i = 0; i < slotsInUse; i++) {
-            if (bits[i] == true) {
+        for (int i = 0; i < bucketsInUse; i++) {
+            if (buckets[i] == true) {
                 stringRepresentation += "1";
             } else {
                 stringRepresentation += "0";
@@ -116,18 +136,28 @@ public class BitSequence {
     /**
      * @return number of bits in the sequence
      */
-    public int size() { return slotsInUse; }
+    public int size() { return bucketsInUse; }
 
     /**
      * @return true if BitSequence contains no bits, false otherwise
      */
-    public boolean isEmpty() { return slotsInUse == 0; }
+    public boolean isEmpty() { return bucketsInUse == 0; }
 
     /**
      * Return a bit at a specified location
      * @param index index of the bit to be retrieved as int
      * @return returned bit as boolean
      */
-    public boolean getBitAtIndex(int index) { return bits[index]; }
+    public boolean getBitAtIndex(int index) { return buckets[index]; }
+
+    private void grow() {
+        int newSize = size + (size / 2);
+        boolean[] extendedBuckets = new boolean[newSize];
+        for (int i = 0; i < bucketsInUse; i++) {
+            extendedBuckets[i] = buckets[i];
+        }
+        size = newSize;
+        buckets = extendedBuckets;
+    }
 
 }

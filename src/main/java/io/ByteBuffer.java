@@ -3,20 +3,23 @@ package io;
 import CustomDataStructures.BitSequence;
 
 /**
- * Handles the traffic to/from binary file, needed because data is managed in sub-byte resolution
+ * Custom buffer of bytes, needed when data is managed in sub-byte resolution, as in Huffman encoding
+ * Initial capacity for 12 500 bytes (100 000 bits), grows automatically if needed
  */
 public class ByteBuffer {
     private byte[] bytes;
-    private int byteLevelReadWriteHeadPosition;
-    private int bitLevelReadWriteHeadPosition;
+    private int size;
+    private int byteLevelHeadPosition;
+    private int bitLevelHeadPosition;
 
     /**
      * initialises an empty byte buffer when starting to encode
      */
     public ByteBuffer() {
-        bytes = new byte[100000];
-        byteLevelReadWriteHeadPosition = 0;
-        bitLevelReadWriteHeadPosition = 0;
+        size = 12500;
+        bytes = new byte[size];
+        byteLevelHeadPosition = 0;
+        bitLevelHeadPosition = 0;
     }
 
     /**
@@ -44,5 +47,9 @@ public class ByteBuffer {
     public BitSequence popBits(int numberOfBits) {
         // väliaikainen
         return new BitSequence();
+    }
+
+    private void grow() {
+
     }
 }
