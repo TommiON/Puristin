@@ -36,3 +36,7 @@ Purettaessa sama prosessi kulkee toiseen suuntaan:
 * LZWDecoder-luokka käy pakatun datan läpi järjestyksessä, päättelee alkuperäisen, pakatessa muodostetun sanakirjan ja generoi sen DecodingTable-luokkaan, ja palauttaa sen avulla pakatun datan alkuperäiseen muotoon.
 
 _Aikavaativuudet kummallekin vielä määrittelemättä..._
+
+### Ilmeisimmät puutteet ja ongelmat
+
+* Algoritminen ydinosa eli _HuffmanEngine_- ja _LZEEngine_-pakkausten sisältö toimii (kai) kohtalaisen tehokkaasti, mutta näitä ympäröivässä osassa eli _IO_- ja _Main_-pakkauksissa on paljon tehottomia purkkavirityksiä. Esimerkiksi...
