@@ -18,7 +18,7 @@ public class TextFileManagerTest {
             exception.printStackTrace();
         }
 
-        StringBuffer textOut = TextFileManager.readCharactersFromFile("testText.txt");
+        String textOut = TextFileManager.readCharactersFromFile("testText.txt");
 
         System.out.println(textOut);
         assertEquals(textIn.length(), textOut.length());

@@ -4,20 +4,33 @@ import CustomDataStructures.BitSequence;
 import HuffmanEngine.HuffmanRunner;
 import LempelZivWelchEngine.LZWCoder;
 import LempelZivWelchEngine.LZWDecoder;
+import io.ByteBuffer;
+import io.FileManager;
+import io.TextFileManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
-    private static char[] plainText;
-    private static byte[] codedText;
-    static Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
+        if (args.length > 0) {
+            runFromCommandLine(args);
+        } else {
+            runInInteractiveMode();
+        }
+    }
+
+    /**
+     *
+     */
+    private static void runInInteractiveMode() {
+        Scanner scanner = new Scanner(System.in);
+
         while (true) {
             System.out.println("PURISTIN");
-            System.out.println("(Huom. Tällä hetkellä Huffman-aakkostoa ei tallenneta pakatun datan mukana, joten purkutoiminto osaa purkaa vain viimeksi pakatun tekstin.)");
+            System.out.println("(Huom. Interaktiivisessa moodissa Huffman-aakkostoa ei tallenneta pakatun datan mukana, joten purkutoiminto osaa purkaa vain viimeksi pakatun tekstin.)");
             System.out.println();
             System.out.println("1 Pakkaa Huffman-algoritmilla");
             System.out.println("2 Pura Huffman-pakattu data");
@@ -25,7 +38,6 @@ public class Main {
             System.out.println("4 Pura LZW-pakattu data");
             System.out.println("5 Exit");
             System.out.print("? ");
-
             String userChoice = scanner.nextLine();
 
             switch (userChoice) {
@@ -53,9 +65,9 @@ public class Main {
                     System.out.println("Pakattava teksti:");
                     String textToBeCoded2 = scanner.nextLine();
                     LZWCoder lzwCoder = new LZWCoder();
-                    ArrayList<Integer> resultIntegers = lzwCoder.encode(textToBeCoded2);
+                    ArrayList<Short> resultNumbers = lzwCoder.encode(textToBeCoded2);
                     System.out.print("Pakattuna: ");
-                    for (int code : resultIntegers) {
+                    for (int code : resultNumbers) {
                         System.out.print(code + " ");
                     }
                     System.out.println();
@@ -64,14 +76,14 @@ public class Main {
                     break;
                 case "4":
                     System.out.println("Purettava data (kokonaislukuina välilyönnein eroteltuna):");
-                    String codedStuffInInts = scanner.nextLine();
-                    String[] components = codedStuffInInts.split(" ");
-                    ArrayList codedInts = new ArrayList();
+                    String codedStuffInNumbers = scanner.nextLine();
+                    String[] components = codedStuffInNumbers.split(" ");
+                    ArrayList codedNumbers = new ArrayList();
                     for (String s : components) {
-                        codedInts.add(Integer.parseInt(s));
+                        codedNumbers.add(Short.parseShort(s));
                     }
                     LZWDecoder lzwDecoder = new LZWDecoder();
-                    String out = lzwDecoder.decode(codedInts);
+                    String out = lzwDecoder.decode(codedNumbers);
                     System.out.println("Purettu teksti: ");
                     System.out.println(out);
                     System.out.println("Aikaa kului: " + lzwDecoder.getTime());
@@ -81,8 +93,89 @@ public class Main {
                     System.exit(0);
             }
         }
+    }
 
-        /*
+    /**
+     *
+     * @param args command line parameters forwarded
+     */
+    private static void runFromCommandLine(String[] args) {
+        switch (args[0].toLowerCase()) {
+            case "lzw": lzw(args);
+            case "huffman": huffman(args);
+            default: doesNotWork();
+        }
+    }
+
+    private static void lzw(String[] args) {
+        String sourceFileName = getSourceFileName(args);
+        String targetFileName = getTargetFileName(args);
+        switch (args[1].toLowerCase()) {
+            case "pakkaa":
+                try {
+                    String plainText = FileManager.readText(sourceFileName);
+                    LZWCoder lzwCoder = new LZWCoder();
+                    ArrayList<Short> resultNumbers = lzwCoder.encode(plainText);
+                    // TODO: tämä siistimmäksi jos ehtii
+                    short[] resultNumbersAsArray = new short[resultNumbers.size()];
+                    int i = 0;
+                    for (short s : resultNumbers) {
+                        resultNumbersAsArray[i] = s;
+                        i++;
+                    }
+                    // TODO: tähän asti
+                    FileManager.writeShorts(targetFileName, resultNumbersAsArray);
+                    System.out.println("Aikaa kului " + lzwCoder.getTime() + " millisekuntia.");
+                    System.out.println("Pakkaussuhde: " + lzwCoder.getCompressRatio() + " % alkuperäisestä");
+                    System.exit(0);
+                } catch (Exception e) {
+                    System.out.println("Ongelma! " + e);
+                    System.exit(1);
+                }
+            case "pura":
+                try {
+                    short[] codedInput = FileManager.readShorts(sourceFileName);
+                    LZWDecoder lzwDecoder = new LZWDecoder();
+                    // TODO: tämä siistimmäksi jos ehtii
+                    ArrayList<Short> codedInputReformatted = new ArrayList<>();
+                    for (int i = 0; i < codedInput.length; i++) {
+                        codedInputReformatted.add(codedInput[i]);
+                    }
+                    // TODO: tähän asti
+                    String plainOutput = lzwDecoder.decode(codedInputReformatted);
+                    FileManager.writeText(targetFileName, plainOutput);
+                    System.out.println("Aikaa kului: " + lzwDecoder.getTime());
+                } catch (Exception e) {
+                    System.out.println("Ongelma!" + e);
+                    System.exit(1);
+                }
+
+                System.exit(0);
+            default: doesNotWork();
+        }
+    }
+
+    private static void huffman(String[] args) {
+
+    }
+
+    private static String getSourceFileName(String[] args) {
+        if (args[2].isEmpty()) { doesNotWork(); }
+        return args[2];
+    }
+
+    private static String getTargetFileName(String[] args) {
+        if (args[3].isEmpty()) { doesNotWork(); }
+        return args[3];
+    }
+
+    private static void doesNotWork() {
+        System.out.println("Virheelliset parametrit. Ohjelma lopetetaan.");
+        System.exit(1);
+    }
+}
+
+  /*
         if (args.length != 2) {
             System.out.println("Virheelliset parametrit. Oikea muoto: puristin [pakkaa|pura] <tiedostonimi>");
             System.exit(0);
@@ -107,5 +200,3 @@ public class Main {
         }
 
          */
-    }
-}

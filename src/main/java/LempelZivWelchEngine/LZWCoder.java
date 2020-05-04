@@ -9,11 +9,11 @@ public class LZWCoder {
     private long timer = 0;
     private double compressRatio = 0;
 
-    public ArrayList<Integer> encode(String input) {
+    public ArrayList<Short> encode(String input) {
         long startTime = System.currentTimeMillis();
 
         encodingTable = new EncodingTable();
-        ArrayList<Integer> output = new ArrayList<>();
+        ArrayList<Short> output = new ArrayList<>();
         String currentString = "";
         String nextCharacter = "";
 

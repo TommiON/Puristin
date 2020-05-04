@@ -6,9 +6,9 @@ import java.util.HashMap;
  * Implements the code table used for encoding (String -> Int) with capacity of 4096
  */
 public class EncodingTable {
-    private HashMap<String, Integer> contents;
+    private HashMap<String, Short> contents;
     private static int capacity;
-    private int counter;
+    private short counter;
 
     public EncodingTable() {
         contents = new HashMap<>();
@@ -24,14 +24,14 @@ public class EncodingTable {
         counter++;
     }
 
-    public int getCodeForString(String string) { return contents.get(string); }
+    public short getCodeForString(String string) { return contents.get(string); }
 
     public boolean hasSpaceLeft() { return counter < capacity; }
 
     @Override
     public String toString() {
         String returnString = "";
-        for (HashMap.Entry<String, Integer> entry : contents.entrySet()) {
+        for (HashMap.Entry<String, Short> entry : contents.entrySet()) {
             returnString = returnString + entry.getKey() + ", " + entry.getValue() +"\n";
         }
         return returnString;

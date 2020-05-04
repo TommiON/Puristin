@@ -2,13 +2,16 @@ package io;
 
 import CustomDataStructures.BitSequence;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Custom buffer of bytes, needed when data is managed in sub-byte resolution, as in Huffman encoding
  * Initial capacity for 12 500 bytes (100 000 bits), grows automatically if needed
  */
 public class ByteBuffer {
     private byte[] bytes;
-    private int size;
+    private int capacity;
     private int byteLevelHeadPosition;
     private int bitLevelHeadPosition;
 
@@ -16,9 +19,9 @@ public class ByteBuffer {
      * initialises an empty byte buffer when starting to encode
      */
     public ByteBuffer() {
-        size = 12500;
-        bytes = new byte[size];
-        byteLevelHeadPosition = 0;
+        capacity = 12500;
+        bytes = new byte[capacity];
+        byteLevelHeadPosition = -1;
         bitLevelHeadPosition = 0;
     }
 
@@ -27,16 +30,59 @@ public class ByteBuffer {
      * @param filename
      */
     public ByteBuffer(String filename) {
-
+        try {
+            bytes = BinaryFileManager.readBytesFromFile(filename);
+            capacity = bytes.length;
+            byteLevelHeadPosition = (capacity - 1);
+            bitLevelHeadPosition = 0;
+        } catch (Exception e) {
+            System.out.println("Ongelmia tiedoston lukemisessa: " + e);
+        }
 
     }
+
+    /*
+    // Todo: kokonaan veke?
+    public void pushIntegers(ArrayList<Integer> integers) {
+        while (integers.size() >= capacity) { grow(); }
+
+        for (int i = 0; i < integers.size(); i++) {
+            bytes[i] = (byte)integers.get(i).byteValue();
+            byteLevelHeadPosition++;
+        }
+    }
+
+    public ArrayList<Integer> getBytesAsIntegers() {
+        ArrayList<Integer> integers = new ArrayList();
+        for (int i = 0; i <= byteLevelHeadPosition; i++) {
+            integers.add(Byte.toUnsignedInt(bytes[i]));
+        }
+        return integers;
+    }
+    */
 
     /**
      * Pushes a sequence of bits to buffer, spanning it over multiple bytes if needed
      * @param bits
      */
     public void pushBits(BitSequence bits) {
+        while (!bits.isEmpty()) {
+            boolean bit = bits.popFirstAndShiftLeft();
+            // TODO: ja sitten?
+        }
+    }
 
+    /**
+     * Cuts the unneeded empty slots from the tail of the buffer, then writes data out to a file
+     * @param filename
+     */
+    public void writeToFile(String filename) {
+        byte[] outputBytes = trim();
+        try {
+            BinaryFileManager.writeBytesToFile(filename, outputBytes);
+        } catch (Exception e) {
+            System.out.println("Ongelmia tiedostoon kirjoittamisessa: " + e);
+        }
     }
 
     /**
@@ -49,7 +95,30 @@ public class ByteBuffer {
         return new BitSequence();
     }
 
-    private void grow() {
+    public byte[] getBytes() { return trim(); }
 
+    public int size() { return byteLevelHeadPosition + 1; }
+
+    @Override
+    public String toString() {
+        String stringRepresentation = "Tavuja yhteensä: " + (byteLevelHeadPosition + 1) + "\n";
+        for (int i = 0; i <= byteLevelHeadPosition; i++) {
+            stringRepresentation += "" + bytes[i] + " ";
+        }
+        return stringRepresentation;
+    }
+
+    private void grow() {
+        int newCapacity = capacity + (capacity / 2);
+        byte[] newBytes = new byte[newCapacity];
+        for (int i = 0; i <= byteLevelHeadPosition; i++) {
+            newBytes[i] = bytes[i];
+        }
+        capacity = newCapacity;
+        bytes = newBytes;
+    }
+
+    private byte[] trim() {
+        return Arrays.copyOfRange(bytes, 0, (byteLevelHeadPosition + 1));
     }
 }

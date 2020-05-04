@@ -15,7 +15,7 @@ public class LZWCoderAndDecoderTest {
         System.out.println("Alkuperäinen merkkijono: " + sourceString);
         System.out.println("Alkuperäisen pituus: " + sourceString.length());
 
-        ArrayList<Integer> compressedTarget = lzwCoder.encode(sourceString);
+        ArrayList<Short> compressedTarget = lzwCoder.encode(sourceString);
 
         System.out.print("Pakattuna: ");
         for (int code : compressedTarget) {
@@ -42,7 +42,7 @@ public class LZWCoderAndDecoderTest {
         System.out.println("Alkuperäinen merkkijono: " + sourceString);
         System.out.println("Alkuperäisen pituus: " + sourceString.length());
 
-        ArrayList<Integer> compressedTarget = lzwCoder.encode(sourceString);
+        ArrayList<Short> compressedTarget = lzwCoder.encode(sourceString);
 
         System.out.print("Pakattuna: ");
         for (int code : compressedTarget) {
@@ -72,7 +72,7 @@ public class LZWCoderAndDecoderTest {
         System.out.println("Alkuperäinen merkkijono: " + sourceString);
         System.out.println("Alkuperäisen pituus: " + sourceString.length());
 
-        ArrayList<Integer> compressedTarget = lzwCoder.encode(sourceString);
+        ArrayList<Short> compressedTarget = lzwCoder.encode(sourceString);
 
         System.out.print("Pakattuna: ");
         for (int code : compressedTarget) {

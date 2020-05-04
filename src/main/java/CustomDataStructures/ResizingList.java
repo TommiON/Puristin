@@ -65,6 +65,11 @@ public class ResizingList<T> {
     public int size() { return lastSlotInUse + 1; }
 
     /**
+     * @return true if no elements, false otherwise
+     */
+    public boolean isEmpty() { return size() == 0; }
+
+    /**
      * @return list contents as String representation
      */
     @Override

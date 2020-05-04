@@ -32,10 +32,10 @@ public class TextFileManager {
     /**
      * Reads and returns a text file contents as a StringBuffer
      * @param fileName name of the file as String
-     * @return file contents as a (possibly large) StringBuffer
+     * @return file contents as a (possibly large) String
      * @throws IOException
      */
-    public static StringBuffer readCharactersFromFile(String fileName) throws IOException {
+    public static String readCharactersFromFile(String fileName) throws IOException {
         FileReader fileReader = null;
         StringBuffer buffer = new StringBuffer();
 
@@ -53,7 +53,7 @@ public class TextFileManager {
             }
         }
 
-        return buffer;
+        return buffer.toString();
     }
 
 }
