@@ -23,7 +23,9 @@ public class LZWCoder {
                 currentString = currentString + nextCharacter;
             } else {
                 output.add(encodingTable.getCodeForString(currentString));
-                encodingTable.addString(currentString + nextCharacter);
+                if (encodingTable.hasSpaceLeft()) {
+                    encodingTable.addString(currentString + nextCharacter);
+                }
                 currentString = nextCharacter;
             }
         }

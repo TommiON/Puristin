@@ -40,7 +40,9 @@ public class LZWDecoder {
             }
             output = output + currentString;
             firstCharacter = currentString.substring(0, 1);
-            decodingTable.addString(decodingTable.getStringForCode(oldCode) + firstCharacter);
+            if (decodingTable.hasSpaceLeft()) {
+                decodingTable.addString(decodingTable.getStringForCode(oldCode) + firstCharacter);
+            }
             oldCode = newCode;
         }
 

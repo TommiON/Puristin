@@ -3,7 +3,7 @@ package io;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.io.IOException;
 
 public class FileManagerTest {
     private static short[] testShorts;
@@ -66,5 +66,4 @@ public class FileManagerTest {
             }
         } catch (Exception e) {}
     }
-
 }

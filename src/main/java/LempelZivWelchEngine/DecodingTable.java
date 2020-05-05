@@ -5,10 +5,12 @@ package LempelZivWelchEngine;
  */
 public class DecodingTable {
     private String[] contents;
+    private static int capacity;
     private int counter;
 
     public DecodingTable() {
-        contents = new String[4096];
+        capacity = 4096;
+        contents = new String[capacity];
         counter = 0;
         initFixtures();
     }
@@ -23,6 +25,8 @@ public class DecodingTable {
     public String getStringForCode(int code) {
         return contents[code];
     }
+
+    public boolean hasSpaceLeft() { return counter < capacity; }
 
     private void initFixtures() {
         for (int i = 0; i < 256; i++) {
