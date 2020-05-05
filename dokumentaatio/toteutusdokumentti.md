@@ -39,4 +39,7 @@ _Aikavaativuudet kummallekin vielä määrittelemättä..._
 
 ### Ilmeisimmät puutteet ja ongelmat
 
+Pääasiassa ajanpuutteen, hieman myös osaamattomuuden vuoksi sovellukseen jäi ainakin seuraavanlaisia puutteita:
+
+* LZW-pakkaus tallentaa koodit 16-bittisinä numeroina, vaikka 12 bittiä riittäisi. Tämä syö pakkauksen tehoa huomattavasti. Tehokkaampi tapa olisi tallentaa bittivirtana, tavua pienemmällä resoluutiolla, mutta aika loppui kesken.
 * Algoritminen ydinosa eli _HuffmanEngine_- ja _LZEEngine_-pakkausten sisältö toimii (kai) kohtalaisen tehokkaasti, mutta näitä ympäröivässä osassa eli _IO_- ja _Main_-pakkauksissa on paljon tehottomia purkkavirityksiä. Esimerkiksi...
