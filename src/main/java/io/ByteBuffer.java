@@ -29,10 +29,12 @@ public class ByteBuffer {
      * initialises a byte buffer from a file when decoding
      * @param filename
      */
+    /*
     public ByteBuffer(String filename) {
         try {
-            bytes = BinaryFileManager.readBytesFromFile(filename);
+            bytes = FileManager.readBytes(filename);
             capacity = bytes.length;
+            // TODO: miten nämä?
             byteLevelHeadPosition = (capacity - 1);
             bitLevelHeadPosition = 0;
         } catch (Exception e) {
@@ -41,25 +43,7 @@ public class ByteBuffer {
 
     }
 
-    /*
-    // Todo: kokonaan veke?
-    public void pushIntegers(ArrayList<Integer> integers) {
-        while (integers.size() >= capacity) { grow(); }
-
-        for (int i = 0; i < integers.size(); i++) {
-            bytes[i] = (byte)integers.get(i).byteValue();
-            byteLevelHeadPosition++;
-        }
-    }
-
-    public ArrayList<Integer> getBytesAsIntegers() {
-        ArrayList<Integer> integers = new ArrayList();
-        for (int i = 0; i <= byteLevelHeadPosition; i++) {
-            integers.add(Byte.toUnsignedInt(bytes[i]));
-        }
-        return integers;
-    }
-    */
+     */
 
     /**
      * Pushes a sequence of bits to buffer, spanning it over multiple bytes if needed

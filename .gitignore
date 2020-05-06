@@ -6,3 +6,6 @@ target
 *.bin
 /*.bin
 test*.*
+bit_test
+byte_test
+

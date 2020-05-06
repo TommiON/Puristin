@@ -1,7 +1,9 @@
 package io;
 
+import CustomDataStructures.BitSequence;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
 
@@ -53,6 +55,7 @@ public class FileManagerTest {
         } catch (Exception e) {}
     }
 
+    /*
     @Test
     public void testWriteAndReadBytes() {
         try {
@@ -64,6 +67,25 @@ public class FileManagerTest {
             for (byte b: output) {
                 System.out.println(b);
             }
+        } catch (Exception e) {}
+    }
+
+     */
+
+    @Test
+    public void testWriteAndReadBits() {
+        String stringRepresentation = "111000111000111000111000111000111";
+        System.out.println(stringRepresentation);
+        BitSequence bitSequenceIn = new BitSequence(stringRepresentation);
+        try {
+            FileManager.writeBits("bit_test", bitSequenceIn);
+        } catch (Exception e) {}
+
+        try {
+            BitSequence bitSequenceOut = FileManager.readBits("bit_test");
+            System.out.println(bitSequenceOut.getAsString());
+            assertEquals(bitSequenceIn.getBitAtIndex(0), bitSequenceOut.getBitAtIndex(0));
+            assertEquals(bitSequenceIn.getBitAtIndex(7), bitSequenceIn.getBitAtIndex(7));
         } catch (Exception e) {}
     }
 }
