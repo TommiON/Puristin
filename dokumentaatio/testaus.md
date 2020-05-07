@@ -18,8 +18,8 @@ Automaattiset suorituskykytestit löytyvät _Performance_-testipakkauksesta. Ne 
 LZW, pakkaussuhde (ideaali suluissa) |1|2|3|4|5|6
 LZW, pakkausnopeus ||||||
 LZW, purkunopeus ||||||
-Huffman, pakkaussuhde ||||||
-Huffman, pakkausnopeus ||||||
-Huffman, purkunopeus||||||
+Huffman, pakkaussuhde |53,7%|||||
+Huffman, pakkausnopeus |39 ms|||||
+Huffman, purkunopeus|1913 ms|||||
 
 (Jatkomittauksissa mielenkiintoista nähdä, miten algoritmit eroavat etenkin ajankäytössä, mutta jo tässä vaiheessa epäilen, että Huffmania hidastaa itse tehty ja mahdollisesti tehoton bittijonojen käsittely. LZW on tässä suhteessa "puhtaampi" toteutus. Pitää myös kaivaa lähteitä siitä, miten noiden algoritmien pitäisi "oikeasti" suhteutua toisiinsa.)
