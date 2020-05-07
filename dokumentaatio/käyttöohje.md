@@ -21,3 +21,7 @@ Komennossa on neljä parametria, joista kaikki ovat pakollisia.
 * Toisella parametrilla valitaan varsinainen toiminto, joko `pakkaa` tai `pura`.
 * Kolmannella parametrilla annetaan operaation lähdetiedoston nimi.
 * Neljännellä parametrilla annetaan operaation kohdetiedoston nimi. Jos tiedostoa ei ole olemassa, se luodaan. Jos saman niminen tiedosto on jo olemassa, se ylikirjoitetaan.
+
+Esimerkki komennosta, joka pakkaa _source.txt_ -tiedoston LZW-algoritmilla tiedostoon _target.lzw_:
+
+```Puristin lzw pakkaa source.txt target.lzw```
