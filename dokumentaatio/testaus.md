@@ -9,15 +9,15 @@ Yksikkötestauksen tilanne 24. huhtikuuta: testejä 52 kpl, kaikki menevät läp
 
 ## Suorituskykytestaus
 
-Huffman- ja LZW-pakkauksiin on rakennettu toiminnallisuus, joka mittaa kuluneen ajan mikrosekunteina sekä saavutetun pakkaussuhteen. LZW-pakkauksessa lasketaan lisäksi kaksi eri suhdelukua, todellinen ja "ideaalinen". Ajanpuutteen vuoksi LZW:n tiedosto-I/O jouduttiin toteuttamaan Javan short-lukutyypillä eli 16-bittisillä luvuilla, vaikka sisäisesti LZW-avaimille riittää 12 bittiä. Ideaalinen luku laskee, mikä pakkaussuhde olisi, jos myös tiedosto-I/O olisi ehditty toteuttaa 12-bittisenä.
+Huffman- ja LZW-pakkauksiin on rakennettu toiminnallisuus, joka mittaa kuluneen ajan mikrosekunteina sekä saavutetun pakkaussuhteen. LZW-pakkauksessa lasketaan lisäksi kaksi eri suhdelukua, todellinen ja "ideaalinen". Nimittäin ajanpuutteen vuoksi LZW:n tiedosto-I/O jouduttiin toteuttamaan Javan short-lukutyypillä eli 16-bittisillä luvuilla, vaikka sisäisesti LZW-avaimille riittää 12 bittiä. Ideaalinen luku laskee, mikä pakkaussuhde olisi, jos myös tiedosto-I/O olisi ehditty toteuttaa 12-bittisenä.
 
 Automaattiset suorituskykytestit löytyvät _Performance_-testipakkauksesta. Ne käyttävät seuraavia testiaineistoja:
 
 ||Data 1, JCL |Data 1, custom |Data 2, JCL|Data 2, custom|Data 3, JCL|Data 3, custom
 ---|---|---|---|---|---|---
-LZW, pakkaussuhde (ideaali suluissa) |1|2|3|4|5|6
-LZW, pakkausnopeus ||||||
-LZW, purkunopeus ||||||
+LZW, pakkaussuhde (ideaali suluissa) |67,8% (50,9%)|2|3|4|5|6
+LZW, pakkausnopeus |12 ms|||||
+LZW, purkunopeus |55 ms|||||
 Huffman, pakkaussuhde |53,7%|||||
 Huffman, pakkausnopeus |39 ms|||||
 Huffman, purkunopeus|1913 ms|||||
