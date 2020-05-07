@@ -1,6 +1,6 @@
 # Puristin
 
-_Puristin_ pakkaa (tekstimuotoista) dataa tiiviimpään tallennustilaan, purkaa pakatun datan takaisin alkuperäiseksi ja tarjoaa prosessista hieman metatietoa (pakkaussuhde, kulunut aika). Vaihtoehtoisina menetelminä käytetään Huffman-koodausta ja Lempel–Ziv–Welch -koodausta. Käyttäjä voi valita, kumpaa pakkausmenetelmää käytetään.
+_Puristin_ pakkaa (tekstimuotoista) dataa tiiviimpään tallennustilaan, purkaa pakatun datan takaisin alkuperäiseksi ja tarjoaa prosessista hieman metatietoa (pakkaussuhde, kulunut aika). Vaihtoehtoisina menetelminä käytetään Huffman-algoritmia ja Lempel–Ziv–Welch -algoritmia. Käyttäjä voi valita, kumpaa pakkausmenetelmää käytetään.
 
 Sovellus on Helsingin yliopiston Tietorakenteet ja algoritmit -laboratorioprojekti.
 
