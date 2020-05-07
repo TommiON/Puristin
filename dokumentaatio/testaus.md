@@ -15,13 +15,11 @@ Automaattiset suorituskykytestit löytyvät _Performance_-testipakkauksesta. Ne 
 
 ||Data 1, JCL |Data 1, custom |Data 2, JCL|Data 2, custom|Data 3, JCL|Data 3, custom
 ---|---|---|---|---|---|---
-LZW, pakkaussuhde |1|2|3|4|5|6
-LZW, pakkaussuhde, omat tietorakenteet|||
-LZW, pakkausnopeus |||
-LZW, pakkausnopeus |||
-LZW, purkunopeus |||
-LZW, purkunopeus |||
-Huffman, pakkaussuhde |||
-Huffman, pakkaussuhde |||
+LZW, pakkaussuhde (ideaali suluissa) |1|2|3|4|5|6
+LZW, pakkausnopeus ||||||
+LZW, purkunopeus ||||||
+Huffman, pakkaussuhde ||||||
+Huffman, pakkausnopeus ||||||
+Huffman, purkunopeus||||||
 
 (Jatkomittauksissa mielenkiintoista nähdä, miten algoritmit eroavat etenkin ajankäytössä, mutta jo tässä vaiheessa epäilen, että Huffmania hidastaa itse tehty ja mahdollisesti tehoton bittijonojen käsittely. LZW on tässä suhteessa "puhtaampi" toteutus. Pitää myös kaivaa lähteitä siitä, miten noiden algoritmien pitäisi "oikeasti" suhteutua toisiinsa.)
