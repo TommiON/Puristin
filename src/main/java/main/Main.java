@@ -1,18 +1,18 @@
 package main;
 
 import CustomDataStructures.BitSequence;
+import HuffmanEngine.CodingAlphabet;
 import HuffmanEngine.HuffmanRunner;
 import LempelZivWelchEngine.LZWCoder;
 import LempelZivWelchEngine.LZWDecoder;
-import io.ByteBuffer;
 import io.FileManager;
-import io.TextFileManager;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
+
+    private static CodingAlphabet knownHuffmanAlphabet;
 
     public static void main(String[] args) {
         if (args.length > 0) {
@@ -23,7 +23,7 @@ public class Main {
     }
 
     /**
-     *
+     * Contains code for operating in interactive text-based UI
      */
     private static void runInInteractiveMode() {
         Scanner scanner = new Scanner(System.in);
@@ -44,22 +44,25 @@ public class Main {
                 case "1":
                     System.out.println("Pakattava teksti:");
                     String textToBeCoded = scanner.nextLine();
-                    BitSequence resultBinary = HuffmanRunner.encode(textToBeCoded);
+                    HuffmanRunner huffmanRunner = new HuffmanRunner();
+                    BitSequence resultBinary = huffmanRunner.encode(textToBeCoded);
+                    knownHuffmanAlphabet = huffmanRunner.getAlphabet();
                     System.out.println("Pakattu binääri:");
                     System.out.println(resultBinary.getAsString());
                     System.out.println();
-                    System.out.println("Aikaa kului " + HuffmanRunner.getTime() + " millisekuntia." );
-                    System.out.println("Pakkaussuhde: " + HuffmanRunner.getCompressRatio() + " % alkuperäisestä");
+                    System.out.println("Aikaa kului " + huffmanRunner.getTime() + " millisekuntia." );
+                    System.out.println("Pakkaussuhde: " + huffmanRunner.getCompressRatio() + " % alkuperäisestä.");
                     break;
                 case "2":
                     System.out.println("Purettava binääri:");
                     String codedStuffAsString = scanner.nextLine();
                     BitSequence codedStuffAsBinary = new BitSequence(codedStuffAsString);
-                    String resultText = HuffmanRunner.decode(codedStuffAsBinary);
+                    HuffmanRunner huffmanRunner1 = new HuffmanRunner(knownHuffmanAlphabet);
+                    String resultText = huffmanRunner1.decode(codedStuffAsBinary);
                     System.out.println("Purettu teksti:");
                     System.out.println(resultText);
                     System.out.println();
-                    System.out.println("Aikaa kului " + HuffmanRunner.getTime() + " millisekuntia.");
+                    System.out.println("Aikaa kului " + huffmanRunner1.getTime() + " millisekuntia.");
                     break;
                 case "3":
                     System.out.println("Pakattava teksti:");
@@ -72,7 +75,7 @@ public class Main {
                     }
                     System.out.println();
                     System.out.println("Aikaa kului " + lzwCoder.getTime() + " millisekuntia.");
-                    System.out.println("Pakkaussuhde: " + lzwCoder.getCompressRatio() + " % alkuperäisestä");
+                    System.out.println("Pakkaussuhde: " + lzwCoder.getCompressRatio() + " % alkuperäisestä.");
                     break;
                 case "4":
                     System.out.println("Purettava data (kokonaislukuina välilyönnein eroteltuna):");
@@ -86,7 +89,7 @@ public class Main {
                     String out = lzwDecoder.decode(codedNumbers);
                     System.out.println("Purettu teksti: ");
                     System.out.println(out);
-                    System.out.println("Aikaa kului: " + lzwDecoder.getTime());
+                    System.out.println("Aikaa kului: " + lzwDecoder.getTime() + " millisekuntia.");
                     break;
                 case "5":
                     System.out.println("Hei hei!");
@@ -96,7 +99,7 @@ public class Main {
     }
 
     /**
-     *
+     * Contains code for operating from command-line, delegates actual functionality to helper methods
      * @param args command line parameters forwarded
      */
     private static void runFromCommandLine(String[] args) {
@@ -144,7 +147,8 @@ public class Main {
                     // TODO: tähän asti
                     String plainOutput = lzwDecoder.decode(codedInputReformatted);
                     FileManager.writeText(targetFileName, plainOutput);
-                    System.out.println("Aikaa kului: " + lzwDecoder.getTime());
+                    System.out.println("Aikaa kului: " + lzwDecoder.getTime() + " millisekuntia");
+                    System.exit(0);
                 } catch (Exception e) {
                     System.out.println("Ongelma!" + e);
                     System.exit(1);
@@ -156,6 +160,43 @@ public class Main {
     }
 
     private static void huffman(String[] args) {
+        String sourceFileName = getSourceFileName(args);
+        String targetFileName = getTargetFileName(args);
+        switch (args[1].toLowerCase()) {
+            case "pakkaa":
+                try{
+                    String textToBeCoded = FileManager.readText(sourceFileName);
+                    HuffmanRunner huffmanRunner = new HuffmanRunner();
+                    BitSequence resultBinary = huffmanRunner.encode(textToBeCoded);
+                    FileManager.writeBits(targetFileName, resultBinary);
+                    String alphabetFileName = targetFileName + ".alphabet";
+                    FileManager.writeObject(alphabetFileName, huffmanRunner.getAlphabet());
+                    System.out.println("Aikaa kului " + huffmanRunner.getTime() + " millisekuntia." );
+                    System.out.println("Pakkaussuhde: " + huffmanRunner.getCompressRatio() + " % alkuperäisestä");
+                    System.exit(0);
+                } catch (Exception e) {
+                    System.out.println("Ongelma! " + e);
+                    System.exit(1);
+                }
+                System.exit(0);
+            case "pura":
+                try {
+                    BitSequence huffmanBinaryData = FileManager.readBits(sourceFileName);
+                    String alphabetFileName = sourceFileName + ".alphabet";
+                    CodingAlphabet alphabet = (CodingAlphabet) FileManager.readObject(alphabetFileName);
+                    HuffmanRunner huffmanRunner = new HuffmanRunner(alphabet);
+                    String plainResult = huffmanRunner.decode(huffmanBinaryData);
+                    FileManager.writeText(targetFileName, plainResult);
+                    System.out.println("Aikaa kului " + huffmanRunner.getTime() + " millisekuntia." );
+                    System.exit(0);
+                } catch (Exception e) {
+                    System.out.println("Ongelma! " + e);
+                    System.exit(1);
+                }
+
+                System.exit(0);
+            default: doesNotWork();
+        }
 
     }
 

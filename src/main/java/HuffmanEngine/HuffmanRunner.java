@@ -6,20 +6,29 @@ import CustomDataStructures.BitSequence;
  * "Main" class for Huffman part of the application, coordinates and manages the process
  */
 public class HuffmanRunner {
-    // TODO: mieti aakkoston staattisuus, käsittely, nyt näin nopeata testausta varten
-    private static CodingAlphabet alphabet;
-    private static long timer;
-    private static double compressRatio;
+    private CodingAlphabet alphabet;
+    private long timer;
+    private double compressRatio;
+
+    public HuffmanRunner() {
+        alphabet = null;
+        timer = 0;
+        compressRatio = 0;
+    }
+
+    public HuffmanRunner(CodingAlphabet alphabet) {
+        this.alphabet = alphabet;
+        timer = 0;
+        compressRatio = 0;
+    }
 
     /**
      * Handles the steps to encode text into compressed binary
      * @param input String to be encoded
      * @return encoded result as BitSequence
      */
-    public static BitSequence encode(String input) {
+    public BitSequence encode(String input) {
         // 0. Start timer
-        timer = 0;
-        compressRatio = 0;
         long startTime = System.currentTimeMillis();
 
         // 1. create new Frequencies instance, read through the input and feed it in
@@ -58,9 +67,8 @@ public class HuffmanRunner {
      * @param input compressed data as BitSequence
      * @return original data as String
      */
-    public static String decode(BitSequence input) {
+    public String decode(BitSequence input) {
         // 0. Start timer
-        timer = 0;
         long startTime = System.currentTimeMillis();
 
         // 1. decode with input and known alphabet
@@ -76,14 +84,23 @@ public class HuffmanRunner {
     }
 
     /**
-     *
-     * @return elapsed time
+     * @return elapsed time as long
      */
-    public static long getTime() {
+    public long getTime() {
         return timer;
     }
 
-    public static double getCompressRatio() {
+    /**
+     * @return compress ratio as double
+     */
+    public double getCompressRatio() {
         return compressRatio;
+    }
+
+    /**
+     * @return CodingAlphabet used for encoding
+     */
+    public CodingAlphabet getAlphabet() {
+        return alphabet;
     }
 }

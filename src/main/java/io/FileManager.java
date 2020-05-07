@@ -70,23 +70,6 @@ public class FileManager {
         return data;
     }
 
-    /*
-    public static void writeBytes(String filename, byte[] data) throws IOException {
-        FileOutputStream outputStream = new FileOutputStream(new File(filename));
-        outputStream.write(data);
-        outputStream.close();
-    }
-
-    public static byte[] readBytes(String filename) throws IOException {
-        FileInputStream inputStream = new FileInputStream(new File(filename));
-        byte[] data = new byte[inputStream.available()];
-        inputStream.read(data);
-        inputStream.close();
-        return data;
-    }
-
-     */
-
     /**
      * Writes a sequence of bits to file, making byte-size chucks of it for file i/o, creates the file if needed, overwrites otherwise
      * @param filename as String
@@ -156,6 +139,13 @@ public class FileManager {
         fileOutputStream.close();
     }
 
+    /**
+     * Reads an object from a file
+     * @param filename as String
+     * @return generic Object value
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static Object readObject(String filename) throws IOException, ClassNotFoundException {
         FileInputStream fileInputStream = new FileInputStream(new File(filename));
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);

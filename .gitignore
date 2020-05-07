@@ -9,4 +9,4 @@ test*
 test*.*
 bit_test
 byte_test
-
+*.jar
