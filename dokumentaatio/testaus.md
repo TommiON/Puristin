@@ -13,7 +13,7 @@ Huffman- ja LZW-pakkauksiin on rakennettu toiminnallisuus, joka mittaa kuluneen 
 
 Automaattiset suorituskykytestit löytyvät _Performance_-testipakkauksesta. Ne käyttävät seuraavia testiaineistoja:
 * Data 1: Noin 22 kilotavun kokoinen suomenkielinen blogiteksti.
-
+* Data 2: Joseph Condardin Heart of Darkness -romaanin ensimmäinen osa, noin 80 kilotavun englanninkielinen teksti.
 * Data 3: 
 
 ||Data 1, JCL |Data 1, custom |Data 2, JCL|Data 2, custom|Data 3, JCL|Data 3, custom
