@@ -13,15 +13,15 @@ Huffman- ja LZW-pakkauksiin on rakennettu toiminnallisuus, joka mittaa kuluneen 
 
 Automaattiset suorituskykytestit löytyvät _Performance_-testipakkauksesta. Ne käyttävät seuraavia testiaineistoja:
 
-||Data 1, |Data 2|Data 3
+||Data 1, JCL |Data 1, custom |Data 2, JCL|Data 2, custom|Data 3, JCL|Data 3, custom
 ---|---|---|---
-LZW, pakkaussuhde, Java Class Library | 1 | 2 | 3
+LZW, pakkaussuhde | 1 | 2 | 3
 LZW, pakkaussuhde, omat tietorakenteet|||
-LZW, pakkausnopeus, Java Class Library|||
-LZW, pakkausnopeus, omat tietorakenteet|||
-LZW, purkunopeus, Java Class Library|||
-LZW, purkunopeus, omat tietorakenteet|||
-Huffman, pakkaussuhde, Java Class Library|||
-Huffman, pakkaussuhde, omat tietorakeneet|||
+LZW, pakkausnopeus |||
+LZW, pakkausnopeus |||
+LZW, purkunopeus |||
+LZW, purkunopeus |||
+Huffman, pakkaussuhde |||
+Huffman, pakkaussuhde |||
 
 (Jatkomittauksissa mielenkiintoista nähdä, miten algoritmit eroavat etenkin ajankäytössä, mutta jo tässä vaiheessa epäilen, että Huffmania hidastaa itse tehty ja mahdollisesti tehoton bittijonojen käsittely. LZW on tässä suhteessa "puhtaampi" toteutus. Pitää myös kaivaa lähteitä siitä, miten noiden algoritmien pitäisi "oikeasti" suhteutua toisiinsa.)
