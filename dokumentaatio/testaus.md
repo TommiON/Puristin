@@ -18,9 +18,9 @@ Automaattiset suorituskykytestit löytyvät _Performance_-testipakkauksesta. Ne 
 
 ||Data 1, JCL |Data 1, custom |Data 2, JCL|Data 2, custom|Data 3, JCL|Data 3, custom
 ---|---|---|---|---|---|---
-LZW, pakkaussuhde (ideaali suluissa) |67,8% (50,9%)||x|||
-LZW, pakkausnopeus |12 ms||x|||
-LZW, purkunopeus |55 ms||x|||
+LZW, pakkaussuhde (ideaali suluissa) |67,8% (50,9%)||66,4% (49,8%)|||
+LZW, pakkausnopeus |12 ms||24 ms|||
+LZW, purkunopeus |55 ms||654 ms|||
 Huffman, pakkaussuhde |53,7%||55,3%|||
 Huffman, pakkausnopeus |39 ms||63 ms|||
 Huffman, purkunopeus|1913 ms||18785 ms|||
