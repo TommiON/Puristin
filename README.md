@@ -1,10 +1,10 @@
 # Puristin
 
-Helsingin yliopiston Tietorakenteet ja algoritmit -laboratorioprojekti.
-
 Sovellus pakkaa (tekstimuotoista) dataa tiiviimpään tallennustilaan, purkaa pakatun datan takaisin alkuperäiseksi ja tarjoaa prosessista hieman metatietoa (pakkaussuhde, kulunut aika). Vaihtoehtoisina menetelminä käytetään Huffman-koodausta ja Lempel–Ziv–Welch -koodausta. Käyttäjä voi valita, kumpaa pakkausmenetelmää käytetään.
 
-### Dokumentaatio
+Sovellus on Helsingin yliopiston Tietorakenteet ja algoritmit -laboratorioprojekti.
+
+[Käyttöohje](/dokumentaatio/käyttöohje.md)
 
 [Määrittely](/dokumentaatio/määrittelydokumentti.md)
 
