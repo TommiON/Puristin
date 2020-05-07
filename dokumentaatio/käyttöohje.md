@@ -4,7 +4,7 @@
 
 ## Interaktiivinen moodi
 
-Jos sovelluksen käynnistää pelkällä komennolla _Puristin_ ilman parametreja, käynnistyy vuorovaikutteinen moodi, jossa pakattavaa/purettavaa dataa voi antaa kirjoittamalla:
+Jos sovelluksen käynnistää pelkällä komennolla _Puristin_ ilman parametreja, käynnistyy vuorovaikutteinen moodi, jossa toiminto valitaan numerolla ja pakattavaa/purettavaa dataa voi sen jälkeen antaa kirjoittamalla:
 
 ![](ui1.png)
 
