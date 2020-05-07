@@ -37,9 +37,13 @@ Purettaessa sama prosessi kulkee toiseen suuntaan:
 
 _Aikavaativuudet kummallekin vielä määrittelemättä..._
 
-### Ilmeisimmät puutteet ja ongelmat
+### Puutteita ja ongelmia
 
-Pääasiassa ajanpuutteen, hieman myös osaamattomuuden vuoksi sovellukseen jäi ainakin seuraavanlaisia puutteita:
+Ajanpuutteen vuoksi sovellukseen jäi ainakin seuraavat oleelliset puutteet:
+* LZW-pakkaus tallentaa koodit 16-bittisinä short-numeroina, vaikka 12 bittiä riittäisi. Tämä syö pakkauksen tehoa huomattavasti. Tehokkaampi tapa olisi tallentaa bittivirtana, tavua pienemmällä resoluutiolla, mutta aika loppui kesken.
+* Algoritminen ydinosa eli _HuffmanEngine_- ja _LZEEngine_-pakkausten sisältö toimii (kai) kohtalaisen nopeasti, mutta näitä ympäröivässä osassa eli _IO_- ja _Main_-pakkauksissa on kiireessä tehtyjä, hitaita purkkavirityksiä. Esimerkiksi LZW-pakkauksessa tehdään iteroimalla muunnos arrayn ja arraylistin välillä. Useimmista ongelmakohdista minulla on ihan selkeä käsitys tarvittavasta optimoinnista, mutta aika ei yksinkertaisesti riittänyt.
+* Huffman-pakkaus tallentaa aakkoston erilliseen .alphabet-tiedostoon, mikä on epäeleganttia, pitäisi toki pakata samaan tiedostoon datan kanssa, koska jokainen koodausaakkosto on joka tapauksessa uniikki. Aika ei kuitenkaan riittänyt tällaisen tiedostoformaatin luomiseen.
 
-* LZW-pakkaus tallentaa koodit 16-bittisinä numeroina, vaikka 12 bittiä riittäisi. Tämä syö pakkauksen tehoa huomattavasti. Tehokkaampi tapa olisi tallentaa bittivirtana, tavua pienemmällä resoluutiolla, mutta aika loppui kesken.
-* Algoritminen ydinosa eli _HuffmanEngine_- ja _LZEEngine_-pakkausten sisältö toimii (kai) kohtalaisen tehokkaasti, mutta näitä ympäröivässä osassa eli _IO_- ja _Main_-pakkauksissa on paljon tehottomia purkkavirityksiä. Esimerkiksi...
+Edellisten lisäksi joitakin kauneuvirheiksi luokiteltavia puutteita:
+* Käyttöliittymä on viimeistelemätön, esim. syötteitä ei validoida täysin, tiedostot ylikirjoitetaan ilman eri varoitusta jne.
+* Osa tietorakenteista on ei-geneerisiä ja toimii vain tietyllä datatyypillä. Ei vaikuta itse sovelluksen toimintaan, mutta on epäeleganttia.
