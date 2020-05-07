@@ -25,4 +25,3 @@ Huffman, pakkaussuhde |53,7%||55,3%|||
 Huffman, pakkausnopeus |39 ms||63 ms|||
 Huffman, purkunopeus|1913 ms||18785 ms|||
 
-(Jatkomittauksissa mielenkiintoista nähdä, miten algoritmit eroavat etenkin ajankäytössä, mutta jo tässä vaiheessa epäilen, että Huffmania hidastaa itse tehty ja mahdollisesti tehoton bittijonojen käsittely. LZW on tässä suhteessa "puhtaampi" toteutus. Pitää myös kaivaa lähteitä siitä, miten noiden algoritmien pitäisi "oikeasti" suhteutua toisiinsa.)
