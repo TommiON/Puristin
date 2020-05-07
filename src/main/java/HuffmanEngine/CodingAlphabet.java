@@ -2,6 +2,7 @@ package HuffmanEngine;
 
 import CustomDataStructures.BitSequence;
 
+import java.io.Serializable;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +10,8 @@ import java.util.Map;
 /**
  * Constructs coding alphabet with the help of CodingTree
  */
-public class CodingAlphabet {
+public class CodingAlphabet implements Serializable {
+    private static final long serialVersionUID = 1L;
     private HashMap<Character, String> charactersToBits = new HashMap<>();
     private HashMap<String, Character> bitsToCharacters = new HashMap<>();
 

@@ -141,4 +141,27 @@ public class FileManager {
 
         return bits;
     }
+
+    /**
+     * Writes Serializable object to file, creates the file if needed, overwrites otherwise
+     * @param filename as String
+     * @param object
+     * @throws IOException
+     */
+    public static void writeObject(String filename, Object object) throws IOException {
+        FileOutputStream fileOutputStream = new FileOutputStream(new File(filename));
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        objectOutputStream.writeObject(object);
+        objectOutputStream.close();
+        fileOutputStream.close();
+    }
+
+    public static Object readObject(String filename) throws IOException, ClassNotFoundException {
+        FileInputStream fileInputStream = new FileInputStream(new File(filename));
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        Object object = objectInputStream.readObject();
+        objectInputStream.close();
+        fileInputStream.close();
+        return object;
+    }
 }

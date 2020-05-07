@@ -18,7 +18,6 @@ public class HuffmanDecoder {
         while (!input.isEmpty()) {
             boolean nextBit = input.popFirstAndShiftLeft();
             internalBuffer.pushLast(nextBit);
-            // internalBuffer.pushFirstAndShiftRight(nextBit);
             if (alphabet.getCharacterForBits(internalBuffer) != null) {
                 Character character = alphabet.getCharacterForBits(internalBuffer);
                 output += character;
