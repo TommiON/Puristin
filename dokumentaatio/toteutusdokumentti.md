@@ -41,6 +41,7 @@ _Aikavaativuudet kummallekin vielä määrittelemättä..._
 
 Ajanpuutteen vuoksi sovellukseen jäi ainakin seuraavat oleelliset puutteet:
 * LZW-pakkaus tallentaa koodiavaimet 16-bittisinä short-numeroina, vaikka 12 bittiä riittäisi. Tämä syö pakkauksen tehoa. Tehokkaampi tapa olisi tallentaa bittivirtana, tavua pienemmällä resoluutiolla.
+* LZW ei osaa reagoida tuntemattomiin (ASCII:n ulkopuolisiin) merkkeihin rakentavasti, vaan kaatuu.
 * Algoritminen ydinosa eli _HuffmanEngine_- ja _LZWEngine_-pakkausten sisältö toimii (kai) kohtalaisen nopeasti, mutta näitä ympäröivässä osassa eli _IO_- ja _Main_-pakkauksissa on kiireessä tehtyjä, hitaita purkkavirityksiä. Esimerkiksi LZW-pakkauksessa tehdään iteroimalla muunnos arrayn ja arraylistin välillä. Useimmista ongelmakohdista minulla on ihan selkeä käsitys tarvittavasta optimoinnista, mutta aika ei yksinkertaisesti riittänyt.
 * Huffman-pakkaus tallentaa aakkoston erilliseen .alphabet-tiedostoon, mikä on epäeleganttia. Aakkosto pitäisi toki pakata samaan tiedostoon datan kanssa, koska jokainen koodausaakkosto on joka tapauksessa uniikki. Lisäksi aakkosto pakataan suoraan Javan ObjectInputStream-metodiikalla, mikä ei välttämättä ole tilankäytöllisesti tehokkain mahdollinen ratkaisu.
 
