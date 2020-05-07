@@ -25,7 +25,7 @@ Huffman, pakkaussuhde |53,7%||55,3%||48,4%|
 Huffman, pakkausnopeus |39 ms||63 ms||37 ms|
 Huffman, purkunopeus|1913 ms||18785 ms||15301 ms|
 
-Selvästi tärkein testihuomio on valtava epäsuhta Huffman-pakkauksen ja -purkamisen kestossa. Purkamisessa on selvästikin jokin bugi, mutta ajanpuutteen vuoksi en ehtinyt paikantaa ja korjata sitä. Huffman-purun kestä näyttää kasvavan eksponentiaalisesti tai muuten räjähtävästi, sillä kun kokeilin aineistoa 3 siten, että merkkijonoa toistettiin tuhannen asemesta kymmenentuhatta kertaa, Huffman-purku oli edelleen käynnissä noin 10 minuutin jälkeen ja oli pakko keskeyttää.
+Selvästi tärkein testihuomio on valtava epäsuhta Huffman-pakkauksen ja -purkamisen kestossa. Purkamisessa on selvästikin jokin bugi, mutta ajanpuutteen vuoksi en ehtinyt paikantaa ja korjata sitä. Huffman-purun kesto näyttää kasvavan eksponentiaalisesti tai muuten räjähtävästi, sillä kun kokeilin aineistoa 3 siten, että merkkijonoa toistettiin tuhannen asemesta kymmenentuhatta kertaa, Huffman-purku oli edelleen käynnissä noin 10 minuutin jälkeen ja oli pakko keskeyttää.
 
 Muita hajahuomioita suorituskyvystä:
 * Algoritmit melko tasaväkisiä pakkaussuhteessa. LZW:n heikommat tulokset selittyvät 16-bittisellä tiedosto-I/O:lla. Ja kuten odottaa saattaa, LZW loistaa aineistolla 3, jossa on erittäin paljon toistoa.
