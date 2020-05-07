@@ -14,8 +14,8 @@ Huffman- ja LZW-pakkauksiin on rakennettu toiminnallisuus, joka mittaa kuluneen 
 Automaattiset suorituskykytestit löytyvät _Performance_-testipakkauksesta. Ne käyttävät seuraavia testiaineistoja:
 
 ||Data 1, JCL |Data 1, custom |Data 2, JCL|Data 2, custom|Data 3, JCL|Data 3, custom
----|---|---|---
-LZW, pakkaussuhde | 1 | 2 | 3
+---|---|---|---|---|---|---
+LZW, pakkaussuhde |1|2|3|4|5|6
 LZW, pakkaussuhde, omat tietorakenteet|||
 LZW, pakkausnopeus |||
 LZW, pakkausnopeus |||
