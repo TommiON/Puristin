@@ -2,10 +2,11 @@
 
 ## Yksikkötestaus
 
-Yksikkötestauksen tilanne 24. huhtikuuta: testejä 52 kpl, kaikki menevät läpi. Jacocon laskema testikattavuus alla olevassa kuvassa, tarkempi Jacoco-raportointi löytyy myös repositoriosta. I/O- ja main-paketteja ei toistaiseksi ole yritettykään juuri testata, joten "todellinen" testikattavuus jonkin verran suurempi.
+Yksikkötestejä tehtiin 57 kpl, kaikki menevät läpi. Jacocon laskema testikattavuus alla olevassa kuvassa, tarkempi Jacoco-raportointi löytyy myös repositoriosta. Main-pakettia ei yritettykään testata, joten "todellinen" testikattavuus jonkin verran suurempi.
 
-![](test_coverage_24_4.png)
+![](test_coverage_final.png)
 
+Yksikkötestauksen lisäksi tehtiin tietysti jatkuvaa integraatio- ja end-to-end -testausta käyttämällä sovellusta eri valmiusasteissa.
 
 ## Suorituskykytestaus
 
