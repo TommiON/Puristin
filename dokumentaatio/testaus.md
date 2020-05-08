@@ -16,6 +16,8 @@ Automaattiset suorituskykytestit löytyvät _Performance_-testipakkauksesta. Ne 
 * Data 2: Joseph Condardin Heart of Darkness -romaanin ensimmäinen osa, noin 80 kilotavun englanninkielinen teksti.
 * Data 3: Merkkijono, jossa toistuu tuhat kertaa teksti _"Tässä olisi vähän tekstiä, toistetaan huomattavan monta kertaa samanlaisena"_.
 
+Oheisessa taulukossa mittaustuloksia. JCL (Java Class Library) mitattiin siinä vaiheessa kun sovellus toimi vielä Javan tarjoamilla tietorakenteilla, custom puolestaan sitten kun ne oli korvattu omilla tietorakenteilla.
+
 ||Data 1, JCL |Data 1, custom |Data 2, JCL|Data 2, custom|Data 3, JCL|Data 3, custom
 ---|---|---|---|---|---|---
 LZW, pakkaussuhde (ideaalinen suluissa) |67,8% (50,9%)|sama|66,4% (49,8%)|sama|8,8% (6,6%)|
