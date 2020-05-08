@@ -2,8 +2,6 @@ package CustomDataStructures;
 
 import HuffmanEngine.CodingUnit;
 
-import java.util.ArrayList;
-
 /**
  * Implements a smallest-value-first heap structure for CodingUnits, used as a priority queue
  */
@@ -11,11 +9,18 @@ public class MinHeap {
     private CodingUnit[] contents;
     private int numberOfElements;
 
+    /**
+     * Standard constructor
+     */
     public MinHeap() {
         contents = new CodingUnit[256];
         numberOfElements = 0;
     }
 
+    /**
+     * Constuctor with initial values
+     * @param codingUnits ResizingList of CodingUnits
+     */
     public MinHeap(ResizingList<CodingUnit> codingUnits) {
         contents = new CodingUnit[256];
         numberOfElements = 0;

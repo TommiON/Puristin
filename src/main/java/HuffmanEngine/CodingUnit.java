@@ -80,9 +80,11 @@ public class CodingUnit implements Comparable {
     }
 
     /**
-     * Tells whether this CodingUnit contains a character or is an internal node with no character
+     * @return Tells whether this CodingUnit contains a character or is an internal node with no character
      */
-    public boolean containsCharacter() { return this.containsCharacter; }
+    public boolean containsCharacter() {
+        return this.containsCharacter;
+    }
 
     /**
      * Sets the BitPath to be a copy of another BitSequence, used when constructing CodingAlphabet
@@ -96,17 +98,23 @@ public class CodingUnit implements Comparable {
      * Returns the current bitpath
      * @return Current bitpath as BitSequence
      */
-    public BitSequence getBitPath() { return bitPath; }
+    public BitSequence getBitPath() {
+        return bitPath;
+    }
 
     /**
      * Add a "left turn", i.e. new "0" to bitpath, used when constructing CodingAlphabet
      */
-    public void turnLeftInBitPath() { bitPath.pushLast(false); }
+    public void turnLeftInBitPath() {
+        bitPath.pushLast(false);
+    }
 
     /**
      * Add a "right turn", i.e. new "1" to bitpath, used when constructing CodingAlphabet
      */
-    public void turnRightInBitPath() { bitPath.pushLast(true);}
+    public void turnRightInBitPath() {
+        bitPath.pushLast(true);
+    }
 
     /**
      * Comparator method, needed for priority queue ordering (Comparable interface) for CodingUnits

@@ -9,7 +9,6 @@ import LempelZivWelchEngine.LZWDecoder;
 
 import io.FileManager;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Main {
 

@@ -11,12 +11,19 @@ public class ResizingList<T> implements Iterable<T> {
     private T[] contents;
     private int lastSlotInUse;
 
+    /**
+     * Standard constructor
+     */
     public ResizingList() {
         capacity = 10;
         contents = (T[]) new Object[10];
         lastSlotInUse = -1;
     }
 
+    /**
+     * Constructor with initial values
+     * @param values array of vwhatever values
+     */
     public ResizingList(T[] values) {
         capacity = 10;
         lastSlotInUse = -1;

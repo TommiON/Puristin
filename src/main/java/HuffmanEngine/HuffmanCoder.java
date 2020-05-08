@@ -7,7 +7,6 @@ import CustomDataStructures.BitSequence;
  */
 public class HuffmanCoder {
     private BitSequence output = new BitSequence();
-    private int compressionRatio;
 
     /**
      * main method, does the encoding
@@ -23,7 +22,6 @@ public class HuffmanCoder {
 
                 String bitsAsString = alphabet.getBitsForCharacter(currentCharacter);
 
-                // TODO: mieti bittijonot, nyt BitSequencen ja String-esityksen välillä sekavuutta, joudutaan tällaisiin purkkaviritelmiin
                 for (int j = 0; j < bitsAsString.length(); j++) {
                     if (bitsAsString.charAt(j) == '0') {
                         output.pushLast(false);
@@ -35,8 +33,6 @@ public class HuffmanCoder {
                 readHeadLocation++;
             }
         }
-
-        compressionRatio = output.size() / (input.length() * 8) * 100;
     }
 
     /**
@@ -46,10 +42,4 @@ public class HuffmanCoder {
     public BitSequence getOutput() {
         return output;
     }
-
-    /**
-     *
-     * @return ratio of compressed data relative to original, rounded to the nearest Int
-     */
-    public int getCompressionRatio() { return compressionRatio; }
 }

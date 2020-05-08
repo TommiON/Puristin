@@ -3,8 +3,6 @@ package LempelZivWelchEngine;
 import CustomDataStructures.Hasher;
 import CustomDataStructures.KeyValuePair;
 
-import java.util.HashMap;
-
 /**
  * Implements the code table used for encoding (String -> Int) with capacity of 4096
  */
@@ -53,7 +51,9 @@ public class EncodingTable {
     /**
      * @return true if not all table slots are used, false otherwise
      */
-    public boolean hasSpaceLeft() { return counter < capacity; }
+    public boolean hasSpaceLeft() {
+        return counter < capacity;
+    }
 
     /**
      * @return String representation of table contents

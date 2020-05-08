@@ -10,12 +10,19 @@ public class HuffmanRunner {
     private long timer;
     private double compressRatio;
 
+    /**
+     * Constuctor for encoding run
+     */
     public HuffmanRunner() {
         alphabet = null;
         timer = 0;
         compressRatio = 0;
     }
 
+    /**
+     * Constructor for decoding run
+     * @param alphabet CodingAlphabet to be used
+     */
     public HuffmanRunner(CodingAlphabet alphabet) {
         this.alphabet = alphabet;
         timer = 0;

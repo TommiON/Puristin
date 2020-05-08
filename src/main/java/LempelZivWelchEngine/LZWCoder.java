@@ -2,14 +2,20 @@ package LempelZivWelchEngine;
 
 import CustomDataStructures.ResizingList;
 
-import java.util.ArrayList;
-
+/**
+ * Handles LZW encoding, and produces some supplementary metadata
+ */
 public class LZWCoder {
     private EncodingTable encodingTable;
     private long timer = 0;
     private double actualCompressRatio = 0;
     private double idealCompressRatio = 0;
 
+    /**
+     * Main method, does the encoding
+     * @param input data to be encoded as String
+     * @return resulting output as a ResizingList of shorts
+     */
     public ResizingList<Short> encode(String input) {
         long startTime = System.currentTimeMillis();
 
@@ -40,12 +46,24 @@ public class LZWCoder {
         return output;
     }
 
-    public EncodingTable getCurrentEncodingTable() { return encodingTable; }
+    /**
+     * Gets times the encoding took
+     * @return time in milliseconds as long
+     */
+    public long getTime() {
+        return timer;
+    }
 
-    public long getTime() { return timer; }
-
+    /**
+     * Gets actual compress ratio
+     * @return as double
+     */
     public double getActualCompressRatio() { return actualCompressRatio; }
 
+    /**
+     * Gets "ideal" compress ratio
+     * @return as double
+     */
     public double getIdealCompressRatio() { return idealCompressRatio; }
 
 }

@@ -2,25 +2,17 @@ package LempelZivWelchEngine;
 
 import CustomDataStructures.ResizingList;
 
-import java.util.ArrayList;
-
 /**
- * The decoding algorithm works by reading a value from the encoded input and outputting the corresponding string from the initialized dictionary.
- * To rebuild the dictionary in the same way as it was built during encoding, it also obtains the next value from the input and adds to the dictionary
- * the concatenation of the current string and the first character of the string obtained by decoding the next input value, or the first character of
- * the string just output if the next value can not be decoded (If the next value is unknown to the decoder, then it must be the value added to the
- * dictionary this iteration, and so its first character must be the same as the first character of the current string being sent to decoded output).
- * The decoder then proceeds to the next input value (which was already read in as the "next value" in the previous pass) and repeats the process until
- * there is no more input, at which point the final input value is decoded without any more additions to the dictionary.
+ * Handles LZW decoding, and produces some supplementary metadata
  */
 public class LZWDecoder {
     private DecodingTable decodingTable = new DecodingTable();
     private long timer = 0;
 
     /**
-     *
-     * @param input
-     * @return
+     * Main method, does the decoding
+     * @param input coded input as ResizingList of shorts
+     * @return output as String
      */
     public String decode(ResizingList<Short> input) {
         long startTime = System.currentTimeMillis();
@@ -54,5 +46,9 @@ public class LZWDecoder {
         return output;
     }
 
+    /**
+     * Gets elapsed time
+     * @return in milliseconds as long
+     */
     public long getTime() { return timer; }
 }

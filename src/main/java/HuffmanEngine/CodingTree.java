@@ -11,7 +11,6 @@ public class CodingTree {
      * @return CodingUnit that is the root of the newly-build tree
      */
     public static CodingUnit buildAndReturnRoot(FeederQueue feeder) {
-        // TODO: handle empty queue parameter
         if (feeder.hasStuffLeft()) {
             while (feeder.hasAtLeastTwoElementsLeft()) {
                 CodingUnit left = feeder.getFirstInLine();

@@ -22,7 +22,6 @@ public class HashCalculator<K> {
                 hashValue = hashValue + (multiplier * asciiValue);
                 stringPosition--;
             }
-            // TODO: Ratkaiseeko tämä hämmentävän ongelman
             hashValue = Math.abs(hashValue);
         }
 

@@ -136,19 +136,25 @@ public class BitSequence {
     /**
      * @return number of bits in the sequence
      */
-    public int size() { return bucketsInUse; }
+    public int size() {
+        return bucketsInUse;
+    }
 
     /**
      * @return true if BitSequence contains no bits, false otherwise
      */
-    public boolean isEmpty() { return bucketsInUse == 0; }
+    public boolean isEmpty() {
+        return bucketsInUse == 0;
+    }
 
     /**
      * Return a bit at a specified location
      * @param index index of the bit to be retrieved as int
      * @return returned bit as boolean
      */
-    public boolean getBitAtIndex(int index) { return buckets[index]; }
+    public boolean getBitAtIndex(int index) {
+        return buckets[index];
+    }
 
     private void grow() {
         int newSize = size + (size / 2);

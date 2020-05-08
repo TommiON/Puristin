@@ -1,11 +1,7 @@
 package HuffmanEngine;
 
 import CustomDataStructures.*;
-
 import java.io.Serializable;
-import java.util.ArrayDeque;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Constructs coding alphabet with the help of CodingTree

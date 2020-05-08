@@ -10,7 +10,7 @@ public class HuffmanDecoder {
     private BitSequence internalBuffer = new BitSequence();
 
     /**
-     *
+     * main method, does the decoding
      * @param alphabet CodingAlphabet to be used
      * @param input Binary data as BitSequence
      */
@@ -27,7 +27,6 @@ public class HuffmanDecoder {
     }
 
     /**
-     *
      * @return The current plain text data resulting from decoding
      */
     public String getOutput() {

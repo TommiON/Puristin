@@ -4,10 +4,6 @@ import CustomDataStructures.Hasher;
 import CustomDataStructures.KeyValuePair;
 import CustomDataStructures.ResizingList;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Implements frequency book-keeping of characters
  */
@@ -50,13 +46,4 @@ public class Frequencies {
     public int getNumberOfUniqueCharacters() {
         return contents.size();
     }
-
-    // TODO: Tarvitaanko tätä mihinkään?
-    /**
-     * Reset the contents before starting a new coding run
-     */
-    public void reset() {
-        contents = new Hasher<>();
-    }
-
 }

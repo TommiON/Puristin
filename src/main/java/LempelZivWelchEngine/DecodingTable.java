@@ -8,6 +8,9 @@ public class DecodingTable {
     private static int capacity;
     private int counter;
 
+    /**
+     * Constructor
+     */
     public DecodingTable() {
         capacity = 4096;
         contents = new String[capacity];
@@ -15,19 +18,42 @@ public class DecodingTable {
         initFixtures();
     }
 
+    /**
+     * Adds new string to table
+     * @param string
+     */
     public void addString(String string) {
         contents[counter] = string;
         counter++;
     }
 
-    public boolean containsCode(int code) { return code < counter; }
+    /**
+     * @param code queries whether this code is present in table
+     * @return true if the queried code is in table, false otherwise
+     */
+    public boolean containsCode(int code) {
+        return code < counter;
+    }
 
+    /**
+     * Gets a string for a code
+     * @param code as int
+     * @return String
+     */
     public String getStringForCode(int code) {
         return contents[code];
     }
 
-    public boolean hasSpaceLeft() { return counter < capacity; }
+    /**
+     * @return true if table is not yet full, false otherwise
+     */
+    public boolean hasSpaceLeft() {
+        return counter < capacity;
+    }
 
+    /**
+     *  Initialises 8-bit ASCII single characters as a starting point for the class
+     */
     private void initFixtures() {
         for (int i = 0; i < 256; i++) {
             char[] singleCharacter = new char[1];
