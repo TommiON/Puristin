@@ -5,7 +5,7 @@ import CustomDataStructures.BitSequence;
 import java.io.*;
 
 /**
- * File I/O functionality for reading and writing short integers, text, and bit sequences
+ * File I/O functionality for reading and writing short integers, text, bit sequences, and objects
  */
 public class FileManager {
 
