@@ -13,9 +13,9 @@ public class MinHeapTest {
         MinHeap heap = new MinHeap();
         CodingUnit codingUnit = new CodingUnit('a');
         assertEquals(true, heap.isEmpty());
-        heap.insert(codingUnit);
+        heap.add(codingUnit);
         assertEquals(false,heap.isEmpty());
-        CodingUnit output = heap.pop();
+        CodingUnit output = heap.poll();
         System.out.println(output.toString());
         assertEquals('a', output.getCharacter());
         assertEquals(true, heap.isEmpty());
@@ -34,14 +34,14 @@ public class MinHeapTest {
         assertEquals(true, heap.isEmpty());
 
         for (CodingUnit codingUnit : freq.getCodingUnitsAsList()) {
-            heap.insert(codingUnit);
+            heap.add(codingUnit);
         }
 
         assertEquals(false, heap.isEmpty());
 
         CodingUnit output;
         while (!heap.isEmpty()) {
-            output = heap.pop();
+            output = heap.poll();
             System.out.println(output);
         }
 
@@ -61,14 +61,14 @@ public class MinHeapTest {
         assertEquals(true, heap.isEmpty());
 
         for (CodingUnit codingUnit : freq.getCodingUnitsAsList()) {
-            heap.insert(codingUnit);
+            heap.add(codingUnit);
         }
 
         assertEquals(false, heap.isEmpty());
 
         CodingUnit output;
         while (!heap.isEmpty()) {
-            output = heap.pop();
+            output = heap.poll();
             System.out.println(output);
         }
 
@@ -80,16 +80,16 @@ public class MinHeapTest {
         MinHeap heap = new MinHeap();
 
         CodingUnit a = new CodingUnit('a');
-        heap.insert(a);
+        heap.add(a);
         CodingUnit b = new CodingUnit('b');
-        heap.insert(b);
+        heap.add(b);
 
         CodingUnit combo = new CodingUnit(a, b);
-        heap.insert(combo);
+        heap.add(combo);
 
         CodingUnit output;
         while (!heap.isEmpty()) {
-            output = heap.pop();
+            output = heap.poll();
             System.out.println(output);
         }
 

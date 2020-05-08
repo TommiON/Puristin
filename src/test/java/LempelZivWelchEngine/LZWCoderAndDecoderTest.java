@@ -1,5 +1,6 @@
 package LempelZivWelchEngine;
 
+import CustomDataStructures.ResizingList;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class LZWCoderAndDecoderTest {
         System.out.println("Alkuperäinen merkkijono: " + sourceString);
         System.out.println("Alkuperäisen pituus: " + sourceString.length());
 
-        ArrayList<Short> compressedTarget = lzwCoder.encode(sourceString);
+        ResizingList<Short> compressedTarget = lzwCoder.encode(sourceString);
 
         System.out.print("Pakattuna: ");
         for (int code : compressedTarget) {
@@ -42,7 +43,7 @@ public class LZWCoderAndDecoderTest {
         System.out.println("Alkuperäinen merkkijono: " + sourceString);
         System.out.println("Alkuperäisen pituus: " + sourceString.length());
 
-        ArrayList<Short> compressedTarget = lzwCoder.encode(sourceString);
+        ResizingList<Short> compressedTarget = lzwCoder.encode(sourceString);
 
         System.out.print("Pakattuna: ");
         for (int code : compressedTarget) {
@@ -72,7 +73,7 @@ public class LZWCoderAndDecoderTest {
         System.out.println("Alkuperäinen merkkijono: " + sourceString);
         System.out.println("Alkuperäisen pituus: " + sourceString.length());
 
-        ArrayList<Short> compressedTarget = lzwCoder.encode(sourceString);
+        ResizingList<Short> compressedTarget = lzwCoder.encode(sourceString);
 
         System.out.print("Pakattuna: ");
         for (int code : compressedTarget) {

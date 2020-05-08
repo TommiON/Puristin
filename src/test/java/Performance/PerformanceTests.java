@@ -1,6 +1,7 @@
 package Performance;
 
 import CustomDataStructures.BitSequence;
+import CustomDataStructures.ResizingList;
 import HuffmanEngine.CodingAlphabet;
 import HuffmanEngine.HuffmanRunner;
 import LempelZivWelchEngine.LZWCoder;
@@ -47,7 +48,7 @@ public class PerformanceTests {
         System.out.println("Huffman, purkuaika: " + huffmanRunnerOut.getTime());
 
         LZWCoder lzwCoder = new LZWCoder();
-        ArrayList<Short> resultNumbers = lzwCoder.encode(testData);
+        ResizingList<Short> resultNumbers = lzwCoder.encode(testData);
         System.out.println("LZW, pakkausaika: " + lzwCoder.getTime());
         System.out.println("LZW, pakkaussuhde: " + lzwCoder.getActualCompressRatio());
         System.out.println("LZW, ideaalinen pakkaussuhde: " + lzwCoder.getIdealCompressRatio());

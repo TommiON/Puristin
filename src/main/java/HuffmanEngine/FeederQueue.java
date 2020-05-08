@@ -1,5 +1,8 @@
 package HuffmanEngine;
 
+import CustomDataStructures.MinHeap;
+import CustomDataStructures.ResizingList;
+
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
@@ -7,14 +10,14 @@ import java.util.PriorityQueue;
  * Maintains a min-first priority queue of CodingUnits, used to constructing the coding tree
  */
 public class FeederQueue {
-    private PriorityQueue<CodingUnit> queue;
+    private MinHeap queue;
 
     /**
      * Constructor
      * @param codingUnits
      */
-    public FeederQueue (ArrayList<CodingUnit> codingUnits) {
-        queue = new PriorityQueue<>(codingUnits);
+    public FeederQueue (ResizingList<CodingUnit> codingUnits) {
+        queue = new MinHeap(codingUnits);
     }
 
     /**
@@ -29,13 +32,17 @@ public class FeederQueue {
      * Adds a new CodingUnit to queue
      * @param codingUnit CodingUnit to be added
      */
-    public void pushIntoQueue(CodingUnit codingUnit) { queue.add(codingUnit); }
+    public void pushIntoQueue(CodingUnit codingUnit) {
+        queue.add(codingUnit);
+    }
 
     /**
      * Tells whether at least two elements left in the queue, used in tree-building iteration
      * @return
      */
-    public boolean hasAtLeastTwoElementsLeft() { return queue.size() >= 2; }
+    public boolean hasAtLeastTwoElementsLeft() {
+        return queue.size() >= 2;
+    }
 
     /**
      * Tells whether elements left in the queue, used in tree-building iteration
@@ -66,5 +73,4 @@ public class FeederQueue {
         }
         System.out.println("Jono nyt tyhjä");
     }
-
 }

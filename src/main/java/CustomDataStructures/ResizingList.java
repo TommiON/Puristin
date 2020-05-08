@@ -1,13 +1,29 @@
 package CustomDataStructures;
 
+import java.util.Iterator;
+
 /**
  * Implements an ArrayList-like data structure
  * @param <T> element type
  */
-public class ResizingList<T> {
-    private int capacity = 10;
-    private T[] contents = (T[]) new Object[10];
-    private int lastSlotInUse = -1;
+public class ResizingList<T> implements Iterable<T> {
+    private int capacity;
+    private T[] contents;
+    private int lastSlotInUse;
+
+    public ResizingList() {
+        capacity = 10;
+        contents = (T[]) new Object[10];
+        lastSlotInUse = -1;
+    }
+
+    public ResizingList(T[] values) {
+        capacity = 10;
+        lastSlotInUse = -1;
+        for (int i = 0; i < values.length; i++) {
+            add(values[i]);
+        }
+    }
 
     /**
      * Adds a new element at the end of the list
@@ -62,12 +78,16 @@ public class ResizingList<T> {
     /**
      * @return number of values in the list
      */
-    public int size() { return lastSlotInUse + 1; }
+    public int size() {
+        return lastSlotInUse + 1;
+    }
 
     /**
      * @return true if no elements, false otherwise
      */
-    public boolean isEmpty() { return size() == 0; }
+    public boolean isEmpty() {
+        return size() == 0;
+    }
 
     /**
      * @return list contents as String representation
@@ -96,11 +116,47 @@ public class ResizingList<T> {
         for (int i = fromIndex; i < lastSlotInUse; i++) {
             contents[i] = contents[i + 1];
         }
+        contents[lastSlotInUse] = null;
     }
 
     private void shiftRigth(int fromIndex) {
         for (int i = lastSlotInUse; i > fromIndex; i--) {
             contents[i] = contents[i - 1];
+        }
+    }
+
+    /**
+     * Custom Iterator implementation to make this data structure iterable in for..each constructs
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return new CustomIterator<>(contents);
+    }
+
+    private class CustomIterator<T> implements Iterator<T> {
+        T current;
+        T[] stuff;
+        int index;
+
+        CustomIterator(T[] stuff) {
+            index = 0;
+            this.stuff = stuff;
+            current = stuff[index];
+        }
+
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        public T next() {
+            T data = current;
+            index++;
+            if (stuff[index] != null) {
+                current = stuff[index];
+            } else {
+                current = null;
+            }
+            return data;
         }
     }
 }

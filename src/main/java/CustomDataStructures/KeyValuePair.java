@@ -1,11 +1,14 @@
 package CustomDataStructures;
 
+import java.io.Serializable;
+
 /**
  * A data structure consisting of a pair of generic key and generic value, used for Hasher data structure
  * @param <K> key type
  * @param <V> value type
  */
-public class KeyValuePair<K, V> {
+public class KeyValuePair<K, V> implements Serializable {
+    private static final long serialVersionUID = 1L;
     private K key;
     private V value;
     private KeyValuePair<K, V> next;
@@ -30,17 +33,40 @@ public class KeyValuePair<K, V> {
         return HashCalculator.generateHashValueFromKey(key);
     }
 
-    // getters and setters...
+    /**
+     * @return key
+     */
+    public K getKey() {
+        return key;
+    }
 
-    public K getKey() { return key; }
+    /**
+     * @return value
+     */
+    public V getValue() {
+        return value;
+    }
 
-    public V getValue() { return value; }
+    /**
+     * @param value
+     */
+    public void setValue(V value) {
+        this.value = value;
+    }
 
-    public void setValue(V value) { this.value = value; }
+    /**
+     * @return next linked KeyValuePair in hash bucket
+     */
+    public KeyValuePair<K, V> getNext() {
+        return next;
+    }
 
-    public KeyValuePair<K, V> getNext() { return next; }
-
-    public void setNext(KeyValuePair<K, V> next) { this.next = next; }
+    /**
+     * @param next next KeyValuePair to be linked in hash bucket
+     */
+    public void setNext(KeyValuePair<K, V> next) {
+        this.next = next;
+    }
 
     /**
      * @return a String representation of the key/value pair, also includes the associated hash value

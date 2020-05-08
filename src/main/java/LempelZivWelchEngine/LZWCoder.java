@@ -1,8 +1,8 @@
 package LempelZivWelchEngine;
 
-import java.util.ArrayList;
+import CustomDataStructures.ResizingList;
 
-// TODO: Miten toimitaan, jos EncodingTable on täynnä?
+import java.util.ArrayList;
 
 public class LZWCoder {
     private EncodingTable encodingTable;
@@ -10,11 +10,11 @@ public class LZWCoder {
     private double actualCompressRatio = 0;
     private double idealCompressRatio = 0;
 
-    public ArrayList<Short> encode(String input) {
+    public ResizingList<Short> encode(String input) {
         long startTime = System.currentTimeMillis();
 
         encodingTable = new EncodingTable();
-        ArrayList<Short> output = new ArrayList<>();
+        ResizingList<Short> output = new ResizingList<>();
         String currentString = "";
         String nextCharacter = "";
 

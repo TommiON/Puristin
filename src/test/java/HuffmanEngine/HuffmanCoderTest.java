@@ -32,6 +32,6 @@ public class HuffmanCoderTest {
         BitSequence output = huffmanCoder.getOutput();
         String outputAsString = output.getAsString();
         System.out.println("Binäärimuoto: " + outputAsString);
-        assertEquals("0110100", outputAsString);
+        assertEquals("01101010", outputAsString);
     }
 }

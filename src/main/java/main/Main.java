@@ -1,14 +1,15 @@
 package main;
 
 import CustomDataStructures.BitSequence;
+import CustomDataStructures.ResizingList;
 import HuffmanEngine.CodingAlphabet;
 import HuffmanEngine.HuffmanRunner;
 import LempelZivWelchEngine.LZWCoder;
 import LempelZivWelchEngine.LZWDecoder;
-import io.FileManager;
 
-import java.util.ArrayList;
+import io.FileManager;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -68,7 +69,7 @@ public class Main {
                     System.out.println("Pakattava teksti:");
                     String textToBeCoded2 = scanner.nextLine();
                     LZWCoder lzwCoder = new LZWCoder();
-                    ArrayList<Short> resultNumbers = lzwCoder.encode(textToBeCoded2);
+                    ResizingList<Short> resultNumbers = lzwCoder.encode(textToBeCoded2);
                     System.out.print("Pakattuna: ");
                     for (int code : resultNumbers) {
                         System.out.print(code + " ");
@@ -81,7 +82,7 @@ public class Main {
                     System.out.println("Purettava data (kokonaislukuina välilyönnein eroteltuna):");
                     String codedStuffInNumbers = scanner.nextLine();
                     String[] components = codedStuffInNumbers.split(" ");
-                    ArrayList codedNumbers = new ArrayList();
+                    ResizingList codedNumbers = new ResizingList();
                     for (String s : components) {
                         codedNumbers.add(Short.parseShort(s));
                     }
@@ -118,7 +119,7 @@ public class Main {
                 try {
                     String plainText = FileManager.readText(sourceFileName);
                     LZWCoder lzwCoder = new LZWCoder();
-                    ArrayList<Short> resultNumbers = lzwCoder.encode(plainText);
+                    ResizingList<Short> resultNumbers = lzwCoder.encode(plainText);
                     // TODO: tämä siistimmäksi jos ehtii
                     short[] resultNumbersAsArray = new short[resultNumbers.size()];
                     int i = 0;
@@ -141,7 +142,7 @@ public class Main {
                     short[] codedInput = FileManager.readShorts(sourceFileName);
                     LZWDecoder lzwDecoder = new LZWDecoder();
                     // TODO: tämä siistimmäksi jos ehtii
-                    ArrayList<Short> codedInputReformatted = new ArrayList<>();
+                    ResizingList<Short> codedInputReformatted = new ResizingList<>();
                     for (int i = 0; i < codedInput.length; i++) {
                         codedInputReformatted.add(codedInput[i]);
                     }
@@ -216,29 +217,3 @@ public class Main {
         System.exit(1);
     }
 }
-
-  /*
-        if (args.length != 2) {
-            System.out.println("Virheelliset parametrit. Oikea muoto: puristin [pakkaa|pura] <tiedostonimi>");
-            System.exit(0);
-        }
-
-        if (args[0].equals("pakkaa")) {
-            System.out.println("Pakataan...");
-            try {
-                StringBuffer buffer = TextFileManager.readCharactersFromFile(args[1]);
-                plainText = new char[buffer.length()];
-                buffer.getChars(0, buffer.length() - 1, plainText, 0);
-                for (char character : plainText) {
-                    System.out.print(character);
-                }
-            } catch (IOException exception) {
-                System.out.println("Virhe tiedoston lukemisessa!");
-            }
-        }
-
-        if (args[0].equals("pura")) {
-            System.out.println("Puretaan...");
-        }
-
-         */

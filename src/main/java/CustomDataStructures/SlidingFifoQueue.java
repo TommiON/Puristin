@@ -4,7 +4,7 @@ import HuffmanEngine.CodingUnit;
 
 /**
  * Implements a FIFO queue for CodingUnits.
- * Max needed space is known, and popping/pushing is done in a "sliding" window to avoid moving elements around.
+ * Max needed space is known, so adding/polling is done in a "sliding" window to avoid moving elements around.
  */
 public class SlidingFifoQueue {
     private CodingUnit[] contents = new CodingUnit[256];
@@ -15,7 +15,7 @@ public class SlidingFifoQueue {
      * Returns the first element in queue
      * @return CodingUnit that has been in the queue for longest
      */
-    public CodingUnit pop() {
+    public CodingUnit poll() {
         if (isEmpty()) { return null; }
 
         int returnIndex = readHeadPosition;
@@ -27,7 +27,7 @@ public class SlidingFifoQueue {
      * Inserts a new element at the end of the queue
      * @param codingUnit CodingUnit to be added
      */
-    public void push(CodingUnit codingUnit) {
+    public void add(CodingUnit codingUnit) {
         contents[writeHeadPosition] = codingUnit;
         writeHeadPosition++;
     }

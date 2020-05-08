@@ -22,8 +22,10 @@ public class CodingAlphabetTest {
         CodingAlphabet alphabet = new CodingAlphabet();
         alphabet.buildWith(rootNode);
 
+        System.out.println(alphabet.toString());
+
         String bitSequenceRepresentationForC = alphabet.getBitsForCharacter('c');
-        assertEquals("100", bitSequenceRepresentationForC);
+        assertEquals("1010", bitSequenceRepresentationForC);
         System.out.println(bitSequenceRepresentationForC);
 
         BitSequence bitSequence = new BitSequence();
@@ -32,7 +34,7 @@ public class CodingAlphabetTest {
         bitSequence.pushLast(true);
         bitSequence.pushLast(false);
         Character characterForBitRepresentation1010 = alphabet.getCharacterForBits(bitSequence);
-        assertEquals(new Character('h'), characterForBitRepresentation1010);
+        assertEquals(new Character('c'), characterForBitRepresentation1010);
         System.out.println(characterForBitRepresentation1010);
 
         assertEquals(5, alphabet.size());
@@ -58,7 +60,7 @@ public class CodingAlphabetTest {
         System.out.println(alphabet.toString());
 
         String bitSequenceRepresentationForC = alphabet.getBitsForCharacter('c');
-        assertEquals("10", bitSequenceRepresentationForC);
+        assertEquals("111", bitSequenceRepresentationForC);
         System.out.println(bitSequenceRepresentationForC);
     }
 }

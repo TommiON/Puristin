@@ -1,6 +1,6 @@
 package HuffmanEngine;
 
-import CustomDataStructures.BitSequence;
+import CustomDataStructures.*;
 
 import java.io.Serializable;
 import java.util.ArrayDeque;
@@ -12,15 +12,15 @@ import java.util.Map;
  */
 public class CodingAlphabet implements Serializable {
     private static final long serialVersionUID = 1L;
-    private HashMap<Character, String> charactersToBits = new HashMap<>();
-    private HashMap<String, Character> bitsToCharacters = new HashMap<>();
+    private Hasher<Character, String> charactersToBits = new Hasher<>();
+    private Hasher<String, Character> bitsToCharacters = new Hasher<>();
 
     /**
      * Constructs the alphabet with width-first graph search, saving text->binary and binary->text mappings whenever a character node is encountered
      * @param rootNode CodingUnit node where building is to start from
      */
     public void buildWith(CodingUnit rootNode) {
-        ArrayDeque<CodingUnit> queue = new ArrayDeque<>();
+        SlidingFifoQueue queue = new SlidingFifoQueue();
         queue.add(rootNode);
 
         while(!queue.isEmpty()) {
@@ -79,13 +79,13 @@ public class CodingAlphabet implements Serializable {
     @Override
     public String toString() {
         String stringRepresentation = new String();
-        for (Map.Entry<Character, String> entry: charactersToBits.entrySet()) {
-            stringRepresentation += entry.getKey() + " ";
-            stringRepresentation += entry.getValue();
+        ResizingList keyValuePairs = charactersToBits.getEntrySet();
+        for (Object o : keyValuePairs) {
+            KeyValuePair pair = (KeyValuePair) o;
+            stringRepresentation += pair.getKey().toString() + " ";
+            stringRepresentation += pair.getValue().toString();
             stringRepresentation += "\n";
         }
         return stringRepresentation;
     }
-
-
 }

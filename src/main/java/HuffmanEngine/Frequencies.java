@@ -1,13 +1,18 @@
 package HuffmanEngine;
 
+import CustomDataStructures.Hasher;
+import CustomDataStructures.KeyValuePair;
+import CustomDataStructures.ResizingList;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
- * Implements the frequency book-keeping of characters
+ * Implements frequency book-keeping of characters
  */
 public class Frequencies {
-    private HashMap<Character, CodingUnit> contents = new HashMap<>();
+    private Hasher<Character, CodingUnit> contents = new Hasher<>();
 
     /**
      * Called when a character is encountered. Creates a new CodingUnit if a new character, otherwise increments the frequency by one.
@@ -25,11 +30,16 @@ public class Frequencies {
     }
 
     /**
-     * Returns the contained CodingUnits as a List
-     * @return ArrayList of CodingUnits
+     * Returns the contained CodingUnits as a list
+     * @return ResizingList of CodingUnits
      */
-    public ArrayList<CodingUnit> getCodingUnitsAsList() {
-        ArrayList codingUnits = new ArrayList<CodingUnit>(contents.values());
+    public ResizingList<CodingUnit> getCodingUnitsAsList() {
+        ResizingList codingUnits = new ResizingList();
+        for (Object entry : contents.getEntrySet()) {
+            KeyValuePair pair = (KeyValuePair) entry;
+            CodingUnit codingUnit = (CodingUnit) pair.getValue();
+            codingUnits.add(codingUnit);
+        }
         return codingUnits;
     }
 
@@ -41,11 +51,12 @@ public class Frequencies {
         return contents.size();
     }
 
+    // TODO: Tarvitaanko tätä mihinkään?
     /**
      * Reset the contents before starting a new coding run
      */
     public void reset() {
-        contents = new HashMap<>();
+        contents = new Hasher<>();
     }
 
 }

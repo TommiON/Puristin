@@ -1,5 +1,7 @@
 package LempelZivWelchEngine;
 
+import CustomDataStructures.ResizingList;
+
 import java.util.ArrayList;
 
 /**
@@ -20,7 +22,7 @@ public class LZWDecoder {
      * @param input
      * @return
      */
-    public String decode(ArrayList<Short> input) {
+    public String decode(ResizingList<Short> input) {
         long startTime = System.currentTimeMillis();
         String output = "";
 

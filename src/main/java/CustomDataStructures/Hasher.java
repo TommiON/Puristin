@@ -1,11 +1,14 @@
 package CustomDataStructures;
 
+import java.io.Serializable;
+
 /**
  * Custom HashMap-like data structure with generic keys and values
  * @param <K> key type
  * @param <V> value type
  */
-public class Hasher<K, V> {
+public class Hasher<K, V> implements Serializable {
+    private static final long serialVersionUID = 1L;
     private static int numberOfBuckets = 4096;
     private KeyValuePair[] buckets = new KeyValuePair[numberOfBuckets];
     private int size = 0;
@@ -72,7 +75,9 @@ public class Hasher<K, V> {
     /**
      * @return numbers of entries in the data structure
      */
-    public int size() { return size; }
+    public int size() {
+        return size;
+    }
 
     /**
      * @return all key/value pairs stored as a ResizingList

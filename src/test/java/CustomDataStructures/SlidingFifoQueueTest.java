@@ -17,18 +17,18 @@ public class SlidingFifoQueueTest {
         CodingUnit b = new CodingUnit('b');
         CodingUnit c = new CodingUnit('c');
 
-        queue.push(a);
-        queue.push(b);
-        queue.push(c);
+        queue.add(a);
+        queue.add(b);
+        queue.add(c);
 
         assertEquals(false, queue.isEmpty());
 
         for (int i = 1; i <= 3; i++) {
-            System.out.println(i + ": " + queue.pop());
+            System.out.println(i + ": " + queue.poll());
         }
         assertEquals(true, queue.isEmpty());
 
-        CodingUnit doesNotExist = queue.pop();
+        CodingUnit doesNotExist = queue.poll();
         assertNull(doesNotExist);
     }
 }

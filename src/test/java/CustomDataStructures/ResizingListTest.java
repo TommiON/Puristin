@@ -95,4 +95,44 @@ public class ResizingListTest {
     public void testRemovingOutOfBounds() {
         assertNull(list.remove(100));
     }
+
+    @Test
+    public void testIterating() {
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        list.add("d");
+        list.add("e");
+        list.add("x");
+        for (Object node : list) {
+            System.out.println(node.toString());
+        }
+        System.out.println("---");
+        list.remove(2);
+        list.remove(2);
+        list.remove(2);
+        for (Object node : list) {
+            System.out.println(node.toString());
+        }
+    }
+
+    @Test
+    public void testIterating2() {
+        list.add(new Date());
+        list.add(new Date());
+        for (Object node : list) {
+            System.out.println(node.toString());
+        }
+        System.out.println("---");
+        list.add("toimisko näinkin?");
+        list.add(new Date());
+        for (Object node : list) {
+            System.out.println(node.toString());
+        }
+        System.out.println("---");
+        list.remove(0);
+        for (Object node : list) {
+            System.out.println(node.toString());
+        }
+    }
 }
