@@ -20,10 +20,15 @@ Ratkaisu jakaantuu suunnilleen seuraaviin osa-algoritmeihin ja niitä tukeviin t
 * Pakattua tiedostoa purettaessa edellinen kohta suoritetaan päinvastaiseen suuntaan.
 
 ## Aikavaativuudet (Huffman)
-* Koodaus/dekoodaus O(m), jossa m = datan eli merkkien määrä.
+* Frekvenssien laskeminen ja koodaus/dekoodaus O(m), jossa m = datan eli merkkien määrä.
 * Huffman-puun muodostaminen O(n log n), jossa n = aakkosten eli uniikkien merkkien määrä.
 
 ## Osa-algoritmit ja tietorakenteet (LZW)
+Ratkaisu jakaantuu suunnilleen seuraaviin osa-algoritmeihin ja niitä tukeviin tietorakenteisiin:
+* Alustetaan selkokieli->lyhenne -sanakirja, jossa on aluksi "lyhenne" yksikirjaimisille syötteille eli ASCII-merkistölle. Koska sanakirjaan tehdään hakuja paljon ja satunnaisessa järjestyksessä, se toteutetaan hajautustauluna.
+* Käydään syötettä läpi merkki kerrallaan ja rakennetaan niistä pisin merkkijono, jota vastaava lyhenne löytyy sanakirjasta. Korvataan kyseinen merkkijono tällä lyhenteellä.
+* Laajennetaan jatkuvasti sanakirjaa lisäämällä sinne uusi lyhenne äskeiselle pisimmälle löytyneelle merkkijonolle + sitä seuranneelle merkille. Jos sanakirjan kapasiteetti loppuu ennen syötettä, loppuosa syötteestä käsitellään olemassaolevalla sanakirjalla.
+* Purettaessa aloitetaan samanlaisella alustetulla sanakirjalla ja "simuloidaan peruuttaen" pakkausvaiheen sanakirjan rakentamista. Tämä tehdään lisäämällä sanakirjaan aina merkkijono, joka saadaan yhdiställä äskeinen merkkijono ja ensimmäinen merkki siitä merkkijonosta, joka saadaan hakemalla sanakirjasta seuraavalla syötteellä. Näin purkualgoritmi tulee rakentaneeksi samanlaisen sanakirjan kuin pakkausalgoritmikin.
 
 ## Aikavaativuudet (LZW)
 
