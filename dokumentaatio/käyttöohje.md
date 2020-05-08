@@ -14,7 +14,7 @@ Sovellus näyttää pakkauksen tai purun tuloksen suoraan ruudulla ja tarjoaa li
 
 Komentorivimoodissa dataa voidaan lukea tiedostoista ja kirjoittaa niihin. Komentorivikäytön syntaksi on seuraava:
 
-```Puristin [huffman|lzw] [pakkaa|pura] <<lähdetiedosto>> <<kohdetiedosto>>```
+```Puristin [huffman | lzw] [pakkaa | pura] <<lähdetiedosto>> <<kohdetiedosto>>```
 
 Komennossa on neljä parametria, joista kaikki ovat pakollisia.
 * Ensimmäisellä parametrilla valitaan käytettävä algoritmi, vaihtoehdot `huffman` ja `lzw`.
