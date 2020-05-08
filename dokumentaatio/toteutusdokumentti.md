@@ -39,7 +39,8 @@ _Aikavaativuudet kummallekin vielä määrittelemättä..._
 
 ### Puutteita ja ongelmia
 
-Ajanpuutteen vuoksi sovellukseen jäi ainakin seuraavat oleelliset puutteet:
+Ajanpuutteen ja liian pian tulleen palautuksen vuoksi sovellukseen jäi ainakin seuraavat oleelliset puutteet:
+* Huffmanin purkuosiossa on jokin bugi, joka tekee purkamisesta hidasta. Tarkemmin [testausdokumentissa](testaus.md).
 * LZW-pakkaus tallentaa koodiavaimet 16-bittisinä short-numeroina, vaikka 12 bittiä riittäisi. Tämä syö pakkauksen tehoa. Tehokkaampi tapa olisi tallentaa bittivirtana, tavua pienemmällä resoluutiolla.
 * LZW ei osaa reagoida tuntemattomiin (ASCII:n ulkopuolisiin) merkkeihin rakentavasti, vaan kaatuu.
 * Algoritminen ydinosa eli _HuffmanEngine_- ja _LZWEngine_-pakkausten sisältö toimii (kai) kohtalaisen nopeasti, mutta näitä ympäröivässä osassa eli _IO_- ja _Main_-pakkauksissa on kiireessä tehtyjä, hitaita purkkavirityksiä. Esimerkiksi LZW-pakkauksessa tehdään iteroimalla muunnos arrayn ja arraylistin välillä. Useimmista ongelmakohdista minulla on ihan selkeä käsitys tarvittavasta optimoinnista, mutta aika ei yksinkertaisesti riittänyt.
