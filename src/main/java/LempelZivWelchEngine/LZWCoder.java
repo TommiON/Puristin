@@ -7,7 +7,8 @@ import java.util.ArrayList;
 public class LZWCoder {
     private EncodingTable encodingTable;
     private long timer = 0;
-    private double compressRatio = 0;
+    private double actualCompressRatio = 0;
+    private double idealCompressRatio = 0;
 
     public ArrayList<Short> encode(String input) {
         long startTime = System.currentTimeMillis();
@@ -33,7 +34,8 @@ public class LZWCoder {
 
         long stopTime = System.currentTimeMillis();
         timer = (stopTime - startTime);
-        compressRatio = (double)output.size() / (double)input.length() * 100;
+        actualCompressRatio = 2 * (double)output.size() / (double)input.length() * 100;
+        idealCompressRatio = 1.5 * (double)output.size() / (double)input.length() * 100;
 
         return output;
     }
@@ -42,6 +44,8 @@ public class LZWCoder {
 
     public long getTime() { return timer; }
 
-    public double getCompressRatio() { return compressRatio; }
+    public double getActualCompressRatio() { return actualCompressRatio; }
+
+    public double getIdealCompressRatio() { return idealCompressRatio; }
 
 }

@@ -24,7 +24,9 @@ public class EncodingTable {
         counter++;
     }
 
-    public short getCodeForString(String string) { return contents.get(string); }
+    public short getCodeForString(String string) {
+        return contents.get(string);
+    }
 
     public boolean hasSpaceLeft() { return counter < capacity; }
 

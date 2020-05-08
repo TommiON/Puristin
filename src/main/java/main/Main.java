@@ -75,7 +75,7 @@ public class Main {
                     }
                     System.out.println();
                     System.out.println("Aikaa kului " + lzwCoder.getTime() + " millisekuntia.");
-                    System.out.println("Pakkaussuhde: " + lzwCoder.getCompressRatio() + " % alkuperäisestä.");
+                    System.out.println("Pakkaussuhde: " + (int)lzwCoder.getActualCompressRatio() + " % alkuperäisestä.");
                     break;
                 case "4":
                     System.out.println("Purettava data (kokonaislukuina välilyönnein eroteltuna):");
@@ -129,7 +129,8 @@ public class Main {
                     // TODO: tähän asti
                     FileManager.writeShorts(targetFileName, resultNumbersAsArray);
                     System.out.println("Aikaa kului " + lzwCoder.getTime() + " millisekuntia.");
-                    System.out.println("Pakkaussuhde: " + lzwCoder.getCompressRatio() + " % alkuperäisestä");
+                    System.out.println("Pakkaussuhde: " + (int)lzwCoder.getActualCompressRatio() + " % alkuperäisestä (ideaalinen pakkaussuhde "
+                            + (int)lzwCoder.getIdealCompressRatio() + " %)");
                     System.exit(0);
                 } catch (Exception e) {
                     System.out.println("Ongelma! " + e);
