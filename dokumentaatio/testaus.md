@@ -2,7 +2,7 @@
 
 ## Yksikkötestaus
 
-Yksikkötestejä tehtiin 57 kpl, kaikki menevät läpi. Jacocon laskema testikattavuus alla olevassa kuvassa, tarkempi Jacoco-raportointi löytyy myös repositoriosta. Main-pakettia ei yritettykään testata, joten "todellinen" testikattavuus jonkin verran suurempi.
+Yksikkötestejä on yhteensä 57 kpl. Jacocon laskema testikattavuus alla olevassa kuvassa, tarkempi Jacoco-raportointi löytyy myös repositoriosta. Main-pakettia ei yritettykään testata, joten "todellinen" testikattavuus jonkin verran suurempi.
 
 ![](test_coverage_final.png)
 
