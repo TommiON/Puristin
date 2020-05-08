@@ -25,3 +25,5 @@ Komennossa on neljä parametria, joista kaikki ovat pakollisia.
 Esimerkki komennosta, joka pakkaa _source.txt_ -tiedoston LZW-algoritmilla tiedostoon _target.lzw_:
 
 ```Puristin lzw pakkaa source.txt target.lzw```
+
+Huom! Huffman-pakkausta käytettäessä sovellus luo pakatun kohdetiedoston lisäksi samaan hakemistoon erillisen aakkostotiedoston, jonka nimi on muuten sama kuin kohdetiedostolla, mutta päätteeksi lisätään _.alphabet_.
