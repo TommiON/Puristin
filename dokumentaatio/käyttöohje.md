@@ -18,7 +18,7 @@ Sovellus näyttää pakkauksen tai purun tuloksen suoraan ruudulla ja tarjoaa li
 
 Komentorivimoodissa dataa voidaan lukea tiedostoista ja kirjoittaa niihin. Komentorivikäytön syntaksi on seuraava:
 
-```Puristin [huffman|lzw] [pakkaa|pura] <<lähdetiedosto>> <<kohdetiedosto>>```
+```java -jar Puristin.jar [huffman|lzw] [pakkaa|pura] <<lähdetiedosto>> <<kohdetiedosto>>```
 
 Komennossa on neljä parametria, joista kaikki ovat pakollisia.
 * Ensimmäisellä parametrilla valitaan käytettävä algoritmi, vaihtoehdot `huffman` ja `lzw`.
@@ -28,6 +28,6 @@ Komennossa on neljä parametria, joista kaikki ovat pakollisia.
 
 Esimerkki komennosta, joka pakkaa _source.txt_ -tiedoston LZW-algoritmilla tiedostoon _target.lzw_:
 
-```Puristin lzw pakkaa source.txt target.lzw```
+```java -jar Puristin.jar lzw pakkaa source.txt target.lzw```
 
 Huom! Huffman-pakkausta käytettäessä sovellus luo pakatun kohdetiedoston lisäksi samaan hakemistoon erillisen aakkostotiedoston, jonka nimi on muuten sama kuin kohdetiedostolla, mutta päätteeksi lisätään _.alphabet_.
