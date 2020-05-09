@@ -14,7 +14,7 @@ Huffman- ja LZW-pakkauksiin on rakennettu toiminnallisuus, joka mittaa kuluneen 
 
 Automaattiset suorituskykytestit löytyvät _Performance_-testipakkauksesta. Ne käyttävät seuraavia testiaineistoja:
 * Data 1: Noin 22 kilotavun kokoinen suomenkielinen blogiteksti.
-* Data 2: Joseph Condardin Heart of Darkness -romaanin ensimmäinen osa, noin 80 kilotavun englanninkielinen teksti. (Tämä on ainoa testauksen tarvitsema ulkoinen tiedosto ja löytyy projektin juuresta nimellä _test_heart_of_darkness.txt_.
+* Data 2: Joseph Condardin Heart of Darkness -romaanin ensimmäinen osa, noin 80 kilotavun englanninkielinen teksti. (Tämä on ainoa testauksen tarvitsema ulkoinen tiedosto ja löytyy projektin juuresta nimellä _test_heart_of_darkness.txt_).
 * Data 3: Merkkijono, jossa toistuu tuhat kertaa teksti _"Tässä olisi vähän tekstiä, toistetaan huomattavan monta kertaa samanlaisena"_.
 
 Oheisessa taulukossa mittaustuloksia. JCL (Java Class Library) mitattiin siinä vaiheessa kun sovellus toimi vielä Javan tarjoamilla tietorakenteilla, custom puolestaan sitten kun ne oli korvattu omilla tietorakenteilla.
