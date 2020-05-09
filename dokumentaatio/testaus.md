@@ -32,7 +32,7 @@ Selvästi tärkein testihuomio on valtava epäsuhta Huffman-pakkauksen ja -purka
 
 Muita huomioita suorituskyvystä:
 * Algoritmit melko tasaväkisiä pakkaussuhteessa. LZW:n heikommat tulokset selittyvät 16-bittisellä tiedosto-I/O:lla. Ja kuten odottaa saattaa, LZW loistaa aineistolla 3, jossa on erittäin paljon toistoa.
-* Yllättävää kyllä, omat tietorakenteet eivät juuri hidastaneet toimintaa. Olin varautunut siihen, että Java-ammattilaisten vuosia optimoimat toteutukset pesevät opiskelijatyön mennen tullen. (Toisteisessa datassa eli datassa nro. 3 omat tietorakenteet hidastavat LZW-pakkausta huomattavasti. Siellä lienee jokin optimoinnin puute tai rakenteellinen ongelma, joka korostuu toisteisella datalla.)
+* Yllättävää kyllä, omat tietorakenteet eivät juuri hidastaneet toimintaa. Olin varautunut siihen, että Java-ammattilaisten vuosia optimoimat toteutukset pesevät opiskelijatyön mennen tullen. (Toisteisessa datassa eli datassa nro. 3 omat tietorakenteet tosin näyttävät hidastavan LZW-pakkausta huomattavasti. Siellä lienee jokin optimoinnin puute tai rakenteellinen ongelma, joka korostuu toisteisella datalla.)
 * Kaikki mittaukset siis tehty "in-memory" eivätkä ota huomioon tiedosto-I/O:n osuutta. Tiedosto-I/O on joka tapauksessa heikosti optimoitu, se on selvää ilman testejäkin, ja tässä vaiheessa testiosaaminen ei olisi ehkä riittänytkään tiedostoliikenteen mittaamiseen.
 
 Kaikkinensa LZW oli paitsi koodimäärältään yksinkertaisempi, myös lopputuloksena onnistuneempi. Jos tästä jokin loppupalaute tulee, olisi mielenkiintoista kuulla, mikä tuossa Huffmanissa oikeastaan meni mönkään.
