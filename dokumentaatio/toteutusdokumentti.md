@@ -14,26 +14,26 @@ Sovellukselle on toteutettu seuraavat tietorakenteet:
 Algoritminen ydinosa on toteutettu kokonaan omilla tietorakenteilla eikä sisällä import-viittauksia Javan tietorakenteisiin, ellei tällaiseksi lasketa _ResizingList_-luokan riippuvuutta _java.util.Iteratorista_, jonka avulla rakennettiin oma iteraattori for/each-iteraatioita varten.
 
 ## Huffman
-Luokka _HuffmanRunner_ toimii Huffman-osuuden pääluokkana. Se koordinoi pakkauksen ja purkamisen eri vaiheita ja tuottaa asiaan liittyvää metadataa.
+Luokka **HuffmanRunner** toimii Huffman-osuuden pääluokkana. Se koordinoi pakkauksen ja purkamisen eri vaiheita ja tuottaa asiaan liittyvää metadataa.
 
 Pakattaessa sovelluksen Huffman-algoritmia käyttävä osuus toimii näin:
-* Toteutuksen keskeinen model-luokka on _CodingUnit_. Jokainen _CodingUnit_-olio tallentaa yhden koodauksen perusyksikön eli tekstimerkin. Olio sisältää itse merkin, sen esiintymiskerrat tekstissä sekä merkin pakatun binääriesityksen. Lisäksi on myöhemmin tarvittavaa puunrakennukseen liittyvää dataa, joka on alkuvaiheessa "null".
-* _Frequencies_-luokka käy syötetekstin läpi merkki merkiltä. Uuden merkin kohdatessaan se luo sille _CodingUnitin_, kohdatessaan saman merkin uudelleen lisää merkin esiintymiskertoja yhdellä.
-* Tämän jälkeen _CodingUnitit_ syötetään _FeederQueue_-luokalle. Se toimii minikikekona eli prioriteettijonona, jossa syötedatassa vähiten esiintyvä _CodingUnit_ on ensimmäisenä.
-* Seuraavaksi _CodingTree_-luokka rakentaa _CodingUniteista_ binääripuun. Tämä tehdään ottamalla _FeederQueuesta_ aina kaksi ensimmäistä _CodingUnitia_ ja yhdistämällä niistä uusi _CodingUnit_: jonosta otetuista tulee uuden _CodingUnitin_ vasen ja oikea lapsi, ja uuden _CodingUnitin_ esiintymiskertaluku on sen lapsien esiintymiskertojen summa. Jonosta otetut _CodingUnitit_ eivät enää palaa pririteettijonoon, mutta uusi _CodingUnit_ työnnetään sinne. Tätä jatketaan, kunnes jonossa on enää yksi alkio: tämä on puun juuri, ja puu on nyt valmis.
-* Seuraavana on vuorossa _CodingAlphabet_-luokka, joka käynnistää puun juurialkiosta lähtien leveyshaun ja rakentaa sen aikana jokaiselle _CodingUnitille_ yksilöllisen bittiesityksen: binääripuun vasemman haaran seuraaminen on "0", oikean "1".
-* Lopuksi _Coder_-luokka hyödyntää _CodingAlphabetin_ ylläpitämää sanakirjaa, korvaa jokaisen kohdatun merkin sen bittiesityksellä ja muodostaa näin tulostemerkkijonon.
+* Toteutuksen keskeinen model-luokka on **CodingUnit**. Jokainen _CodingUnit_-olio tallentaa yhden koodauksen perusyksikön eli tekstimerkin. Olio sisältää itse merkin, sen esiintymiskerrat tekstissä sekä merkin pakatun binääriesityksen. Lisäksi on myöhemmin tarvittavaa puunrakennukseen liittyvää dataa, joka on alkuvaiheessa "null".
+* **Frequencies**-luokka käy syötetekstin läpi merkki merkiltä. Uuden merkin kohdatessaan se luo sille _CodingUnitin_, kohdatessaan saman merkin uudelleen lisää merkin esiintymiskertoja yhdellä.
+* Tämän jälkeen _CodingUnitit_ syötetään **FeederQueue**-luokalle. Se toimii minikikekona eli prioriteettijonona, jossa syötedatassa vähiten esiintyvä _CodingUnit_ on ensimmäisenä.
+* Seuraavaksi **CodingTree**-luokka rakentaa _CodingUniteista_ binääripuun. Tämä tehdään ottamalla _FeederQueuesta_ aina kaksi ensimmäistä _CodingUnitia_ ja yhdistämällä niistä uusi _CodingUnit_: jonosta otetuista tulee uuden _CodingUnitin_ vasen ja oikea lapsi, ja uuden _CodingUnitin_ esiintymiskertaluku on sen lapsien esiintymiskertojen summa. Jonosta otetut _CodingUnitit_ eivät enää palaa pririteettijonoon, mutta uusi _CodingUnit_ työnnetään sinne. Tätä jatketaan, kunnes jonossa on enää yksi alkio: tämä on puun juuri, ja puu on nyt valmis.
+* Seuraavana on vuorossa **CodingAlphabet**-luokka, joka käynnistää puun juurialkiosta lähtien leveyshaun ja rakentaa sen aikana jokaiselle _CodingUnitille_ yksilöllisen bittiesityksen: binääripuun vasemman haaran seuraaminen on "0", oikean "1".
+* Lopuksi **Coder**-luokka hyödyntää _CodingAlphabetin_ ylläpitämää sanakirjaa, korvaa jokaisen kohdatun merkin sen bittiesityksellä ja muodostaa näin tulostemerkkijonon.
 
-Purettaessa prosessi on huomattavasti yksinkertaisempi, koska koodausaakkosto on jo olemassa. Tällöin _Decoder_-luokka hyödyntää erilliseen tiedostoon tallennettua _CodingAlphabet_-sanakirjaa toiseen suuntaan ja korvaa bittiesityksen tekstimerkeillä. 
+Purettaessa prosessi on huomattavasti yksinkertaisempi, koska koodausaakkosto on jo olemassa. Tällöin **Decoder**-luokka hyödyntää erilliseen tiedostoon tallennettua _CodingAlphabet_-sanakirjaa toiseen suuntaan ja korvaa bittiesityksen tekstimerkeillä. 
 
 ## Lempel-Ziv-Welch
 Sovelluksen LZW-algoritmia käyttävä osuus toimii dataa pakattaessa yleistasolla näin:
-* _EncodingTable_-luokka sisältää sanakirjan, jolla muunnetaan lähdedata pakatuksi (String -> Int-taulukko). Sisältää lähtödatana ASCII-merkit 0-255. Lähtödata on myös purkualgoritmin tiedossa, joten datan ulkopuolelle tallennettavaa sanakirjaa ei tarvita lainkaan.
-* _LZWCoder_-luokka käy syötedatan läpi järjestyksessä, rakentaa samalla koodaussanakirjan EncodingTable-luokkaan ja pakkaa sen avulla datan.
+* **EncodingTable**-luokka sisältää sanakirjan, jolla muunnetaan lähdedata pakatuksi (String -> Int-taulukko). Sisältää lähtödatana ASCII-merkit 0-255. Lähtödata on myös purkualgoritmin tiedossa, joten datan ulkopuolelle tallennettavaa sanakirjaa ei tarvita lainkaan.
+* **LZWCoder**-luokka käy syötedatan läpi järjestyksessä, rakentaa samalla koodaussanakirjan EncodingTable-luokkaan ja pakkaa sen avulla datan.
 
 Purettaessa sama prosessi kulkee toiseen suuntaan:
-* _DecodingTable_-luokkaan luo sanakirja, jolla muunnetaan pakattu data alkuperäiseksi (Int-taulukko -> String). Sisältää lähtödatana ASCII-merkit 0-255.
-* _LZWDecoder_-luokka käy pakatun datan läpi järjestyksessä, päättelee alkuperäisen, pakatessa muodostetun sanakirjan ja generoi sen _DecodingTable_-luokkaan, ja palauttaa sen avulla pakatun datan alkuperäiseen muotoon.
+* **DecodingTable**-luokkaan luo sanakirja, jolla muunnetaan pakattu data alkuperäiseksi (Int-taulukko -> String). Sisältää lähtödatana ASCII-merkit 0-255.
+* **LZWDecoder**-luokka käy pakatun datan läpi järjestyksessä, päättelee alkuperäisen, pakatessa muodostetun sanakirjan ja generoi sen _DecodingTable_-luokkaan, ja palauttaa sen avulla pakatun datan alkuperäiseen muotoon.
 
 ## Puutteita ja ongelmia
 Ajanpuutteen vuoksi sovellukseen jäi ainakin seuraavat oleelliset puutteet:
