@@ -1,8 +1,8 @@
 # Toteutus
 
-### Sovelluksen yleinen rakenne
+## Sovelluksen yleinen rakenne
 
-### Omat tietorakenteet
+## Omat tietorakenteet
 
 Sovellukselle on toteutettu seuraavat tietorakenteet:
 * **Hasher** ja **KeyValuePair**. Avain/arvo-parin toteuttava tietorakenne ja hajautustaulu niiden tallentamiseen. Molemmat geneerisiä eli hyväksyvät avaimiksi ja arvoiksi mitä vain. (Geneerisyydessä tosin sellainen rajoite, että hajautusarvoja laskeva **HashCalculator**-apuluokka palauttaa järkeviä arvoja vain String- ja Character-tyyppisille avaimille, koska vain noita sovellus käyttää.)
@@ -11,7 +11,7 @@ Sovellukselle on toteutettu seuraavat tietorakenteet:
 * **MinHeap**. "Pienin ensin"-prioriteettijono. Toimii vain CodingUniteilla, ei ehditty muuttaa geneeriseksi.
 * **SlidingFifoQueue**. First in, first out -jono. Toimii vain CodingUniteilla, ei ehditty muuttaa geneeriseksi.
 
-### Huffman
+## Huffman
 
 Dataa pakattaessa sovelluksen Huffman-algoritmia käyttävä osuus toimii yleistasolla näin:
 
@@ -24,7 +24,7 @@ Dataa pakattaessa sovelluksen Huffman-algoritmia käyttävä osuus toimii yleist
 
 Purettaessa prosessi on huomattavasti yksinkertaisempi, koska koodausaakkosto on jo olemassa. Tällöin Decoder-luokka hyödyntää CodingAlphabetin sanakirjaa toiseen suuntaan ja korvaa bittiesityksen tekstimerkeillä. _Koodausaakkoston tallennus datan mukana vielä mietinnässä..._
 
-### Lempel-Ziv-Welch
+## Lempel-Ziv-Welch
 
 Sovelluksen LZQ-algoritmia käyttävä osuus toimii dataa pakattaessa yleistasolla näin:
 
@@ -38,14 +38,14 @@ Purettaessa sama prosessi kulkee toiseen suuntaan:
 
 _Aikavaativuudet kummallekin vielä määrittelemättä..._
 
-### Puutteita ja ongelmia
+## Puutteita ja ongelmia
 
 Ajanpuutteen ja liian pian tulleen palautuksen vuoksi sovellukseen jäi ainakin seuraavat oleelliset puutteet:
 * Huffmanin purkuosiossa on jokin bugi, joka tekee purkamisesta hidasta. Tarkemmin [testausdokumentissa](testaus.md).
 * LZW-pakkaus tallentaa koodiavaimet 16-bittisinä short-numeroina, vaikka 12 bittiä riittäisi. Tämä syö pakkauksen tehoa. Tehokkaampi tapa olisi tallentaa bittivirtana, tavua pienemmällä resoluutiolla.
 * LZW ei osaa reagoida tuntemattomiin (ASCII:n ulkopuolisiin) merkkeihin rakentavasti, vaan kaatuu.
 * Algoritminen ydinosa eli _HuffmanEngine_- ja _LZWEngine_-pakkausten sisältö toimii (kai) kohtalaisen nopeasti lukuun ottamatta yllä mainittua Huffman-purun bugia, mutta näitä ympäröivässä osassa eli _IO_- ja _Main_-pakkauksissa on kiireessä tehtyjä, hitaita purkkavirityksiä. Esimerkiksi LZW-pakkauksessa tehdään iteroimalla muunnos arrayn ja arraylistin välillä. Useimmista ongelmakohdista minulla on ihan selkeä käsitys tarvittavasta optimoinnista, mutta aika ei yksinkertaisesti riittänyt.
-* Huffman-pakkaus tallentaa aakkoston erilliseen .alphabet-tiedostoon, mikä on epäeleganttia. Aakkosto pitäisi toki pakata samaan tiedostoon datan kanssa, koska jokainen koodausaakkosto on joka tapauksessa uniikki. Lisäksi aakkosto pakataan suoraan Javan ObjectOutputStream-metodiikalla, mikä ei välttämättä ole tilankäytöllisesti tehokkain mahdollinen ratkaisu.
+* Huffman-pakkaus tallentaa aakkoston erilliseen .alphabet-tiedostoon, mikä on epäeleganttia. Aakkosto pitäisi toki pakata samaan tiedostoon datan kanssa, koska jokainen koodausaakkosto on joka tapauksessa uniikki. Lisäksi aakkosto pakataan suoraan Javan ObjectOutputStream-metodiikalla, mikä ei välttämättä ole tilankäytöllisesti kovin tehokas ratkaisu.
 
 Edellisten lisäksi joitakin kauneuvirheiksi luokiteltavia puutteita:
 * Käyttöliittymä on viimeistelemätön, esim. syötteitä ei validoida täysin, tiedostot ylikirjoitetaan ilman eri varoitusta jne.
