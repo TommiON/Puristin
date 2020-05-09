@@ -20,7 +20,7 @@ Komentorivimoodissa dataa voidaan lukea tiedostoista ja kirjoittaa niihin. Komen
 
 ```java -jar Puristin.jar [huffman|lzw] [pakkaa|pura] <<lähdetiedosto>> <<kohdetiedosto>>```
 
-Komennossa on neljä parametria, joista kaikki ovat pakollisia.
+Komennossa on neljä parametria, joista kaikki ovat pakollisia:
 * Ensimmäisellä parametrilla valitaan käytettävä algoritmi, vaihtoehdot `huffman` ja `lzw`.
 * Toisella parametrilla valitaan varsinainen toiminto, joko `pakkaa` tai `pura`.
 * Kolmannella parametrilla annetaan operaation lähdetiedoston nimi.
