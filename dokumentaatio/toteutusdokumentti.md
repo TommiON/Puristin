@@ -27,22 +27,16 @@ Pakattaessa sovelluksen Huffman-algoritmia käyttävä osuus toimii näin:
 Purettaessa prosessi on huomattavasti yksinkertaisempi, koska koodausaakkosto on jo olemassa. Tällöin _Decoder_-luokka hyödyntää erilliseen tiedostoon tallennettua _CodingAlphabet_-sanakirjaa toiseen suuntaan ja korvaa bittiesityksen tekstimerkeillä. 
 
 ## Lempel-Ziv-Welch
-
-Sovelluksen LZQ-algoritmia käyttävä osuus toimii dataa pakattaessa yleistasolla näin:
-
-* EncodingTable-luokkaan luodaan sanakirja, jolla muunnetaan lähdedata pakatuksi (String -> Int-taulukko). Sisältää lähtödatana ASCII-merkit 0-255.
-* LZWCoder-luokka käy syötedatan läpi järjestyksessä, rakentaa samalla koodaussanakirjan EncodingTable-luokkaan ja pakkaa sen avulla datan.
+Sovelluksen LZW-algoritmia käyttävä osuus toimii dataa pakattaessa yleistasolla näin:
+* _EncodingTable_-luokka sisältää sanakirjan, jolla muunnetaan lähdedata pakatuksi (String -> Int-taulukko). Sisältää lähtödatana ASCII-merkit 0-255. Lähtödata on myös purkualgoritmin tiedossa, joten datan ulkopuolelle tallennettavaa sanakirjaa ei tarvita lainkaan.
+* _LZWCoder_-luokka käy syötedatan läpi järjestyksessä, rakentaa samalla koodaussanakirjan EncodingTable-luokkaan ja pakkaa sen avulla datan.
 
 Purettaessa sama prosessi kulkee toiseen suuntaan:
-
-* DecodingTable-luokkaan luo sanakirja, jolla muunnetaan pakattu data alkuperäiseksi (Int-taulukko -> String). Sisältää lähtödatana ASCII-merkit 0-255.
-* LZWDecoder-luokka käy pakatun datan läpi järjestyksessä, päättelee alkuperäisen, pakatessa muodostetun sanakirjan ja generoi sen DecodingTable-luokkaan, ja palauttaa sen avulla pakatun datan alkuperäiseen muotoon.
-
-_Aikavaativuudet kummallekin vielä määrittelemättä..._
+* _DecodingTable_-luokkaan luo sanakirja, jolla muunnetaan pakattu data alkuperäiseksi (Int-taulukko -> String). Sisältää lähtödatana ASCII-merkit 0-255.
+* _LZWDecoder_-luokka käy pakatun datan läpi järjestyksessä, päättelee alkuperäisen, pakatessa muodostetun sanakirjan ja generoi sen _DecodingTable_-luokkaan, ja palauttaa sen avulla pakatun datan alkuperäiseen muotoon.
 
 ## Puutteita ja ongelmia
-
-Ajanpuutteen ja liian pian tulleen palautuksen vuoksi sovellukseen jäi ainakin seuraavat oleelliset puutteet:
+Ajanpuutteen vuoksi sovellukseen jäi ainakin seuraavat oleelliset puutteet:
 * Huffmanin purkuosiossa on jokin bugi, joka tekee purkamisesta hidasta. Tarkemmin [testausdokumentissa](testaus.md).
 * LZW-pakkaus tallentaa koodiavaimet 16-bittisinä short-numeroina, vaikka 12 bittiä riittäisi. Tämä syö pakkauksen tehoa. Tehokkaampi tapa olisi tallentaa bittivirtana, tavua pienemmällä resoluutiolla.
 * LZW ei osaa reagoida tuntemattomiin (ASCII:n ulkopuolisiin) merkkeihin rakentavasti, vaan kaatuu.
