@@ -20,7 +20,7 @@ Ratkaisu jakaantuu suunnilleen seuraaviin osa-algoritmeihin ja niitä tukeviin t
 * Pakattua tiedostoa purettaessa edellinen kohta suoritetaan päinvastaiseen suuntaan.
 
 ## Aikavaativuudet (Huffman)
-Tavoiteltu aikavaativuus on O(n log n), 
+Tavoiteltu aikavaativuus on O(n log n).
 * Frekvenssien laskeminen ja koodaus/dekoodaus O(m), jossa m = datan eli merkkien määrä.
 * Huffman-puun muodostaminen O(n log n), jossa n = aakkosten eli uniikkien merkkien määrä.
 
