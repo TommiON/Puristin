@@ -1,9 +1,9 @@
 # Toteutus
 
 ## Sovelluksen yleinen rakenne
+Sovellus käynnistyy _main_-pakkauksen ainoasta luokasta _Main_, joka komenoriviparametreista riippuen käynnistää joko interaktiivisen tai komentoriviajon. Varsinaiset algoritmit on jaoteltu _HuffmanEngine_- ja _LempelZiwWelchEngine_-pakkauksiin ja tietorakenteet _CustomDataStructures_-pakkaukseen. Tiedosto-I/O:sta huolehtii _io_-pakkauksen ainoa luokka _FileManager_, joka tarjoaa toiminnallisuuden merkkijonojen, Javan short-lukujen, bittijonojen ja Java-olioiden lukemiseen ja kirjoittamiseen. Viimeksi mainittua toimintoa sovellus käyttää Huffman-aakkoston eli _CodingAlphabet_-olion tallentamiseen levylle.
 
 ## Omat tietorakenteet
-
 Sovellukselle on toteutettu seuraavat tietorakenteet:
 * **Hasher** ja **KeyValuePair**. Avain/arvo-parin toteuttava tietorakenne ja hajautustaulu niiden tallentamiseen. Molemmat geneerisiä eli hyväksyvät avaimiksi ja arvoiksi mitä vain. (Geneerisyydessä tosin sellainen rajoite, että hajautusarvoja laskeva **HashCalculator**-apuluokka palauttaa järkeviä arvoja vain String- ja Character-tyyppisille avaimille, koska vain noita sovellus käyttää.)
 * **ResizingList**. ArrayListin kaltainen tietorakenne, tyyppien suhteen geneerinen.
@@ -11,10 +11,12 @@ Sovellukselle on toteutettu seuraavat tietorakenteet:
 * **MinHeap**. "Pienin ensin"-prioriteettijono. Toimii vain CodingUniteilla, ei ehditty muuttaa geneeriseksi.
 * **SlidingFifoQueue**. First in, first out -jono. Toimii vain CodingUniteilla, ei ehditty muuttaa geneeriseksi.
 
+
+
 ## Huffman
+Luokka _HuffmanRunner_ toimii Huffman-osuuden pääluokkana. Se koordinoi pakkauksen ja purkamisen eri vaiheita ja tuottaa asiaan liittyvää metadataa.
 
-Dataa pakattaessa sovelluksen Huffman-algoritmia käyttävä osuus toimii yleistasolla näin:
-
+Pakattaessa sovelluksen Huffman-algoritmia käyttävä osuus toimii yleistasolla näin:
 * Toteutuksen keskeinen model-luokka on CodingUnit. Jokainen CodingUnit-olio tallentaa yhden koodauksen perusyksikön eli tekstimerkin. Olio sisältää itse merkin, sen esiintymiskerrat tekstissä sekä merkin pakatun binääriesityksen. Lisäksi on myöhemmin tarvittavaa puunrakennukseen liittyvää dataa, joka on alkuvaiheessa "null".
 * Frequencies-luokka käy syötetekstin läpi merkki merkiltä. Uuden merkin kohdatessaan se luo sille CodingUnitin, kohdatessaan saman merkin uudelleen lisää merkin esiintymiskertoja yhdellä.
 * Tämän jälkeen CodingUnitit syötetään FeederQueue-luokalle. Se toimii minikikekona eli prioriteettijonona, jossa syötedatassa vähiten esiintyvä CodingUnit on ensimmäisenä.
@@ -22,7 +24,7 @@ Dataa pakattaessa sovelluksen Huffman-algoritmia käyttävä osuus toimii yleist
 * Seuraavana on vuorossa CodingAlphabet-luokka, joka käynnistää puun juurialkiosta lähtien leveyshaun ja rakentaa sen aikana jokaiselle CodingUnitille yksilöllisen bittiesityksen: binääripuun vasemman haaran seuraaminen on "0", oikean "1".
 * Lopuksi Coder-luokka hyödyntää CodingAlphabetin ylläpitämää sanakirjaa, korvaa jokaisen kohdatun merkin sen bittiesityksellä ja muodostaa näin tulostemerkkijonon.
 
-Purettaessa prosessi on huomattavasti yksinkertaisempi, koska koodausaakkosto on jo olemassa. Tällöin Decoder-luokka hyödyntää CodingAlphabetin sanakirjaa toiseen suuntaan ja korvaa bittiesityksen tekstimerkeillä. _Koodausaakkoston tallennus datan mukana vielä mietinnässä..._
+Purettaessa prosessi on huomattavasti yksinkertaisempi, koska koodausaakkosto on jo olemassa. Tällöin Decoder-luokka hyödyntää erilliseen tiedostoon tallennettua CodingAlphabet-sanakirjaa toiseen suuntaan ja korvaa bittiesityksen tekstimerkeillä. 
 
 ## Lempel-Ziv-Welch
 
