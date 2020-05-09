@@ -58,12 +58,16 @@ public class LZWCoder {
      * Gets actual compress ratio
      * @return as double
      */
-    public double getActualCompressRatio() { return actualCompressRatio; }
+    public double getActualCompressRatio() {
+        return actualCompressRatio;
+    }
 
     /**
      * Gets "ideal" compress ratio
      * @return as double
      */
-    public double getIdealCompressRatio() { return idealCompressRatio; }
+    public double getIdealCompressRatio() {
+        return idealCompressRatio;
+    }
 
 }

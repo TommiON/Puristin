@@ -64,6 +64,9 @@ public class FileManager {
         String data = "";
         String currentLine = "";
         while ((currentLine = reader.readLine()) != null) {
+            if (currentLine.trim().length() == 0) {
+                currentLine = currentLine + "\n";
+            }
             data = data + currentLine;
         }
         reader.close();

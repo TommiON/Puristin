@@ -8,3 +8,5 @@ target
 bit_test
 byte_test
 *.jar
+!test_heart_of_darkness.txt
+

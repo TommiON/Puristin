@@ -140,12 +140,10 @@ public class Main {
                 try {
                     short[] codedInput = FileManager.readShorts(sourceFileName);
                     LZWDecoder lzwDecoder = new LZWDecoder();
-                    // TODO: tämä siistimmäksi jos ehtii
                     ResizingList<Short> codedInputReformatted = new ResizingList<>();
                     for (int i = 0; i < codedInput.length; i++) {
                         codedInputReformatted.add(codedInput[i]);
                     }
-                    // TODO: tähän asti
                     String plainOutput = lzwDecoder.decode(codedInputReformatted);
                     FileManager.writeText(targetFileName, plainOutput);
                     System.out.println("Aikaa kului: " + lzwDecoder.getTime() + " millisekuntia");

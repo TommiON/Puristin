@@ -50,5 +50,7 @@ public class LZWDecoder {
      * Gets elapsed time
      * @return in milliseconds as long
      */
-    public long getTime() { return timer; }
+    public long getTime() {
+        return timer;
+    }
 }

@@ -165,5 +165,4 @@ public class BitSequence {
         size = newSize;
         buckets = extendedBuckets;
     }
-
 }
