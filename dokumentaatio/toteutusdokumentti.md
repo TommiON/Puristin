@@ -11,7 +11,7 @@ Sovellukselle on toteutettu seuraavat tietorakenteet:
 * **MinHeap**. "Pienin ensin"-prioriteettijono. Toimii vain _CodingUniteilla_, ei ehditty muuttaa geneeriseksi.
 * **SlidingFifoQueue**. First in, first out -jono. Toimii vain _CodingUniteilla_, ei ehditty muuttaa geneeriseksi.
 
-Algoritminen ydinosa on toteutettu kokonaan omilla tietorakenteilla eikä sisällä import-viittauksia Javan tietorakenteisiin, ellei tällaiseksi lasketa _ResizingList_-luokan riippuvuutta _java.util.Iteratorista_, jonka avulla rakennettiin oma iteraattori for/each-iteraatioita varten.
+Algoritminen ydinosa on toteutettu kokonaan omilla tietorakenteilla eikä sisällä import-viittauksia Javan tietorakenteisiin, ellei tällaiseksi lasketa erään luokan riippuvuutta _java.util.Iteratorista_, jonka avulla rakennettiin oma iteraattori for/each-iteraatioita varten, ja parin luokan riippuvuutta _java.io.Serializablesta_, jolla saadaan luokat yhteensopivaksi I/O-kerroksen kanssa.
 
 ## Huffman
 Luokka **HuffmanRunner** toimii Huffman-osuuden pääluokkana. Se koordinoi pakkauksen ja purkamisen eri vaiheita ja tuottaa asiaan liittyvää metadataa.
