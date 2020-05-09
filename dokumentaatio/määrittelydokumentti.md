@@ -4,7 +4,7 @@
 Ohjelma pakkaa tekstimuotoista dataa tiiviimmäksi ja palauttaa pakatun datan alkuperäiseen muotoonsa.
 
 ## Algoritmit yleistasolla
-Ongelmaa lähdetään ratkaisemaan Huffman- ja Lempel–Ziv–Welch (LZW) -algoritmeilla.
+Ongelmaa lähdetään ratkaisemaan Huffman- ja Lempel–Ziv–Welch (LZW) -algoritmeilla. Valintaperusteena se, että esitutkiskelun perusteella algoritmit vaikuttivat riittävän yksinkertaisilta otettavaksi haltuun tällaisen kurssin puitteissa, mutta ne ovat kuitenkin "oikeita", tuotantokäytössä kyntensä osoittaneita ratkaisuja.
 
 ## Syötteet ja tulosteet
 Pakatessa sovellus hyväksyy syötteenä 8-bittisesti ASCII-koodattua tekstiä tiedostosta ja tulostaa pakatun version toiseen  tiedostoon. Purkaessa prosessi on sama, mutta päinvastaiseen suuntaan. Huffman-algoritmi tuottaa lisäksi erillisen koodausaakkoston (LZW ei tällaista tarvitse).
