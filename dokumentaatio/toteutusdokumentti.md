@@ -1,7 +1,7 @@
 # Toteutus
 
 ## Sovelluksen yleinen rakenne
-Sovellus käynnistyy _main_-pakkauksen ainoasta luokasta _Main_, joka komenoriviparametreista riippuen käynnistää joko interaktiivisen tai komentoriviajon. Varsinaiset algoritmit on jaoteltu _HuffmanEngine_- ja _LempelZiwWelchEngine_-pakkauksiin ja tietorakenteet _CustomDataStructures_-pakkaukseen. Tiedosto-I/O:sta huolehtii _io_-pakkauksen ainoa luokka _FileManager_, joka tarjoaa toiminnallisuuden merkkijonojen, Javan short-lukujen, bittijonojen ja Java-olioiden lukemiseen ja kirjoittamiseen. Viimeksi mainittua toimintoa sovellus käyttää Huffman-aakkoston eli _CodingAlphabet_-olion tallentamiseen levylle.
+Sovellus käynnistyy _main_-pakkauksen ainoasta luokasta **Main**, joka komenoriviparametreista riippuen käynnistää joko interaktiivisen tai komentoriviajon. Varsinaiset algoritmit on jaoteltu _HuffmanEngine_- ja _LempelZiwWelchEngine_-pakkauksiin ja tietorakenteet _CustomDataStructures_-pakkaukseen. Tiedosto-I/O:sta huolehtii _io_-pakkauksen ainoa luokka **FileManager**, joka tarjoaa toiminnallisuuden merkkijonojen, Javan short-lukujen, bittijonojen ja Java-olioiden lukemiseen ja kirjoittamiseen. Viimeksi mainittua toimintoa sovellus käyttää Huffman-aakkoston eli _CodingAlphabet_-olion tallentamiseen levylle.
 
 ## Omat tietorakenteet
 Sovellukselle on toteutettu seuraavat tietorakenteet:
