@@ -2,7 +2,7 @@
 
 ## Asennus ja käyttöönotto
 
-Lataa tiedosto [Puristin.jar]((https://github.com/TommiON/Puristin/releases/download/1.0/Puristin.jar). Mene hakemistoon, jossa tiedosto sijaitsee, ja anna komento
+Lataa tiedosto [Puristin.jar](https://github.com/TommiON/Puristin/releases/download/1.0/Puristin.jar). Mene hakemistoon, jossa tiedosto sijaitsee, ja anna komento
 
 ```java -jar Puristin.jar```
 
