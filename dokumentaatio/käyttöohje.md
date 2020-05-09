@@ -2,9 +2,13 @@
 
 ## Asennus ja käyttöönotto
 
+Lataa tiedosto [Puristin.jar]((https://github.com/TommiON/Puristin/releases/download/1.0/Puristin.jar). Mene hakemistoon, jossa tiedosto sijaitsee, ja anna komento
+
+```java -jar Puristin.jar```
+
 ## Interaktiivinen moodi
 
-Jos sovelluksen käynnistää pelkällä komennolla _Puristin_ ilman parametreja, käynnistyy vuorovaikutteinen moodi, jossa toiminto valitaan numerolla ja pakattavaa/purettavaa dataa voi sen jälkeen antaa kirjoittamalla:
+Jos sovelluksen käynnistää pelkällä komennolla `java -jar Puristin.jar` ilman parametreja, käynnistyy vuorovaikutteinen moodi, jossa toiminto valitaan numerolla ja pakattavaa/purettavaa dataa voi sen jälkeen antaa kirjoittamalla:
 
 ![](ui1.png)
 
