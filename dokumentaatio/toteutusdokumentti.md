@@ -8,23 +8,23 @@ Sovellukselle on toteutettu seuraavat tietorakenteet:
 * **Hasher** ja **KeyValuePair**. Avain/arvo-parin toteuttava tietorakenne ja hajautustaulu niiden tallentamiseen. Molemmat geneerisiä eli hyväksyvät avaimiksi ja arvoiksi mitä vain. (Geneerisyydessä tosin sellainen rajoite, että hajautusarvoja laskeva **HashCalculator**-apuluokka palauttaa järkeviä arvoja vain String- ja Character-tyyppisille avaimille, koska vain noita sovellus käyttää.)
 * **ResizingList**. ArrayListin kaltainen tietorakenne, tyyppien suhteen geneerinen.
 * **BitSequence**. Vaihtelevanpituisten bittisarjojen tallantamiseen ja käsittelyyn.
-* **MinHeap**. "Pienin ensin"-prioriteettijono. Toimii vain CodingUniteilla, ei ehditty muuttaa geneeriseksi.
-* **SlidingFifoQueue**. First in, first out -jono. Toimii vain CodingUniteilla, ei ehditty muuttaa geneeriseksi.
+* **MinHeap**. "Pienin ensin"-prioriteettijono. Toimii vain _CodingUniteilla_, ei ehditty muuttaa geneeriseksi.
+* **SlidingFifoQueue**. First in, first out -jono. Toimii vain _CodingUniteilla_, ei ehditty muuttaa geneeriseksi.
 
-
+Algoritminen ydinosa on toteutettu kokonaan omilla tietorakenteilla eikä sisällä import-viittauksia Javan tietorakenteisiin, ellei tällaiseksi lasketa _ResizingList_-luokan riippuvuutta _java.util.Iteratorista_. Tämä tarvittiin, jotta omaa luokkaa voidaan käyttöön for/each-iteraatioissa.
 
 ## Huffman
 Luokka _HuffmanRunner_ toimii Huffman-osuuden pääluokkana. Se koordinoi pakkauksen ja purkamisen eri vaiheita ja tuottaa asiaan liittyvää metadataa.
 
-Pakattaessa sovelluksen Huffman-algoritmia käyttävä osuus toimii yleistasolla näin:
-* Toteutuksen keskeinen model-luokka on CodingUnit. Jokainen CodingUnit-olio tallentaa yhden koodauksen perusyksikön eli tekstimerkin. Olio sisältää itse merkin, sen esiintymiskerrat tekstissä sekä merkin pakatun binääriesityksen. Lisäksi on myöhemmin tarvittavaa puunrakennukseen liittyvää dataa, joka on alkuvaiheessa "null".
-* Frequencies-luokka käy syötetekstin läpi merkki merkiltä. Uuden merkin kohdatessaan se luo sille CodingUnitin, kohdatessaan saman merkin uudelleen lisää merkin esiintymiskertoja yhdellä.
-* Tämän jälkeen CodingUnitit syötetään FeederQueue-luokalle. Se toimii minikikekona eli prioriteettijonona, jossa syötedatassa vähiten esiintyvä CodingUnit on ensimmäisenä.
-* Seuraavaksi CodingTree-luokka rakentaa CodingUniteista binääripuun. Tämä tehdään ottamalla FeederQueuesta aina kaksi ensimmäistä CodingUnitia ja yhdistämällä niistä uusi CodingUnit: jonosta otetuista tulee uuden CodingUnitin vasen ja oikea lapsi, ja uuden CodingUnitin esiintymiskertaluku on sen lapsien esiintymiskertojen summa. Jonosta otetut CodingUnitit eivät enää palaa pririteettijonoon, mutta uusi CodingUnit työnnetään sinne. Tätä jatketaan, kunnes jonossa on enää yksi alkio: tämä on puun juuri, ja puu on nyt valmis.
-* Seuraavana on vuorossa CodingAlphabet-luokka, joka käynnistää puun juurialkiosta lähtien leveyshaun ja rakentaa sen aikana jokaiselle CodingUnitille yksilöllisen bittiesityksen: binääripuun vasemman haaran seuraaminen on "0", oikean "1".
-* Lopuksi Coder-luokka hyödyntää CodingAlphabetin ylläpitämää sanakirjaa, korvaa jokaisen kohdatun merkin sen bittiesityksellä ja muodostaa näin tulostemerkkijonon.
+Pakattaessa sovelluksen Huffman-algoritmia käyttävä osuus toimii näin:
+* Toteutuksen keskeinen model-luokka on _CodingUnit_. Jokainen _CodingUnit_-olio tallentaa yhden koodauksen perusyksikön eli tekstimerkin. Olio sisältää itse merkin, sen esiintymiskerrat tekstissä sekä merkin pakatun binääriesityksen. Lisäksi on myöhemmin tarvittavaa puunrakennukseen liittyvää dataa, joka on alkuvaiheessa "null".
+* _Frequencies_-luokka käy syötetekstin läpi merkki merkiltä. Uuden merkin kohdatessaan se luo sille _CodingUnitin_, kohdatessaan saman merkin uudelleen lisää merkin esiintymiskertoja yhdellä.
+* Tämän jälkeen _CodingUnitit_ syötetään _FeederQueue_-luokalle. Se toimii minikikekona eli prioriteettijonona, jossa syötedatassa vähiten esiintyvä _CodingUnit_ on ensimmäisenä.
+* Seuraavaksi _CodingTree_-luokka rakentaa _CodingUniteista_ binääripuun. Tämä tehdään ottamalla _FeederQueuesta_ aina kaksi ensimmäistä _CodingUnitia_ ja yhdistämällä niistä uusi _CodingUnit_: jonosta otetuista tulee uuden _CodingUnitin_ vasen ja oikea lapsi, ja uuden _CodingUnitin_ esiintymiskertaluku on sen lapsien esiintymiskertojen summa. Jonosta otetut _CodingUnitit_ eivät enää palaa pririteettijonoon, mutta uusi _CodingUnit_ työnnetään sinne. Tätä jatketaan, kunnes jonossa on enää yksi alkio: tämä on puun juuri, ja puu on nyt valmis.
+* Seuraavana on vuorossa _CodingAlphabet_-luokka, joka käynnistää puun juurialkiosta lähtien leveyshaun ja rakentaa sen aikana jokaiselle _CodingUnitille_ yksilöllisen bittiesityksen: binääripuun vasemman haaran seuraaminen on "0", oikean "1".
+* Lopuksi _Coder_-luokka hyödyntää _CodingAlphabetin_ ylläpitämää sanakirjaa, korvaa jokaisen kohdatun merkin sen bittiesityksellä ja muodostaa näin tulostemerkkijonon.
 
-Purettaessa prosessi on huomattavasti yksinkertaisempi, koska koodausaakkosto on jo olemassa. Tällöin Decoder-luokka hyödyntää erilliseen tiedostoon tallennettua CodingAlphabet-sanakirjaa toiseen suuntaan ja korvaa bittiesityksen tekstimerkeillä. 
+Purettaessa prosessi on huomattavasti yksinkertaisempi, koska koodausaakkosto on jo olemassa. Tällöin _Decoder_-luokka hyödyntää erilliseen tiedostoon tallennettua _CodingAlphabet_-sanakirjaa toiseen suuntaan ja korvaa bittiesityksen tekstimerkeillä. 
 
 ## Lempel-Ziv-Welch
 
