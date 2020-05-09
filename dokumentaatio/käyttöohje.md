@@ -8,7 +8,7 @@ Lataa tiedosto [Puristin.jar](https://github.com/TommiON/Puristin/releases/downl
 
 ## Interaktiivinen moodi
 
-Jos sovelluksen käynnistää pelkällä komennolla `java -jar Puristin.jar` ilman parametreja, käynnistyy vuorovaikutteinen moodi, jossa toiminto valitaan numerolla ja pakattavaa/purettavaa dataa voi sen jälkeen antaa kirjoittamalla:
+Jos sovelluksen käynnistää pelkällä komennolla `java -jar Puristin.jar` ilman parametreja, käynnistyy vuorovaikutteinen moodi, jossa toiminto valitaan numerolla ja pakattavaa/purettavaa dataa voi sen jälkeen antaa kirjoittamalla.
 
 ![](ui1.png)
 
