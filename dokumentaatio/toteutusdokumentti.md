@@ -1,14 +1,15 @@
 # Toteutus
 
+### Sovelluksen yleinen rakenne
+
 ### Omat tietorakenteet
 
 Sovellukselle on toteutettu seuraavat tietorakenteet:
-
-* **Hasher** ja **KeyValuePair**. Avain/arvo-parin toteuttava tietorakenne ja hajautustaulu niiden tallentamiseen. Molemmat geneerisiä eli hyväksyvät avaimiksi ja arvoiksi mitä vain. (Geneerisyydessä tosin sellainen rajoite, että hajautusarvoja laskeva **HashCalculator**-apuluokka palauttaa järkeviä arvoja vain String- ja Character-tyyppisille avaimille, koska vain noita sovellus käyttää.) Toimii ajassa O(1), paitsi kaikki avain/arvo-parit palauttava iteraattori ajassa O(n).
+* **Hasher** ja **KeyValuePair**. Avain/arvo-parin toteuttava tietorakenne ja hajautustaulu niiden tallentamiseen. Molemmat geneerisiä eli hyväksyvät avaimiksi ja arvoiksi mitä vain. (Geneerisyydessä tosin sellainen rajoite, että hajautusarvoja laskeva **HashCalculator**-apuluokka palauttaa järkeviä arvoja vain String- ja Character-tyyppisille avaimille, koska vain noita sovellus käyttää.)
 * **ResizingList**. ArrayListin kaltainen tietorakenne, tyyppien suhteen geneerinen.
 * **BitSequence**. Vaihtelevanpituisten bittisarjojen tallantamiseen ja käsittelyyn.
-* **MinHeap**. "Pienin ensin"-prioriteettijono. Toimii vain CodingUniteilla, muutetaan geneeriseksi jos ehditään.
-* **SlidingFifoQueue**. First in, first out -jono. Toimii vain CodingUniteilla, muutetaan geneeriseksi jos ehditään.
+* **MinHeap**. "Pienin ensin"-prioriteettijono. Toimii vain CodingUniteilla, ei ehditty muuttaa geneeriseksi.
+* **SlidingFifoQueue**. First in, first out -jono. Toimii vain CodingUniteilla, ei ehditty muuttaa geneeriseksi.
 
 ### Huffman
 
