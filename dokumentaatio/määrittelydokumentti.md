@@ -20,6 +20,7 @@ Ratkaisu jakaantuu suunnilleen seuraaviin osa-algoritmeihin ja niitä tukeviin t
 * Pakattua tiedostoa purettaessa edellinen kohta suoritetaan päinvastaiseen suuntaan.
 
 ## Aikavaativuudet (Huffman)
+Tavoiteltu aikavaativuus on O(n log n), 
 * Frekvenssien laskeminen ja koodaus/dekoodaus O(m), jossa m = datan eli merkkien määrä.
 * Huffman-puun muodostaminen O(n log n), jossa n = aakkosten eli uniikkien merkkien määrä.
 
@@ -31,6 +32,7 @@ Ratkaisu jakaantuu suunnilleen seuraaviin osa-algoritmeihin ja niitä tukeviin t
 * Purettaessa aloitetaan samanlaisella alustetulla sanakirjalla ja "simuloidaan peruuttaen" pakkausvaiheen sanakirjan rakentamista. Tämä tehdään lisäämällä sanakirjaan aina merkkijono, joka saadaan yhdiställä äskeinen merkkijono ja ensimmäinen merkki siitä merkkijonosta, joka saadaan hakemalla sanakirjasta seuraavalla syötteellä. Näin purkualgoritmi tulee rakentaneeksi samanlaisen sanakirjan kuin pakkausalgoritmikin.
 
 ## Aikavaativuudet (LZW)
+Tavoiteltu aikavaativuus on O(n), jossa n = syötteen pituus. Keskeisenä tietorakenteena toimivat sanakirjat toteutetaan hajautustauluna, joiden pitäisi toimia ajassa O(1). Siis suorituksen keston pitäisi riippua lineaarisesti syötteen pituudesta.
 
 ### Ohjelmointikieli
 Java
